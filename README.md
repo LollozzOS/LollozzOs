@@ -261,18 +261,18 @@ Metodo 1: Installazione Automatica via PowerShell (Consigliato)
 
 
 ```powershell
-$dest = "C:\LollozzOS\LollozzOS_Configurator_v.3.3"; $zip = "$env:TEMP\LollozzOS.zip"; irm "https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest/download/LollozzOS_Configurator_v.3.3.zip" -OutFile $zip; Expand-Archive -Path $zip -DestinationPath $dest -Force; $exe = (Get-ChildItem -Path $dest -Filter "*.exe" -Recurse | Select-Object -First 1).FullName; Start-Process -FilePath $exe -Verb RunAs
+$dest = "C:\LollozzOS\LollozzOS_Configurator_v.3.7"; $zip = "$env:TEMP\LollozzOS.zip"; irm "https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest/download/LollozzOS_Configurator_v.3.7.zip" -OutFile $zip; Expand-Archive -Path $zip -DestinationPath $dest -Force; $exe = (Get-ChildItem -Path $dest -Filter "*.exe" -Recurse | Select-Object -First 1).FullName; Start-Process -FilePath $exe -Verb RunAs
 
 ```
 
-Questo script scarica automaticamente l'ultima versione, estrae i file nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.3, apre il file README.txt e avvia LollozzOS_Configurator_v.3.3.exe con i privilegi da Amministratore.
+Questo script scarica automaticamente l'ultima versione, estrae i file nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.7, apre il file README.txt e avvia LollozzOS_Configurator_v.3.7.exe con i privilegi da Amministratore.
 
 --------------------------------------------------------------------------------
 
 Metodo 2: Installazione Manuale
-1. Scarica l'archivio LollozzOS_Configurator_v.3.3.zip dalla sezione RELEASE in basso.
-2. Estrai il contenuto dello ZIP nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.3.
-3. Apri la cartella, fai tasto destro su LollozzOS_Configurator_v.3.3.exe e seleziona Esegui come amministratore.
+1. Scarica l'archivio LollozzOS_Configurator_v.3.7.zip dalla sezione RELEASE in basso.
+2. Estrai il contenuto dello ZIP nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.7.
+3. Apri la cartella, fai tasto destro su LollozzOS_Configurator_v.3.7.exe e seleziona Esegui come amministratore.
   
 
 ---
