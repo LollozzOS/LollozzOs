@@ -55,6 +55,11 @@ The interface is clean and you can navigate using the on-screen numbers. Each se
 16. **Exit**
 ---
 
+## 🌐 System Fix
+ - **Added "System Troubleshooting" section where you can choose what to restore and fix within the system**
+   <img width="1160" height="851" alt="Screenshot 2026-09-10 102426" src="https://github.com/user-attachments/assets/c12a2d3d-dc8c-4791-9995-6b9b4aefab1a" />
+
+
 ## 🌐 Network Optimizer
 
 Module dedicated to in-depth optimization of the network stack, complete with technical documentation integrated into the program:
