@@ -20,7 +20,7 @@ The interface is clean and you can navigate using the on-screen numbers. Each se
 
 
 
-<img width="1172" height="839" alt="Schermata 31-07-2026 11 28 07" src="https://github.com/user-attachments/assets/22d8b7cf-b5da-4503-99f1-500a0e195d60" />
+
 
 
 
