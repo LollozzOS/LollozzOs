@@ -1,4 +1,4 @@
-<img width="3836" height="2160" alt="LollozzOsWallpaper" src="https://github.com/user-attachments/assets/95617af1-f553-4a52-8db2-647c3977d10a" />
+<img width="3840" height="2160" alt="LollozzOsWallpaper1" src="https://github.com/user-attachments/assets/d3ba0395-fe6c-4a37-86c8-6733b6124d1d" />
 
 
 
