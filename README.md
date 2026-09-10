@@ -261,8 +261,7 @@ Metodo 1: Installazione Automatica via PowerShell (Consigliato)
 
 
 ```powershell
-$dest = "C:\LollozzOS\LollozzOS_Configurator_v.3.7"; $zip = "$env:TEMP\LollozzOS.zip"; irm "https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest/download/LollozzOs_Configurator_v.3.7_Installer.zip" -OutFile $zip; Expand-Archive -Path $zip -DestinationPath $dest -Force; $exe = (Get-ChildItem -Path $dest -Filter "*.exe" -Recurse | Select-Object -First 1).FullName; Start-Process -FilePath $exe -Verb RunAs
-
+$dest = "C:\LollozzOS\LollozzOS_Configurator_v.3.7"; $zip = "$env:TEMP\LollozzOs_Configurator_v.3.7_Installer.zip"; irm "https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest/download/LollozzOs_Configurator_v.3.7_Installer.zip" -OutFile $zip; Expand-Archive -Path $zip -DestinationPath $dest -Force; $exe = Join-Path $dest "LollozzOs_Configurator_Installer.exe"; Start-Process -FilePath $exe -Verb RunAs
 ```
 
 Questo script scarica automaticamente l'ultima versione, estrae i file nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.7, apre il file README.txt e avvia LollozzOS_Configurator_v.3.7.exe con i privilegi da Amministratore.
