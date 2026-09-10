@@ -15,7 +15,9 @@ The interface is clean and you can navigate using the on-screen numbers. Each se
 
 <img width="2560" height="1440" alt="Screenshot - 26_07_2026 , 19_22_45" src="https://github.com/user-attachments/assets/368c0175-73b6-4095-8060-e8efb8fd462b" />
 
-<img width="1172" height="739" alt="Schermata 31-07-2026 10 40 38" src="https://github.com/user-attachments/assets/d7e8f1b2-27cd-45a9-9222-24828d110e78" />
+<img width="1210" height="852" alt="Screenshot 2026-09-10 102344" src="https://github.com/user-attachments/assets/767cc6ef-947e-4a93-b6a5-12aa909a411d" />
+
+
 
 
 <img width="1172" height="839" alt="Schermata 31-07-2026 11 28 07" src="https://github.com/user-attachments/assets/22d8b7cf-b5da-4503-99f1-500a0e195d60" />
