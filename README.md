@@ -31,7 +31,7 @@ modifica l’app salva com’era, quindi tutto si può annullare.
 
 - **Sistema:** Windows 10 e Windows 11, 64 bit
 - **Avvio:** come amministratore (cambia impostazioni di sistema)
-- **Lingua dell’app:** italiano (l’inglese è in arrivo)
+- **Lingua dell’app:** italiano e inglese (segue la lingua di Windows; si cambia dal globo in basso a sinistra)
 - **Prova gratuita:** 24 ore, una volta per computer
 
 ## Ottimizza con un click
@@ -186,6 +186,9 @@ proprietari.
 [Instagram](https://www.instagram.com/_lollozz__) ·
 [Twitch](https://www.twitch.tv/lollozz__)
 
+Se LollozzOS ti è utile puoi [sostenerlo con una donazione su Ko-fi](https://ko-fi.com/lollozzos):
+è libera e non sblocca niente, la licenza resta la stessa.
+
 ---
 
 <a id="english"></a>
@@ -199,7 +202,7 @@ The previous state is saved before each change, so everything can be undone.
 
 - **System:** Windows 10 and Windows 11, 64-bit
 - **Runs as:** administrator (it changes system settings)
-- **App language:** Italian (English is on the way)
+- **App language:** Italian and English (follows the Windows language; switch it from the globe at the bottom left)
 - **Free trial:** 24 hours, once per computer
 
 ### What’s inside
@@ -240,6 +243,11 @@ license covers **one computer** and is tied to its hardware; it cannot be
 resold, shared or transferred. In the app, pick your license and copy the
 request (Lollozz receives it too), write on
 [Discord](https://discord.gg/gd5cT3Jw9M) and paste the unlock code you receive.
+
+### Support
+
+If LollozzOS is useful to you, you can [support it with a donation on Ko-fi](https://ko-fi.com/lollozzos):
+it's optional and doesn't unlock anything, your license stays the same.
 
 ### Disclaimer
 
