@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LollozzOS — Il tuo PC, pronto per giocare</title>
+<meta name="description" content="LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e GPU impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.">
+<meta name="theme-color" content="#050507">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/logo-192.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LollozzOS — Il tuo PC, pronto per giocare">
+<meta property="og:description" content="Ottimizzazione di Windows per il gaming in un'app sola. Tutto reversibile. Prova gratuita di 24 ore.">
+<meta property="og:image" content="https://lollozzos.github.io/LollozzOs_Configurator/assets/og.jpg">
+<meta property="og:url" content="https://lollozzos.github.io/LollozzOs_Configurator/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root {
+  --bg: #050507;
+  --bg-2: #0a0910;
+  --panel: #0e0c15;
+  --panel-2: #14111d;
+  --border: #221d30;
+  --border-2: #2e2743;
+  --text: #f6f4fb;
+  --text-dim: #a19cb0;
+  --text-mute: #6f6a80;
+  --violet: #8b5cf6;
+  --violet-2: #a78bfa;
+  --violet-deep: #6d28d9;
+  --violet-rgb: 139, 92, 246;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --radius: 16px;
+  --font: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Roboto, Arial, sans-serif;
+  --mono: 'Cascadia Mono', Consolas, ui-monospace, 'SF Mono', Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: 16px; line-height: 1.6; overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.os { color: var(--violet-2); }
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg.i { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- barra in alto ---------- */
+.top {
+  position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: rgba(5, 5, 7, .72); border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
+.brand img { width: 34px; height: 34px; border-radius: 50%; }
+.nav { display: flex; gap: 4px; margin-left: 12px; }
+.nav a { text-decoration: none; color: var(--text-dim); font-size: 14px; font-weight: 600; padding: 8px 12px; border-radius: 10px; transition: color .15s, background .15s; }
+.nav a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
+.top-dx { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.lang { display: inline-flex; border: 1px solid var(--border-2); border-radius: 999px; padding: 3px; background: var(--panel); }
+.lang button {
+  font: 700 12px/1 var(--font); letter-spacing: .04em; color: var(--text-dim); background: none; border: 0;
+  padding: 7px 11px; border-radius: 999px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--violet); color: #fff; }
+.menu-btn { display: none; background: none; border: 1px solid var(--border-2); color: var(--text); border-radius: 10px; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; }
+
+/* ---------- pulsanti ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; cursor: pointer;
+  font: 700 15px/1 var(--font); padding: 15px 22px; border-radius: 12px; border: 1px solid transparent;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-p { background: linear-gradient(135deg, var(--violet) 0%, var(--violet-deep) 100%); color: #fff; box-shadow: 0 10px 30px rgba(var(--violet-rgb), .35), inset 0 1px 0 rgba(255, 255, 255, .18); }
+.btn-p:hover { box-shadow: 0 14px 38px rgba(var(--violet-rgb), .5), inset 0 1px 0 rgba(255, 255, 255, .18); }
+.btn-g { background: rgba(255, 255, 255, .04); border-color: var(--border-2); color: var(--text); }
+.btn-g:hover { border-color: rgba(var(--violet-rgb), .6); background: rgba(var(--violet-rgb), .08); }
+.btn-s { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+
+/* ---------- hero ---------- */
+.hero { position: relative; padding: 84px 0 40px; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; inset: -20% -10% auto; height: 820px; pointer-events: none; z-index: -1;
+  background:
+    radial-gradient(40% 50% at 50% 12%, rgba(var(--violet-rgb), .30), transparent 70%),
+    radial-gradient(30% 35% at 85% 40%, rgba(109, 40, 217, .20), transparent 70%),
+    radial-gradient(30% 35% at 12% 45%, rgba(139, 92, 246, .12), transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .35;
+  background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 56px 56px; mask-image: radial-gradient(60% 55% at 50% 30%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(60% 55% at 50% 30%, #000 30%, transparent 75%);
+}
+.hero-in { text-align: center; max-width: 860px; margin: 0 auto; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; font: 600 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--violet-2);
+  padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(var(--violet-rgb), .35); background: rgba(var(--violet-rgb), .08);
+}
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
+h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 22px 0 18px; }
+h1 .grad { background: linear-gradient(100deg, #fff 10%, var(--violet-2) 55%, var(--violet) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { font-size: clamp(17px, 2.1vw, 20px); color: var(--text-dim); max-width: 720px; margin: 0 auto; }
+.cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 34px 0 16px; }
+.nota { font-size: 13.5px; color: var(--text-mute); display: flex; gap: 8px 18px; justify-content: center; flex-wrap: wrap; }
+.nota span { display: inline-flex; align-items: center; gap: 6px; }
+.nota svg.i { width: 15px; height: 15px; color: var(--green); }
+.shot {
+  position: relative; margin: 56px auto 0; max-width: 1080px; border-radius: 18px; padding: 8px;
+  background: linear-gradient(180deg, rgba(var(--violet-rgb), .35), rgba(var(--violet-rgb), .05) 60%, transparent);
+  box-shadow: 0 40px 120px rgba(var(--violet-rgb), .22), 0 20px 60px rgba(0, 0, 0, .6);
+}
+.shot img:not(.firma) { border-radius: 12px; border: 1px solid rgba(255, 255, 255, .08); width: 100%; height: auto; aspect-ratio: 16 / 10; background: var(--panel); }
+.firma { position: absolute; right: -30px; bottom: -40px; width: 260px; opacity: .08; pointer-events: none; }
+
+/* ---------- numeri ---------- */
+.numeri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 64px 0 0; }
+.num { background: var(--bg-2); padding: 24px 22px; }
+.num b { display: block; font-size: 28px; line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
+.num b em { font-style: normal; color: var(--violet-2); }
+.num span { color: var(--text-dim); font-size: 14px; }
+
+/* ---------- sezioni ---------- */
+section { padding: 96px 0 0; }
+.sez-testa { max-width: 720px; margin: 0 0 40px; }
+.sez-testa.c { margin: 0 auto 44px; text-align: center; }
+.eyebrow { font: 700 12.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--violet-2); }
+h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; letter-spacing: -.028em; margin: 14px 0 14px; font-weight: 800; }
+.sez-testa p { color: var(--text-dim); font-size: 17.5px; margin: 0; }
+
+.duo { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.duo.inv { grid-template-columns: 1fr 1.05fr; }
+.duo.inv .duo-img { order: 2; }
+.duo-img { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-2); box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 0 1px rgba(var(--violet-rgb), .06); background: var(--panel); }
+.duo-img img { width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.duo h2 { margin-top: 12px; }
+.duo > div > p { color: var(--text-dim); font-size: 17px; margin: 0 0 20px; }
+.lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.lista li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 15.5px; }
+.lista li svg.i { color: var(--violet-2); margin-top: 3px; width: 18px; height: 18px; }
+.tag { display: inline-flex; align-items: center; gap: 7px; font: 700 12px/1 var(--mono); letter-spacing: .05em; color: var(--amber); border: 1px solid rgba(251, 191, 36, .35); background: rgba(251, 191, 36, .08); padding: 7px 11px; border-radius: 999px; }
+
+/* ---------- griglia funzioni ---------- */
+.griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.card {
+  position: relative; background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 22px; transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: rgba(var(--violet-rgb), .45); transform: translateY(-2px); }
+.card .ico { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+  background: rgba(var(--violet-rgb), .12); color: var(--violet-2); border: 1px solid rgba(var(--violet-rgb), .25); }
+.card h3 { font-size: 17px; margin: 0 0 6px; letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+
+/* ---------- giochi ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 22px; }
+.chip { font-size: 13.5px; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border-2); background: rgba(255, 255, 255, .03); }
+.chip.off { color: var(--text-mute); border-style: dashed; }
+
+/* ---------- galleria ---------- */
+.gal-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 22px; }
+.gal-tabs button {
+  font: 600 14px/1 var(--font); color: var(--text-dim); background: var(--panel); border: 1px solid var(--border-2);
+  padding: 11px 16px; border-radius: 999px; cursor: pointer; transition: all .15s;
+}
+.gal-tabs button:hover { color: var(--text); }
+.gal-tabs button[aria-selected="true"] { color: #fff; background: var(--violet); border-color: var(--violet); box-shadow: 0 8px 24px rgba(var(--violet-rgb), .35); }
+.gal-vista { max-width: 1040px; margin: 0 auto; }
+.gal-vista figure { margin: 0; }
+.gal-vista figcaption { text-align: center; color: var(--text-dim); font-size: 14.5px; margin-top: 16px; }
+
+/* ---------- passi ---------- */
+.passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: p; }
+.passo { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 24px; position: relative; }
+.passo::before {
+  counter-increment: p; content: counter(p); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px;
+  border-radius: 10px; font: 800 16px/1 var(--mono); color: #fff; background: linear-gradient(135deg, var(--violet), var(--violet-deep)); margin-bottom: 16px;
+}
+.passo h3 { margin: 0 0 8px; font-size: 18px; }
+.passo p { margin: 0; color: var(--text-dim); font-size: 14.5px; }
+.passo kbd { font: 600 12.5px var(--mono); background: var(--panel-2); border: 1px solid var(--border-2); border-radius: 6px; padding: 1px 6px; color: var(--text); }
+
+/* ---------- licenze ---------- */
+.licenze { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 900px; margin: 0 auto; }
+.lic { border: 1px solid var(--border); border-radius: 18px; padding: 28px; background: var(--panel); display: flex; flex-direction: column; gap: 14px; }
+.lic.top-lic { border-color: rgba(var(--violet-rgb), .55); background: radial-gradient(120% 100% at 100% 0%, rgba(var(--violet-rgb), .16), transparent 55%), var(--panel); }
+.lic h3 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
+.lic .sotto { color: var(--text-dim); font-size: 14.5px; margin: -6px 0 0; }
+.lic .lista li { font-size: 14.5px; }
+.lic .btn { margin-top: auto; }
+.lic-nota { text-align: center; color: var(--text-mute); font-size: 13.5px; margin: 18px 0 0; }
+
+/* ---------- faq ---------- */
+.faq { max-width: 820px; margin: 0 auto; display: grid; gap: 10px; }
+.faq details { border: 1px solid var(--border); border-radius: 14px; background: var(--panel); padding: 0 20px; }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 0; font-weight: 700; font-size: 16px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary svg.i { transition: transform .2s; color: var(--violet-2); }
+.faq details[open] summary svg.i { transform: rotate(45deg); }
+.faq details p { margin: 0 0 18px; color: var(--text-dim); font-size: 15px; }
+
+/* ---------- community ---------- */
+.comm { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+.comm-box { border: 1px solid var(--border); border-radius: 18px; padding: 30px; background: var(--panel); }
+.comm-box h3 { margin: 0 0 8px; font-size: 22px; }
+.comm-box p { color: var(--text-dim); margin: 0 0 20px; font-size: 15px; }
+.social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.social a { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-2); background: rgba(255, 255, 255, .02); transition: border-color .15s, background .15s; }
+.social a:hover { border-color: rgba(var(--violet-rgb), .55); background: rgba(var(--violet-rgb), .07); }
+.social b { display: block; font-size: 15px; line-height: 1.2; }
+.social small { color: var(--text-mute); font-size: 12.5px; }
+.social svg.i { color: var(--violet-2); }
+.dona { background: radial-gradient(120% 120% at 0% 0%, rgba(244, 114, 182, .12), transparent 55%), var(--panel); }
+.dona svg.cuore { width: 34px; height: 34px; color: #f472b6; margin-bottom: 10px; }
+
+/* ---------- finale ---------- */
+.finale { margin: 110px 0 0; text-align: center; padding: 72px 24px; border-radius: 26px; position: relative; overflow: hidden;
+  background: radial-gradient(60% 90% at 50% 0%, rgba(var(--violet-rgb), .35), transparent 70%), linear-gradient(180deg, var(--panel-2), var(--bg-2)); border: 1px solid rgba(var(--violet-rgb), .3); }
+.finale h2 { margin-top: 0; }
+.finale p { color: var(--text-dim); margin: 0 auto; max-width: 560px; }
+
+footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 44px; color: var(--text-mute); font-size: 13.5px; }
+.foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.foot .brand { font-size: 16px; color: var(--text); }
+.foot-link { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.foot-link a { text-decoration: none; color: var(--text-dim); }
+.foot-link a:hover { color: var(--text); }
+.legale { margin: 22px 0 0; max-width: 860px; line-height: 1.6; }
+
+/* ---------- comparsa ---------- */
+.rivela { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
+.rivela.vista { opacity: 1; transform: none; }
+.no-js .rivela { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rivela { opacity: 1; transform: none; transition: none; }
+  .btn, .card { transition: none; }
+}
+
+/* ---------- finestre strette ---------- */
+@media (max-width: 980px) {
+  .duo, .duo.inv { grid-template-columns: 1fr; gap: 32px; }
+  .duo.inv .duo-img { order: 0; }
+  .numeri { grid-template-columns: 1fr 1fr; }
+  .passi { grid-template-columns: 1fr; }
+  .comm { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(8, 7, 12, .97); border-bottom: 1px solid var(--border); padding: 10px 16px 16px; margin: 0; }
+  .nav.aperta { display: flex; }
+  .nav a { padding: 12px; font-size: 16px; }
+  .menu-btn { display: inline-flex; }
+  .top-dx .btn { display: none; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 56px 0 24px; }
+  .cta .btn { width: 100%; }
+  .licenze { grid-template-columns: 1fr; }
+  .social { grid-template-columns: 1fr; }
+  section { padding-top: 72px; }
+  .num b { font-size: 23px; }
+  .num { padding: 18px 16px; }
+  .shot { padding: 5px; margin-top: 40px; }
+  .finale { padding: 52px 18px; }
+  .firma { display: none; }
+}
+</style>
+</head>
+<body class="no-js">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 9.2-9.2"/><path d="m17 6 3 3"/><path d="m14 9 2 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></symbol>
+    <symbol id="i-gpu" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="9" cy="12" r="2.5"/><circle cx="16" cy="12" r="2.5"/><path d="M5 17v3M19 17v3"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></symbol>
+    <symbol id="i-head" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/><path d="m11 9-2 3h4l-2 3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24"><path d="M9.5 14.5 19 5a2 2 0 0 0-3-3l-9.5 9.5"/><path d="M6.5 11.5c-2 0-3.5 1.5-3.5 3.5 0 1.5-.5 3-1.5 4 3.5.5 7-1 7.5-4 .3-1.8-.8-3.5-2.5-3.5z"/></symbol>
+    <symbol id="i-apps" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.3-1.3a4 4 0 0 0-5-5L3 10l3-3 3 3 1.3-1.3a4 4 0 0 1 4.4-2.4z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-live" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/><path d="M10 8v5l4-2.5z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.5 3.6 4 7 4c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.5 4.3 6.8C19.5 15.4 12 20 12 20z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.4 1.8L15 14H9l-1.6 1.8A3 3 0 0 1 2 14v-2a4 4 0 0 1 4-4z"/><path d="M7 11v3M5.5 12.5h3"/><path d="M16 11.5h.01M18 13h.01"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inizio" aria-label="LollozzOS">
+      <img src="assets/logo.png" alt="" width="34" height="34">
+      <span>Lollozz<span class="os">OS</span></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#click" data-t="nav1">Un click</a>
+      <a href="#funzioni" data-t="nav2">Funzioni</a>
+      <a href="#giochi" data-t="nav3">Giochi</a>
+      <a href="#modaudio" data-t="nav4">Mod Audio</a>
+      <a href="#inizia" data-t="nav5">Inizia</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-dx">
+      <div class="lang" role="group" aria-label="Lingua / Language">
+        <button type="button" data-lang="it" aria-pressed="true">IT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-p btn-s" href="https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest" data-t="scarica-s">Scarica</a>
+      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg class="i"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="inizio">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-in">
+        <span class="pill"><span class="dot"></span><span data-t="pill">Windows 10 e 11 · Creato da Lollozz</span></span>
+        <h1 data-t="h1">Il tuo PC, <span class="grad">pronto per giocare.</span></h1>
+        <p class="lead" data-t="lead">LollozzOS mette in un’app sola quello che di solito è sparso fra decine di script, guide e programmi: meno processi in background, rete e scheda video impostate per il gioco, configurazioni pronte per i tuoi giochi. E ogni modifica si annulla.</p>
+        <div class="cta">
+          <a class="btn btn-p" href="https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest"><svg class="i"><use href="#i-down"/></svg><span data-t="scarica">Scarica LollozzOS</span></a>
+          <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-key"/></svg><span data-t="licenza">Ottieni la licenza</span></a>
+        </div>
+        <div class="nota">
+          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n1">Prova gratuita di 24 ore</span></span>
+          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n2">Backup prima di ogni modifica</span></span>
+          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n3">Ogni modifica si annulla</span></span>
+        </div>
+      </div>
+      <div class="shot rivela">
+        <img src="assets/home.jpg" width="1600" height="1000" alt="La schermata principale di LollozzOS: Windows, processore, scheda video, memoria, Ottimizza con un click e Diagnosi PC" data-alt-en="The LollozzOS home screen: Windows, processor, graphics card, memory, One-click optimize and PC diagnosis">
+        <img class="firma" src="assets/lettering.png" alt="" aria-hidden="true">
+      </div>
+
+      <div class="numeri rivela">
+        <div class="num"><b>~120 <em>→</em> ~50-70</b><span data-t="k1">processi in background, con un click (valori tipici)</span></div>
+        <div class="num"><b>9</b><span data-t="k2">giochi con la configurazione pronta, e il prossimo Call of Duty in arrivo</span></div>
+        <div class="num"><b>55</b><span data-t="k3">riparazioni divise per problema: rete, audio, Windows Update…</span></div>
+        <div class="num"><b data-t="k4b">Tutto</b><span data-t="k4">reversibile: prima di ogni modifica si salva com’era</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UN CLICK -->
+  <section id="click">
+    <div class="wrap duo">
+      <div class="duo-img rivela"><img src="assets/oneclick.jpg" width="1600" height="1000" loading="lazy" alt="Il piano di Ottimizza con un click: processi prima e dopo, cosa ci guadagni e cosa tocca" data-alt-en="The One-click optimize plan: processes before and after, what you gain and what it changes"></div>
+      <div class="rivela">
+        <span class="eyebrow" data-t="c-eye">Il primo passo</span>
+        <h2 data-t="c-h">Ottimizza con un click</h2>
+        <p data-t="c-p">Punto di ripristino, servizi superflui, ottimizzazioni per il gaming, sfondo, timer e piano energetico, poi un riavvio. Prima di partire vedi tutto il piano.</p>
+        <ul class="lista">
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c1">Qualche domanda (Wi-Fi, Bluetooth, stampa, Store, Xbox…) decide cosa resta, con la risposta consigliata già segnata. Con “Personalizza” accendi e spegni le voci una per una.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c2">La copia delle impostazioni attuali c’è sempre, ed è quella che permette di annullare tutto. Il punto di ripristino di Windows parte già segnato.</span></li>
+                    <li><svg class="i"><use href="#i-check"/></svg><span data-t="c4">Il riavvio alla fine si può annullare. Dopo, l’app ti mostra i processi prima e dopo.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNZIONI -->
+  <section id="funzioni">
+    <div class="wrap">
+      <div class="sez-testa c rivela">
+        <span class="eyebrow" data-t="f-eye">Tutto in un’app</span>
+        <h2 data-t="f-h">Ogni parte di Windows che conta per giocare</h2>
+        <p data-t="f-p">Ogni interruttore legge lo stato vero dal sistema: vedi quello che Windows sta facendo davvero, non quello che speri.</p>
+      </div>
+      <div class="griglia">
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-monitor"/></svg></div><h3 data-t="g1h">Monitor di sistema</h3><p data-t="g1">CPU, GPU, RAM e dischi in tempo reale, i processi, la diagnosi del PC e la pulizia del disco.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3>Debloat</h3><p data-t="g2">App superflue, servizi di Windows uno per uno (con cosa fanno), e WinUtil, Win11Debloat e RemoveWindowsAI (Copilot, Recall e le altre funzioni IA) pronti da aprire.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="g3h">GPU e grafica</h3><p data-t="g3">Il driver video con l’ultima versione da scaricare, MPO, preemption, timeout e i preset per NVIDIA, AMD e Intel.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wifi"/></svg></div><h3 data-t="g4h">Rete</h3><p data-t="g4">Rete impostata sulla latenza, test di 14 DNS, velocità, pacchetti persi, latenza sotto carico e priorità di rete per i giochi.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-head"/></svg></div><h3>Audio</h3><p data-t="g5">Equalizzazione sonorità per sentire meglio i passi, volume che non si abbassa nelle chiamate, ritardo audio minimo. E la Mod Audio Warzone.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3 data-t="g6h">Energia e prestazioni</h3><p data-t="g6">Piani Quotidiano e Gaming fatti per il tuo PC, timer e reattività, risparmio di CPU, USB e PCI Express, interrupt MSI.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-eye"/></svg></div><h3>Privacy</h3><p data-t="g7">Telemetria, pubblicità, cronologia delle attività, posizione, Cortana, segnalazione errori: tutto su una schermata, e “Blocca tutto” in un clic.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="g8h">Diagnosi e riparazione</h3><p data-t="g8">Salute dei dischi, spazio usato, 55 riparazioni divise per problema e il registro di tutto quello che è stato fatto.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-cpu"/></svg></div><h3>BIOS</h3><p data-t="g9">Secure Boot, TPM, virtualizzazione e profilo della RAM letti dal PC, una guida BIOS per la tua scheda madre e “Riavvia nel BIOS”.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-brush"/></svg></div><h3 data-t="g10h">Personalizzazione</h3><p data-t="g10">Sfondi e schermata di blocco, colore e tema, cursori LollozzOS, schermi e le scorciatoie nel tasto destro del desktop.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-apps"/></svg></div><h3 data-t="g11h">Gestione app</h3><p data-t="g11">I programmi più usati installati dalla fonte ufficiale con winget, la disinstallazione e cosa parte con Windows.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="g12h">Tools e utility</h3><p data-t="g12">HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, pronti da aprire.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-target"/></svg></div><h3 data-t="g13h">Modalità competitiva</h3><p data-t="g13">Trova i giochi installati, applica un profilo mentre giochi e rimette tutto com’era quando chiudi il gioco.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-book"/></svg></div><h3 data-t="g14h">Una guida per il tuo PC</h3><p data-t="g14">Scritta sul tuo computer: i tuoi componenti, i giochi installati, cosa conviene attivare e in che ordine.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-chat"/></svg></div><h3 data-t="g16h">Assistenza in un clic</h3><p data-t="g16">Dal pulsante dell’assistenza mandi una segnalazione con tutto quello che serve per capire il problema, o apri la chat con i file già pronti.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-undo"/></svg></div><h3 data-t="g15h">Ripristino</h3><p data-t="g15">“Ripristina tutto” annulla tutte le modifiche di LollozzOS; dalla cronologia ne annulli una alla volta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIOCHI -->
+  <section id="giochi">
+    <div class="wrap duo inv">
+      <div class="duo-img rivela"><img src="assets/giochi.jpg" width="1600" height="1000" loading="lazy" alt="La pagina Giochi di LollozzOS con i riquadri dei giochi" data-alt-en="The LollozzOS Games page with the game tiles"></div>
+      <div class="rivela">
+        <span class="eyebrow" data-t="gi-eye">Giochi</span>
+        <h2 data-t="gi-h">Configurazioni pronte, fatte per il tuo PC</h2>
+        <p data-t="gi-p">Il file tarato da Lollozz, importato con un clic. Dove serve, i valori che dipendono dal computer si ricalcolano sul tuo: processore, schermo e scheda video. Per Valorant, i programmi per la risoluzione allargata.</p>
+        <div class="chips">
+          <span class="chip">Call of Duty: Black Ops 7 <span data-t="e">e</span> Warzone</span>
+          <span class="chip">Apex Legends</span>
+          <span class="chip">Counter-Strike 2</span>
+          <span class="chip">Fortnite</span>
+          <span class="chip">Rainbow Six Siege</span>
+          <span class="chip">PUBG: Battlegrounds</span>
+          <span class="chip">ARC Raiders</span>
+          <span class="chip">Battlefield 6</span>
+          <span class="chip">Valorant</span>
+          <span class="chip off" data-t="cod-next">Call of Duty, prossimo capitolo (in arrivo)</span>
+        </div>
+        <ul class="lista">
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi1">Prima si salva il tuo file: “Rimetti com’erano” lo riporta indietro.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi2">In “Per tutti i giochi”: Modalità gioco, schermo intero, mouse e tastiera.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOD AUDIO -->
+  <section id="modaudio">
+    <div class="wrap duo">
+      <div class="duo-img rivela"><img src="assets/modaudio.jpg" width="1600" height="1000" loading="lazy" alt="La Mod Audio Warzone: la curva EQ delle cuffie e la catena della stagione" data-alt-en="The Warzone Audio Mod: the headphone EQ curve and the season chain"></div>
+      <div class="rivela">
+        <span class="tag"><svg class="i" style="width:14px;height:14px"><use href="#i-key"/></svg><span data-t="ma-tag">Con la licenza LollozzOS + Mod Audio</span></span>
+        <h2 data-t="ma-h">Mod Audio Warzone</h2>
+        <p data-t="ma-p">La catena audio della stagione per Warzone e Black Ops 7, con la correzione per le tue cuffie. L’app installa e configura tutto da sola.</p>
+        <ul class="lista">
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma1">“Installa tutto”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi e ReaPlugs dai siti ufficiali, configurati da soli, anche dentro Warzone.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma2">Curva EQ per le tue cuffie, fra oltre 400 modelli misurati (GadgetryTech, AutoEq e altri).</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma3">Il preset BO7 di ArtTuneDB, usato con il permesso di ArtIsWar, e la Riduzione Arma Adattiva.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma4">Controllo ogni 30 minuti, mai durante una partita: se un aggiornamento rompe qualcosa, “Ripara”.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma5">“Rimuovi tutto” rimette com’erano Windows, VoiceMeeter e Warzone.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SICURO -->
+  <section id="sicuro">
+    <div class="wrap duo inv">
+      <div class="duo-img rivela"><img src="assets/bios.jpg" width="1600" height="1000" loading="lazy" alt="La pagina BIOS di LollozzOS: Secure Boot, TPM, virtualizzazione e profilo delle memorie" data-alt-en="The LollozzOS BIOS page: Secure Boot, TPM, virtualization and memory profile"></div>
+      <div class="rivela">
+        <span class="eyebrow" data-t="s-eye">Sicuro e reversibile</span>
+        <h2 data-t="s-h">La differenza fra uno strumento e un azzardo</h2>
+        <p data-t="s-p">Ogni ottimizzazione è scritta come dati: il valore quando è accesa e quello quando è spenta. Gli stessi dati servono ad applicarla, ad annullarla e a leggere com’è davvero.</p>
+        <ul class="lista">
+          <li><svg class="i"><use href="#i-undo"/></svg><span data-t="s1">Prima di ogni modifica si salvano i valori di prima. Un interruttore si rispegne e torna com’era.</span></li>
+          <li><svg class="i"><use href="#i-shield"/></svg><span data-t="s2">Un punto di ripristino di Windows, già segnato in Ottimizza con un click e prima delle modifiche estreme.</span></li>
+          <li><svg class="i"><use href="#i-lock"/></svg><span data-t="s3">Le modifiche estreme (controllo account, firewall, VBS…) sono chiuse a chiave: non servono per giocare meglio.</span></li>
+          <li><svg class="i"><use href="#i-check"/></svg><span data-t="s4">“Ripristina tutto” annulla ogni modifica dell’app, ma non riporta le app e i file eliminati, né tema, sfondo e colore. E disinstallare l’app non annulla da solo le ottimizzazioni: il programma di disinstallazione ti fa scegliere.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERIA -->
+  <section id="app">
+    <div class="wrap">
+      <div class="sez-testa c rivela">
+        <span class="eyebrow" data-t="v-eye">Dentro l’app</span>
+        <h2 data-t="v-h">Guarda com’è fatta</h2>
+      </div>
+      <div class="gal-tabs rivela" role="tablist" aria-label="Schermate">
+        <button type="button" role="tab" aria-selected="true" data-img="home" data-t="t1">Home</button>
+        <button type="button" role="tab" aria-selected="false" data-img="oneclick" data-t="t2">Un click</button>
+        <button type="button" role="tab" aria-selected="false" data-img="giochi" data-t="t3">Giochi</button>
+        <button type="button" role="tab" aria-selected="false" data-img="modaudio" data-t="t4">Mod Audio</button>
+        <button type="button" role="tab" aria-selected="false" data-img="aspetto" data-t="t5">Personalizzazione</button>
+        <button type="button" role="tab" aria-selected="false" data-img="bios">BIOS</button>
+      </div>
+      <div class="gal-vista rivela">
+        <figure>
+          <div class="duo-img"><img id="gal-img" src="assets/home.jpg" width="1600" height="1000" loading="lazy" alt=""></div>
+          <figcaption id="gal-cap"></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- INIZIA -->
+  <section id="inizia">
+    <div class="wrap">
+      <div class="sez-testa c rivela">
+        <span class="eyebrow" data-t="i-eye">Come iniziare</span>
+        <h2 data-t="i-h">Tre passi, e sei pronto</h2>
+      </div>
+      <div class="passi">
+        <div class="passo rivela"><h3 data-t="p1h">Scarica e installa</h3><p data-t="p1">Scarica <kbd>LollozzOS_Setup</kbd> dalla pagina delle versioni e avvialo. Il programma d’installazione non è firmato: se Windows SmartScreen avvisa, “Ulteriori informazioni” e poi “Esegui comunque”.</p></div>
+        <div class="passo rivela"><h3 data-t="p2h">Provalo per 24 ore</h3><p data-t="p2">La prova gratuita dura 24 ore, una volta per computer: per attivarla ti chiede nome, email e telefono. Parti da “Ottimizza con un click” nella Home.</p></div>
+        <div class="passo rivela"><h3 data-t="p3h">Attiva la licenza</h3><p data-t="p3">Nell’app scegli LollozzOS o LollozzOS + Mod Audio e copia la richiesta di licenza: arriva anche a Lollozz. Scrivi sul Discord e incolla il codice di sblocco che ricevi. Vale per un computer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LICENZE -->
+  <section id="licenze">
+    <div class="wrap">
+      <div class="sez-testa c rivela">
+        <span class="eyebrow" data-t="l-eye">Licenze</span>
+        <h2 data-t="l-h">Scegli la tua</h2>
+      </div>
+      <div class="licenze">
+        <div class="lic rivela">
+          <h3>Lollozz<span class="os">OS</span></h3>
+          <p class="sotto" data-t="l1s">Tutta l’app, su un computer.</p>
+          <ul class="lista">
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1a">Ottimizza con un click e tutte le sezioni</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1b">Configurazioni dei giochi e guida per il tuo PC</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1c">Aggiornamenti dall’app</span></li>
+          </ul>
+          <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn">Chiedila sul Discord</a>
+        </div>
+        <div class="lic top-lic rivela">
+          <h3>Lollozz<span class="os">OS</span> + Mod Audio</h3>
+          <p class="sotto" data-t="l2s">Tutta l’app, più la Mod Audio Warzone.</p>
+          <ul class="lista">
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2a">Tutto quello della licenza LollozzOS</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2b">Mod Audio Warzone con installazione automatica</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2c">Curva EQ per le tue cuffie e preset della stagione</span></li>
+          </ul>
+          <a class="btn btn-p" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn2">Chiedila sul Discord</a>
+        </div>
+      </div>
+      <p class="lic-nota rivela" data-t="l-nota">La licenza è legata all’hardware del computer: non si rivende, non si condivide e non si trasferisce. Prezzi e dettagli sul Discord.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sez-testa c rivela">
+        <span class="eyebrow">FAQ</span>
+        <h2 data-t="q-h">Domande frequenti</h2>
+      </div>
+      <div class="faq">
+        <details class="rivela"><summary><span data-t="q1">È sicuro per il mio PC?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a1">Prima di ogni modifica LollozzOS salva i valori di prima, e in Ottimizza con un click e prima delle modifiche estreme ti propone anche un punto di ripristino di Windows. Ogni interruttore si rispegne, e “Ripristina tutto” annulla tutte le modifiche dell’app.</p></details>
+        <details class="rivela"><summary><span data-t="q2">Su quali Windows funziona?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a2">Windows 10 e Windows 11 a 64 bit. L’app parte come amministratore, perché cambia impostazioni di sistema.</p></details>
+        <details class="rivela"><summary><span data-t="q3">In che lingua è l’app?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a3">In italiano. L’inglese è in arrivo.</p></details>
+        <details class="rivela"><summary><span data-t="q4">Mi serve la Mod Audio per usare LollozzOS?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a4">No. La Mod Audio Warzone è un’aggiunta, con la licenza LollozzOS + Mod Audio. Tutto il resto funziona con la licenza LollozzOS.</p></details>
+        <details class="rivela"><summary><span data-t="q5">Windows dice che il programma non è riconosciuto. Cosa faccio?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a5">Il programma d’installazione non è firmato, quindi al primo avvio Windows SmartScreen può avvisare. Clicca “Ulteriori informazioni” e poi “Esegui comunque”. Scaricalo solo da questa pagina o dal GitHub di LollozzOS.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community">
+    <div class="wrap comm">
+      <div class="comm-box rivela">
+        <h3 data-t="co-h">Entra nella community</h3>
+        <p data-t="co-p">Assistenza, licenze, novità e la comunità italiana del gaming competitivo che prova e migliora LollozzOS.</p>
+        <div class="social">
+          <a href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg><span><b>Discord</b><small data-t="so1">Assistenza e licenze</small></span></a>
+          <a href="https://www.tiktok.com/@_lollozz_" target="_blank" rel="noopener"><svg class="i"><use href="#i-video"/></svg><span><b>TikTok</b><small>@_lollozz_</small></span></a>
+          <a href="https://www.instagram.com/_lollozz__" target="_blank" rel="noopener"><svg class="i"><use href="#i-camera"/></svg><span><b>Instagram</b><small>@_lollozz__</small></span></a>
+          <a href="https://www.twitch.tv/lollozz__" target="_blank" rel="noopener"><svg class="i"><use href="#i-live"/></svg><span><b>Twitch</b><small>lollozz__</small></span></a>
+        </div>
+      </div>
+      <div class="comm-box dona rivela">
+        <svg class="i cuore"><use href="#i-heart"/></svg>
+        <h3 data-t="d-h">Sostieni LollozzOS</h3>
+        <p data-t="d-p">Se LollozzOS ti è utile, con una donazione libera sostieni i prossimi aggiornamenti. Non sblocca niente: la licenza resta la stessa.</p>
+        <a class="btn btn-g" href="https://www.paypal.me/lorenzoxiaomi" target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg><span data-t="d-btn">Dona con PayPal</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="finale rivela">
+      <h2 data-t="fi-h">Pronto a partire?</h2>
+      <p data-t="fi-p">Scaricalo, provalo 24 ore e guarda la differenza con i tuoi occhi.</p>
+      <div class="cta">
+        <a class="btn btn-p" href="https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest"><svg class="i"><use href="#i-down"/></svg><span data-t="scarica2">Scarica LollozzOS</span></a>
+        <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-key"/></svg><span data-t="licenza2">Ottieni la licenza</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#inizio"><img src="assets/logo.png" alt="" width="30" height="30"><span>Lollozz<span class="os">OS</span></span></a>
+        <div style="margin-top:8px" data-t="firma">Creato da Lollozz · Lollozz Labs</div>
+      </div>
+      <div class="foot-link">
+        <a href="https://github.com/LollozzOS/LollozzOs_Configurator">GitHub</a>
+        <a href="https://github.com/LollozzOS/LollozzOs_Configurator/releases" data-t="versioni">Versioni</a>
+        <a href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener">Discord</a>
+        <a href="https://www.tiktok.com/@_lollozz_" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.instagram.com/_lollozz__" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.twitch.tv/lollozz__" target="_blank" rel="noopener">Twitch</a>
+      </div>
+    </div>
+    <p class="legale" data-t="legale">LollozzOS cambia valori del registro, servizi, impostazioni di rete, piani energetici e impostazioni dei driver. È fornito così com’è, senza garanzia: leggi cosa fa ogni interruttore prima di accenderlo e tieni il punto di ripristino che l’app ti propone. LollozzOS non è affiliato a Microsoft né agli editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi proprietari. Alcune funzioni aprono programmi di altri autori, che restano loro e con le loro licenze.</p>
+    <p style="margin:14px 0 0">© <span id="anno">2026</span> Lollozz</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  document.body.classList.remove('no-js');
+
+  // ---------- inglese ----------
+  // L'italiano sta nella pagina; qui c'e' solo l'inglese. Le chiavi sono i
+  // data-t degli elementi.
+  var EN = {
+    'nav4': 'Audio Mod', 't4': 'Audio Mod',
+    'nav1': 'One click', 'nav2': 'Features', 'nav3': 'Games', 'nav5': 'Get started',
+    'scarica-s': 'Download',
+    'pill': 'Windows 10 and 11 · Made by Lollozz',
+    'h1': 'Your PC, <span class="grad">ready to play.</span>',
+    'lead': 'LollozzOS puts in one app what is usually scattered across dozens of scripts, guides and programs: fewer background processes, network and graphics card set up for gaming, ready-made configs for your games. And every change can be undone.',
+    'scarica': 'Download LollozzOS', 'licenza': 'Get a license', 'scarica2': 'Download LollozzOS', 'licenza2': 'Get a license',
+    'n1': 'Free 24-hour trial', 'n2': 'Backup before every change', 'n3': 'Every change can be undone',
+    'k1': 'background processes, with one click (typical values)',
+    'k2': 'games with a ready-made config, and the next Call of Duty on the way',
+    'k3': 'fixes grouped by problem: network, audio, Windows Update…',
+    'k4b': 'All', 'k4': 'reversible: the previous state is saved before each change',
+    'c-eye': 'The first step', 'c-h': 'One-click optimize',
+    'c-p': 'Restore point, unnecessary services, gaming optimizations, wallpaper, timer and power plan, then a restart. You see the whole plan before it starts.',
+    'c1': 'A few questions (Wi-Fi, Bluetooth, printing, Store, Xbox…) decide what stays, with the recommended answer already selected. With “Customize” you turn items on and off one by one.',
+    'c2': 'A copy of the current settings is always included: it is what makes undoing everything possible. The Windows restore point starts already selected.',
+    'c3': '“Caution” items start off, and items already applied are skipped.',
+    'c4': 'The restart at the end can be cancelled. Afterwards, the app shows you the processes before and after.',
+    'f-eye': 'All in one app', 'f-h': 'Every part of Windows that matters for gaming',
+    'f-p': 'Every switch reads the real state from the system: you see what Windows is actually doing, not what you hope.',
+    'g1h': 'System monitor', 'g1': 'Live CPU, GPU, RAM and disks, the processes, the PC diagnosis and disk cleanup.',
+    'g2': 'Unneeded apps, Windows services one by one (with what they do), and WinUtil, Win11Debloat and RemoveWindowsAI (Copilot, Recall and the other AI features) ready to open.',
+    'g3h': 'GPU & graphics', 'g3': 'The video driver with the latest version to download, MPO, preemption, timeout and presets for NVIDIA, AMD and Intel.',
+    'g4h': 'Network', 'g4': 'Latency-oriented network, a test of 14 DNS providers, speed, packet loss, latency under load and network priority for games.',
+    'g5': 'Loudness equalization to hear footsteps better, volume that doesn’t drop during calls, minimum audio latency. And the Warzone Audio Mod.',
+    'g6h': 'Power & performance', 'g6': 'Everyday and Gaming power plans built for your PC, timer and responsiveness, CPU, USB and PCI Express power saving, MSI interrupts.',
+    'g7': 'Telemetry, ads, activity history, location, Cortana, error reporting: all on one screen, and “Block everything” in one click.',
+    'g8h': 'Diagnosis & repair', 'g8': 'Disk health, used space, 55 fixes grouped by problem and a log of everything that was done.',
+    'g9': 'Secure Boot, TPM, virtualization and memory profile read from the PC, a BIOS guide for your motherboard and “Restart into BIOS”.',
+    'g10h': 'Appearance', 'g10': 'Wallpapers and lock screen, color and theme, LollozzOS cursors, displays and the desktop right-click shortcuts.',
+    'g11h': 'Apps', 'g11': 'Popular programs installed from the official source with winget, uninstalling, and what starts with Windows.',
+    'g12h': 'Tools & utilities', 'g12': 'HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl and more, ready to open.',
+    'g13h': 'Competitive mode', 'g13': 'Finds your installed games, applies a profile while you play and puts everything back when the game closes.',
+    'g14h': 'A guide for your PC', 'g14': 'Written on your computer: your components, your installed games, what is worth turning on and in which order.',
+    'g16h': 'One-click support', 'g16': 'From the support button you send a report with everything needed to understand the problem, or open the chat with the files already prepared.',
+    'g15h': 'Restore', 'g15': '“Restore everything” undoes every LollozzOS change; from the history you undo one at a time.',
+    'gi-eye': 'Games', 'gi-h': 'Ready-made configs, built for your PC',
+    'gi-p': 'The file tuned by Lollozz, imported in one click. Where needed, the values that depend on the computer are recalculated for yours: processor, display and graphics card. For Valorant, the stretched-resolution programs.',
+    'e': 'and', 'cod-next': 'Call of Duty, next installment (coming soon)',
+    'gi1': 'Your file is backed up first: “Put it back” restores it.',
+    'gi2': 'In “For every game”: Game Mode, fullscreen, mouse and keyboard.',
+    'ma-tag': 'With the LollozzOS + Audio Mod license', 'ma-h': 'Warzone Audio Mod',
+    'ma-p': 'The season’s audio chain for Warzone and Black Ops 7, with the correction for your headphones. The app installs and sets up everything by itself.',
+    'ma1': '“Install everything”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi and ReaPlugs from the official websites, set up by themselves, inside Warzone too.',
+    'ma2': 'EQ curve for your headphones, among more than 400 measured models (GadgetryTech, AutoEq and more).',
+    'ma3': 'ArtTuneDB’s BO7 preset, used with ArtIsWar’s permission, and Adaptive Weapon Reduction.',
+    'ma4': 'A check every 30 minutes, never during a match: if an update breaks something, “Repair”.',
+    'ma5': '“Remove everything” puts Windows, VoiceMeeter and Warzone back as they were.',
+    's-eye': 'Safe and reversible', 's-h': 'The difference between a tool and a gamble',
+    's-p': 'Every optimization is written as data: its value when on and its value when off. The same data is used to apply it, undo it and read how it really is.',
+    's1': 'The previous values are saved before each change. Turn a switch off and it goes back to how it was.',
+    's2': 'A Windows restore point, already selected in One-click optimize and before extreme changes.',
+    's3': 'Extreme changes (User Account Control, firewall, VBS…) are locked: you don’t need them to play better.',
+    's4': '“Restore everything” undoes every change the app made, but it doesn’t bring back deleted apps and files, or theme, wallpaper and color. And uninstalling the app doesn’t undo the optimizations by itself: the uninstaller lets you choose.',
+    'v-eye': 'Inside the app', 'v-h': 'See how it looks',
+    't1': 'Home', 't2': 'One click', 't3': 'Games', 't5': 'Appearance',
+    'i-eye': 'Get started', 'i-h': 'Three steps and you’re ready',
+    'p1h': 'Download and install', 'p1': 'Download <kbd>LollozzOS_Setup</kbd> from the releases page and run it. The installer is not signed: if Windows SmartScreen warns you, choose “More info” and then “Run anyway”.',
+    'p2h': 'Try it for 24 hours', 'p2': 'The free trial lasts 24 hours, once per computer: to start it, it asks for your name, email and phone. Start from “One-click optimize” on the Home screen.',
+    'p3h': 'Activate your license', 'p3': 'In the app pick LollozzOS or LollozzOS + Audio Mod and copy the license request: Lollozz receives it too. Write on Discord and paste the unlock code you receive. It covers one computer.',
+    'l-eye': 'Licenses', 'l-h': 'Pick yours',
+    'l1s': 'The whole app, on one computer.', 'l1a': 'One-click optimize and every section', 'l1b': 'Game configs and a guide for your PC', 'l1c': 'Updates from inside the app',
+    'l2s': 'The whole app, plus the Warzone Audio Mod.', 'l2a': 'Everything in the LollozzOS license', 'l2b': 'Warzone Audio Mod with automatic setup', 'l2c': 'EQ curve for your headphones and season presets',
+    'l-btn': 'Ask on Discord', 'l-btn2': 'Ask on Discord',
+    'l-nota': 'The license is tied to the computer’s hardware: it cannot be resold, shared or transferred. Prices and details on Discord.',
+    'q-h': 'Frequently asked questions',
+    'q1': 'Is it safe for my PC?', 'a1': 'Before each change LollozzOS saves the previous values, and in One-click optimize and before extreme changes it also offers a Windows restore point. Every switch can be turned off again, and “Restore everything” undoes every change the app made.',
+    'q2': 'Which Windows does it run on?', 'a2': 'Windows 10 and Windows 11, 64-bit. The app runs as administrator, because it changes system settings.',
+    'q3': 'What language is the app in?', 'a3': 'Italian. English is on the way.',
+    'q4': 'Do I need the Audio Mod to use LollozzOS?', 'a4': 'No. The Warzone Audio Mod is an add-on, with the LollozzOS + Audio Mod license. Everything else works with the LollozzOS license.',
+    'q5': 'Windows says the program isn’t recognized. What do I do?', 'a5': 'The installer is not signed, so Windows SmartScreen may warn you the first time. Click “More info” and then “Run anyway”. Only download it from this page or from the LollozzOS GitHub.',
+    'co-h': 'Join the community', 'co-p': 'Support, licenses, news and the Italian competitive gaming community that tests and improves LollozzOS.',
+    'so1': 'Support and licenses',
+    'd-h': 'Support LollozzOS', 'd-p': 'If LollozzOS is useful to you, a free donation supports the next updates. It doesn’t unlock anything: your license stays the same.', 'd-btn': 'Donate with PayPal',
+    'fi-h': 'Ready to start?', 'fi-p': 'Download it, try it for 24 hours and see the difference for yourself.',
+    'firma': 'Made by Lollozz · Lollozz Labs', 'versioni': 'Releases',
+    'legale': 'LollozzOS changes registry values, services, network settings, power plans and driver settings. It is provided as is, without warranty: read what each switch does before turning it on, and keep the restore point the app offers to create. LollozzOS is not affiliated with Microsoft or with the publishers of the games mentioned; game names and images belong to their respective owners. Some features open programs by other authors, which remain theirs and keep their own licenses.'
+  };
+  var DIDASCALIE = {
+    it: { home: 'La Home: il tuo PC in tempo reale, Ottimizza con un click e la diagnosi.', oneclick: 'Il piano di Ottimizza con un click: cosa ci guadagni e cosa tocca, prima di partire.', giochi: 'Giochi: la configurazione pronta per ogni gioco, ricalcolata sul tuo PC.', modaudio: 'Mod Audio Warzone: la curva EQ delle tue cuffie e la catena della stagione.', aspetto: 'Personalizzazione: colore e tema, cursori e marchio LollozzOS.', bios: 'BIOS: cosa c’è da sistemare, e una guida per la tua scheda madre.' },
+    en: { home: 'Home: your PC live, One-click optimize and the diagnosis.', oneclick: 'The One-click optimize plan: what you gain and what it changes, before it starts.', giochi: 'Games: the ready-made config for each game, recalculated for your PC.', modaudio: 'Warzone Audio Mod: your headphones’ EQ curve and the season chain.', aspetto: 'Appearance: color and theme, LollozzOS cursors and branding.', bios: 'BIOS: what needs fixing, and a guide for your motherboard.' }
+  };
+  var TITOLI = {
+    it: ['LollozzOS — Il tuo PC, pronto per giocare', 'LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e GPU impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.'],
+    en: ['LollozzOS — Your PC, ready to play', 'LollozzOS optimizes Windows 10 and 11 for gaming: fewer background processes, network and GPU set up for games, ready-made configs for your games. Every change can be undone.']
+  };
+
+  var nodi = document.querySelectorAll('[data-t]');
+  var IT = {};
+  nodi.forEach(function (n) { IT[n.getAttribute('data-t')] = n.innerHTML; });
+  var altIT = new Map();
+  document.querySelectorAll('img[data-alt-en]').forEach(function (i) { altIT.set(i, i.getAttribute('alt')); });
+  var lingua = 'it';
+
+  function galleria(chiave) {
+    var img = document.getElementById('gal-img');
+    var cap = document.getElementById('gal-cap');
+    img.src = 'assets/' + chiave + '.jpg';
+    img.alt = DIDASCALIE[lingua][chiave];
+    cap.textContent = DIDASCALIE[lingua][chiave];
+    document.querySelectorAll('.gal-tabs button').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-img') === chiave ? 'true' : 'false'); });
+  }
+  // "OS" di LollozzOS nel colore, come nell'app; non dentro i pulsanti
+  function marchio() {
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, { acceptNode: function (n) {
+      if (n.nodeValue.indexOf('LollozzOS') < 0) return NodeFilter.FILTER_REJECT;
+      var p = n.parentNode;
+      if (!p || p.closest('.btn, script, style, kbd, .os, .lz-t, .tag, .lang')) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    } });
+    var lista = []; while (w.nextNode()) lista.push(w.currentNode);
+    lista.forEach(function (t) {
+      var span = document.createElement('span'); span.className = 'lz-t';
+      span.innerHTML = t.nodeValue.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/LollozzOS/g, 'Lollozz<span class="os">OS</span>');
+      t.parentNode.replaceChild(span, t);
+    });
+  }
+  function scegliLingua(l, salva) {
+    lingua = l === 'en' ? 'en' : 'it';
+    document.documentElement.lang = lingua;
+    nodi.forEach(function (n) {
+      var k = n.getAttribute('data-t');
+      n.innerHTML = lingua === 'en' && EN[k] !== undefined ? EN[k] : IT[k];
+    });
+    altIT.forEach(function (alt, i) { i.setAttribute('alt', lingua === 'en' ? i.getAttribute('data-alt-en') : alt); });
+    document.title = TITOLI[lingua][0];
+    var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', TITOLI[lingua][1]);
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lingua ? 'true' : 'false'); });
+    var sel = document.querySelector('.gal-tabs button[aria-selected="true"]');
+    galleria(sel ? sel.getAttribute('data-img') : 'home');
+    marchio();
+    if (salva) { try { localStorage.setItem('lz-lingua', lingua); } catch (e) {} }
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { scegliLingua(b.getAttribute('data-lang'), true); });
+  });
+  var iniziale = null;
+  try { iniziale = localStorage.getItem('lz-lingua'); } catch (e) {}
+  if (!iniziale) iniziale = /^it\b/i.test(navigator.language || 'it') ? 'it' : 'en';
+  scegliLingua(iniziale, false);
+
+  // ---------- galleria ----------
+  document.querySelectorAll('.gal-tabs button').forEach(function (b) {
+    b.addEventListener('click', function () { galleria(b.getAttribute('data-img')); });
+  });
+
+  // ---------- menu sul telefono ----------
+  var nav = document.getElementById('nav');
+  var mb = document.getElementById('menu-btn');
+  mb.addEventListener('click', function () {
+    var aperto = nav.classList.toggle('aperta');
+    mb.setAttribute('aria-expanded', aperto ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('aperta'); mb.setAttribute('aria-expanded', 'false'); }); });
+
+  // ---------- comparsa allo scorrere ----------
+  var el = document.querySelectorAll('.rivela');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (v) { if (v.isIntersecting) { v.target.classList.add('vista'); io.unobserve(v.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    el.forEach(function (x) { io.observe(x); });
+  } else {
+    el.forEach(function (x) { x.classList.add('vista'); });
+  }
+
+  document.getElementById('anno').textContent = String(new Date().getFullYear());
+  marchio();
+})();
+</script>
+</body>
+</html>
