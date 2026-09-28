@@ -31,7 +31,7 @@ modifica l’app salva com’era, quindi tutto si può annullare.
 
 - **Sistema:** Windows 10 e Windows 11, 64 bit
 - **Avvio:** come amministratore (cambia impostazioni di sistema)
-- **Lingua dell’app:** italiano (l’inglese è in arrivo)
+- **Lingua dell’app:** italiano e inglese
 - **Prova gratuita:** 24 ore, una volta per computer
 
 ## Ottimizza con un click
