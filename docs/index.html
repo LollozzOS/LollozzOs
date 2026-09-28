@@ -205,18 +205,16 @@ h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; letter-spacing: -.0
 .faq details p { margin: 0 0 18px; color: var(--text-dim); font-size: 15px; }
 
 /* ---------- community ---------- */
-.comm { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+.comm { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .comm-box { border: 1px solid var(--border); border-radius: 18px; padding: 30px; background: var(--panel); }
 .comm-box h3 { margin: 0 0 8px; font-size: 22px; }
 .comm-box p { color: var(--text-dim); margin: 0 0 20px; font-size: 15px; }
-.social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .social a { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-2); background: rgba(255, 255, 255, .02); transition: border-color .15s, background .15s; }
 .social a:hover { border-color: rgba(var(--violet-rgb), .55); background: rgba(var(--violet-rgb), .07); }
 .social b { display: block; font-size: 15px; line-height: 1.2; }
 .social small { color: var(--text-mute); font-size: 12.5px; }
 .social svg.i { color: var(--violet-2); }
-.dona { background: radial-gradient(120% 120% at 0% 0%, rgba(244, 114, 182, .12), transparent 55%), var(--panel); }
-.dona svg.cuore { width: 34px; height: 34px; color: #f472b6; margin-bottom: 10px; }
 
 /* ---------- finale ---------- */
 .finale { margin: 110px 0 0; text-align: center; padding: 72px 24px; border-radius: 26px; position: relative; overflow: hidden;
@@ -248,7 +246,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
   .duo.inv .duo-img { order: 0; }
   .numeri { grid-template-columns: 1fr 1fr; }
   .passi { grid-template-columns: 1fr; }
-  .comm { grid-template-columns: 1fr; }
+  .social { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 860px) {
   .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(8, 7, 12, .97); border-bottom: 1px solid var(--border); padding: 10px 16px 16px; margin: 0; }
@@ -301,7 +299,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></symbol>
     <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
     <symbol id="i-live" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/><path d="M10 8v5l4-2.5z"/></symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.5 3.6 4 7 4c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.5 4.3 6.8C19.5 15.4 12 20 12 20z"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.4 1.8L15 14H9l-1.6 1.8A3 3 0 0 1 2 14v-2a4 4 0 0 1 4-4z"/><path d="M7 11v3M5.5 12.5h3"/><path d="M16 11.5h.01M18 13h.01"/></symbol>
   </defs>
@@ -577,12 +574,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
           <a href="https://www.twitch.tv/lollozz__" target="_blank" rel="noopener"><svg class="i"><use href="#i-live"/></svg><span><b>Twitch</b><small>lollozz__</small></span></a>
         </div>
       </div>
-      <div class="comm-box dona rivela">
-        <svg class="i cuore"><use href="#i-heart"/></svg>
-        <h3 data-t="d-h">Sostieni LollozzOS</h3>
-        <p data-t="d-p">Se LollozzOS ti è utile, con una donazione libera sostieni i prossimi aggiornamenti. Non sblocca niente: la licenza resta la stessa.</p>
-        <a class="btn btn-g" href="https://www.paypal.me/lorenzoxiaomi" target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg><span data-t="d-btn">Dona con PayPal</span></a>
-      </div>
     </div>
   </section>
 
@@ -700,7 +691,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'q5': 'Windows says the program isn’t recognized. What do I do?', 'a5': 'The installer is not signed, so Windows SmartScreen may warn you the first time. Click “More info” and then “Run anyway”. Only download it from this page or from the LollozzOS GitHub.',
     'co-h': 'Join the community', 'co-p': 'Support, licenses, news and the Italian competitive gaming community that tests and improves LollozzOS.',
     'so1': 'Support and licenses',
-    'd-h': 'Support LollozzOS', 'd-p': 'If LollozzOS is useful to you, a free donation supports the next updates. It doesn’t unlock anything: your license stays the same.', 'd-btn': 'Donate with PayPal',
     'fi-h': 'Ready to start?', 'fi-p': 'Download it, try it for 24 hours and see the difference for yourself.',
     'firma': 'Made by Lollozz · Lollozz Labs', 'versioni': 'Releases',
     'legale': 'LollozzOS changes registry values, services, network settings, power plans and driver settings. It is provided as is, without warranty: read what each switch does before turning it on, and keep the restore point the app offers to create. LollozzOS is not affiliated with Microsoft or with the publishers of the games mentioned; game names and images belong to their respective owners. Some features open programs by other authors, which remain theirs and keep their own licenses.'

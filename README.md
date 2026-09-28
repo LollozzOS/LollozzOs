@@ -31,7 +31,7 @@ modifica l’app salva com’era, quindi tutto si può annullare.
 
 - **Sistema:** Windows 10 e Windows 11, 64 bit
 - **Avvio:** come amministratore (cambia impostazioni di sistema)
-- **Lingua dell’app:** italiano e inglese
+- **Lingua dell’app:** italiano (l’inglese è in arrivo)
 - **Prova gratuita:** 24 ore, una volta per computer
 
 ## Ottimizza con un click
@@ -157,7 +157,18 @@ loro licenze; gli strumenti con licenza MIT sono inclusi senza modifiche.
 - [Win11Debloat](https://github.com/Raphire/Win11Debloat) di Raphire, MIT
 - [RemoveWindowsAI](https://github.com/zoicware/RemoveWindowsAI) di zoicware, MIT
 - Sparkle
+- Discord Debloat di insovs
+- O&O ShutUp10++ di O&O Software
+- TCP Optimizer di SpeedGuide
+- Misure delle cuffie: GadgetryTech, Earphones Archive, Paul Wasabi, Filk
+  (squig.link) e [AutoEq](https://github.com/jaakkopasanen/AutoEq) di
+  jaakkopasanen, MIT
+- Mod Audio: i preset BO7 di ArtTuneDB sono usati con il permesso di ArtIsWar;
+  Rara Gunshot Suppressor (Gunshots.dll) di Rara Audio LLC, incluso senza
+  modifiche con il permesso dell’autore
 
+E grazie alla comunità italiana del gaming competitivo, che ha provato,
+segnalato e migliorato questo lavoro.
 
 ## Avvertenze
 
@@ -168,6 +179,12 @@ ripristino che l’app ti propone. LollozzOS non è affiliato a Microsoft né ag
 editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi
 proprietari.
 
+## Community
+
+[Discord](https://discord.gg/gd5cT3Jw9M) ·
+[TikTok](https://www.tiktok.com/@_lollozz_) ·
+[Instagram](https://www.instagram.com/_lollozz__) ·
+[Twitch](https://www.twitch.tv/lollozz__)
 
 ---
 
