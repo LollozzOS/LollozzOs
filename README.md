@@ -1,287 +1,254 @@
-<img width="3840" height="2160" alt="LollozzOsWallpaper1" src="https://github.com/user-attachments/assets/d3ba0395-fe6c-4a37-86c8-6733b6124d1d" />
+<p align="center">
+  <img src="docs/assets/logo-192.png" width="96" height="96" alt="LollozzOS">
+</p>
 
+<h1 align="center">LollozzOS</h1>
 
+<p align="center">
+  <b>Il tuo PC, pronto per giocare.</b><br>
+  Ottimizzazione di Windows 10 e 11 per il gaming, in un’app sola. Ogni modifica si annulla.
+</p>
 
+<p align="center">
+  <a href="https://lollozzos.github.io/LollozzOs_Configurator/"><b>Sito</b></a> ·
+  <a href="https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest"><b>Scarica</b></a> ·
+  <a href="https://discord.gg/gd5cT3Jw9M"><b>Discord</b></a> ·
+  <a href="#english">English</a>
+</p>
 
-
-
-
-# LollozzOS Configurator
-
-Welcome, I created this utility that integrates every possible optimization for Windows 10/11. The utility was created by me (Lollozz), a computer and software enthusiast in general, and I've tested everything on my PC.
-The interface is clean and you can navigate using the on-screen numbers. Each section is explained by pressing the corresponding number, so you can see what the script does before applying it. Happy debloating!!
-
-## 🖥️ Interface
-
-<img width="2560" height="1440" alt="Screenshot - 26_07_2026 , 19_22_45" src="https://github.com/user-attachments/assets/368c0175-73b6-4095-8060-e8efb8fd462b" />
-
-<img width="1210" height="852" alt="Screenshot 2026-09-10 102344" src="https://github.com/user-attachments/assets/767cc6ef-947e-4a93-b6a5-12aa909a411d" />
-
-
-
-
-
-
-
-
-
-- CLI menu entirely in Italian or in english (last Update), with dedicated ASCII art banners for each module and a differentiated ANSI color scheme (blue, green, red, yellow, purple) to quickly identify the section you're in.
-- Numbered menu navigation with input validation and error handling.
-
-- Each module includes a "What does it do?" entry with detailed technical documentation for each optimization.
-- Integrated licensing system with verification starting from the home screen.
+<p align="center">
+  <img src="docs/assets/home.jpg" alt="La schermata principale di LollozzOS" width="900">
+</p>
 
 ---
 
+## Cos’è
 
+LollozzOS mette in un’app sola quello che di solito è sparso fra decine di
+script, guide e programmi: meno processi in background, rete e scheda video
+impostate per il gioco, configurazioni pronte per i tuoi giochi. Prima di ogni
+modifica l’app salva com’era, quindi tutto si può annullare.
 
-## ⚙️ Main Menu — Windows Optimizer Ultimate Edition
+- **Sistema:** Windows 10 e Windows 11, 64 bit
+- **Avvio:** come amministratore (cambia impostazioni di sistema)
+- **Lingua dell’app:** italiano (l’inglese è in arrivo)
+- **Prova gratuita:** 24 ore, una volta per computer
 
-1. **Windows** – Opens Windows Manager (debloat, privacy, repair, activation)
-2. Office installation and activation **Create Restore Point** – Restore Manager
-3. **Download Browsers and Apps
-4. **Choose Your Game** – Game Config Manager (Warzone, Fortnite)
-5. **Update and Optimize GPU** – NVIDIA/AMD dedicated tweaks
-6. **Other Optimizations** – (other tweaks)
-7. **Optimize Storage/RAM** – Disk & RAM Manager
-8. **System Information**
-9. **Set Power Profile** – Power Manager
-10. **USB Overclock** – Polling Rate and Peripheral Calibration
-11. **Timer Resolution** – Kernel-level Input Lag Reduction
-12. **Optimize Network
-13. **Office Tool** –
-14. **Manage BIOS** – BIOS Manager
-15. **My Social Networks**
-16. **Exit**
----
+## Ottimizza con un click
 
-## 🌐 System Fix
- - **Added "System Troubleshooting" section where you can choose what to restore and fix within the system**
-   <img width="1160" height="851" alt="Screenshot 2026-09-10 102426" src="https://github.com/user-attachments/assets/c12a2d3d-dc8c-4791-9995-6b9b4aefab1a" />
+Il primo passo consigliato: punto di ripristino, servizi superflui,
+ottimizzazioni per il gaming, sfondo, timer e piano energetico, poi un riavvio.
 
+- Prima di partire vedi tutto il piano. Qualche domanda (Wi-Fi, Bluetooth,
+  stampa, Store, Xbox…) decide cosa resta, con la risposta consigliata già
+  segnata; con “Personalizza” accendi e spegni le voci una per una.
+- La copia delle impostazioni attuali c’è sempre, ed è quella che permette di
+  annullare tutto. Il punto di ripristino di Windows parte già segnato.
+- Il riavvio alla fine si può annullare. Dopo, l’app ti mostra i processi prima
+  e dopo.
 
-## 🌐 Network Optimizer
+<p align="center"><img src="docs/assets/oneclick.jpg" alt="Il piano di Ottimizza con un click" width="820"></p>
 
-Module dedicated to in-depth optimization of the network stack, complete with technical documentation integrated into the program:
+## Cosa c’è dentro
 
-- **Deep Reset** of interfaces, Winsock, IP, TCP, Teredo, 6to4, firewall, and DNS cache
-- **Gaming Priority**: Tuning `NetworkThrottlingIndex`, `SystemResponsiveness`, and priority of multimedia/game processes in the system scheduler
-- **Bandwidth Limit Removal**: Elimination of QoS, SMB, and Task Offload throttling, optimization of AFD (Ancillary Function Driver) parameters
-- **TCP NoDelay** (Nagle algorithm disabled) applied to all interfaces to reduce ping and jitter
-- **Advanced Global TCP Tuning** via `netsh`: autotuning, ECN, RSS, CTCP congestion provider, Fast Open, heuristics deactivation, and RSC
-- **Network Driver Optimization**: Automatic detection of the active adapter and deactivation of power-saving/latency parameters (Gigabit auto-disable, DMA Coalescing, etc.), with automatic driver backup before each change
-- **DNS Manager**: Active network adapter detection, quick Cloudflare/Google DNS setup, or DHCP reset, with integrated latency test
-- **Diagnostic Tools**: Quick links to Speed ​​Test, Bufferbloat Test, and Packet Loss Test
-- Automatically launches dedicated external tools (TestMb, TCP Optimizer) after optimization is complete
+| Sezione | Cosa fa |
+|---|---|
+| **Monitor di sistema** | CPU, GPU, RAM e dischi in tempo reale, processi, Ottimizza con un click, Modalità competitiva, diagnosi del PC e pulizia del disco |
+| **Debloat** | App superflue, servizi di Windows uno per uno (con cosa fanno e cosa smette di funzionare), WinUtil, Win11Debloat e RemoveWindowsAI (Copilot, Recall e le altre funzioni IA) pronti da aprire |
+| **Tools e utility** | HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, divisi per categoria |
+| **Giochi** | Configurazioni pronte per 9 giochi (e il prossimo Call of Duty in arrivo), con i valori del tuo PC dove servono; più gli interruttori che valgono per tutti i giochi |
+| **GPU e grafica** | Driver video con l’ultima versione da scaricare, MPO, preemption, timeout e preset per NVIDIA, AMD e Intel |
+| **Rete** | Rete impostata sulla latenza, test di 14 DNS, velocità, pacchetti persi, latenza sotto carico, priorità di rete per i giochi |
+| **Audio** | Equalizzazione sonorità, volume che non si abbassa nelle chiamate, ritardo audio minimo; la Mod Audio Warzone |
+| **Energia e prestazioni** | Piani Quotidiano e Gaming fatti per il tuo PC, timer e reattività, risparmio di CPU, USB e PCI Express, interrupt MSI |
+| **Gestione app** | Programmi installati dalla fonte ufficiale con winget, disinstallazione, avvio automatico |
+| **Personalizzazione visiva** | Sfondi e schermata di blocco, colore e tema, cursori LollozzOS, schermi, scorciatoie nel tasto destro del desktop |
+| **Privacy** | Telemetria, pubblicità, cronologia delle attività, posizione, Cortana, segnalazione errori su una schermata, con “Blocca tutto” |
+| **Diagnosi e riparazione** | Salute dei dischi, spazio usato, 55 riparazioni divise per problema, registro di tutto quello che è stato fatto |
+| **BIOS** | Secure Boot, TPM, virtualizzazione e profilo della RAM letti dal PC, una guida BIOS per la tua scheda madre, “Riavvia nel BIOS” |
+| **Modifiche estreme** | Chiuse a chiave: tolgono difese di Windows e non servono per giocare meglio. Punto di ripristino prima |
+| **Ripristino** | “Ripristina tutto” annulla tutte le modifiche dell’app; dalla cronologia una alla volta |
 
----
+In più: una **guida scritta per il tuo PC** (componenti, giochi installati, cosa
+conviene attivare e in che ordine) e il **pulsante dell’assistenza**: mandi una
+segnalazione con tutto quello che serve per capire il problema, o apri la chat
+con i file già pronti.
 
-## 🎮 USB Overclock
+## Giochi
 
-- **Polling Rate Overclock** of USB peripherals (up to 1000Hz+) to reduce sampling delay and click-to-photon latency
-- **Analog Pad Calibration** via integration with dedicated online tools
-- Automatic creation of shortcuts in the desktop context menu for quick access to overclocking and calibration
-- Management via a dedicated external tool with automatic permission elevation
+Il file tarato da Lollozz, importato con un clic. Dove serve, i valori che
+dipendono dal computer si ricalcolano sul tuo: processore, schermo e scheda
+video. Per Valorant, i programmi per la risoluzione allargata. Prima si salva il
+tuo file, e “Rimetti com’erano” lo riporta indietro.
 
----
+Call of Duty: Black Ops 7 e Warzone · Apex Legends · Counter-Strike 2 ·
+Fortnite · Rainbow Six Siege · PUBG: Battlegrounds · ARC Raiders ·
+Battlefield 6 · Valorant · Call of Duty, prossimo capitolo (in arrivo)
 
-## ⏱️ Timer Resolution
+<p align="center"><img src="docs/assets/giochi.jpg" alt="La pagina Giochi" width="820"></p>
 
-- Set the **System Timer** to 0.5ms** (versus the Windows standard of 15.6ms) to dramatically reduce input lag
-- Check the currently active timer resolution
-- Automatically back up used tools and create an auto-start shortcut
-- Automatically generated restore script to return to default values
+## Mod Audio Warzone
 
----
+Con la licenza **LollozzOS + Mod Audio**. La catena audio della stagione per
+Warzone e Black Ops 7, con la correzione per le tue cuffie.
 
-## 🔋 Power Manager
+- “Installa tutto”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi e ReaPlugs
+  dai siti ufficiali, configurati da soli, anche dentro Warzone.
+- Curva EQ per le tue cuffie, fra oltre 400 modelli misurati.
+- Il preset BO7 di ArtTuneDB (con il permesso di ArtIsWar) e la Riduzione Arma
+  Adattiva.
+- Controllo ogni 30 minuti, mai durante una partita: se un aggiornamento rompe
+  qualcosa, “Ripara”. “Rimuovi tutto” rimette com’erano Windows, VoiceMeeter e
+  Warzone.
 
-- Import a **Custom Power Profile** optimized for performance
-- Completely restore Windows power plans and default power settings
-- Check CPU **Core Parking** (to ensure all cores are active and available)
+<p align="center"><img src="docs/assets/modaudio.jpg" alt="La Mod Audio Warzone" width="820"></p>
 
----
+## Tutto reversibile
 
-## 🎨 GPU Tweaks (NVIDIA / AMD)
+Ogni ottimizzazione è scritta come dati: il valore quando è accesa e quello
+quando è spenta. Gli stessi dati servono ad applicarla, ad annullarla e a
+leggere com’è davvero, quindi un interruttore mostra sempre quello che Windows
+sta facendo.
 
-- Dedicated and separate paths for **NVIDIA cards (GeForce)**, **AMD (Radeon Adrenalin)**, and **INTEL**
-- "Deep" registry tweaks to optimize GPU drivers and performance
-- Desktop extraction of dedicated utilities for the detected manufacturer
+- Prima di ogni modifica si salvano i valori di prima.
+- **Ripristino** annulla tutte le modifiche dell’app, o una alla volta. Non
+  riporta le app e i file eliminati, né tema, sfondo e colore.
+- Le configurazioni dei giochi si salvano prima di essere sostituite.
+- Ottimizza con un click e le modifiche estreme propongono anche un punto di
+  ripristino di Windows, già segnato.
 
-- ## 💾 Disk & RAM Manager
+Disinstallare l’app **non** annulla da solo le ottimizzazioni: il programma di
+disinstallazione ti fa scegliere se togliere solo il programma, rimettere
+Windows com’era e poi toglierlo, o togliere tutto (licenza e backup compresi).
 
-- Launch *Windows Memory Cleaner* to free up occupied RAM
-- Launch *ISLC* (Intelligent Standby List Cleaner), copied and stored in a dedicated folder on C:\LollozzOs
-- *NVMe latency optimization* by enabling Native NVMe parameters in the registry
-- Integrated documentation on I/O optimization, TRIM, and texture loading micro-stutter reduction
+## Installazione
 
----
+1. Scarica `LollozzOS_Setup_<versione>.exe` da
+   [Releases](https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest).
+2. Avvialo e segui i passi. L’app si installa per tutti gli utenti e parte come
+   amministratore.
 
-## 🧬 BIOS Manager
+Il programma d’installazione non è firmato: al primo avvio Windows SmartScreen
+può avvisare. Clicca **Ulteriori informazioni** e poi **Esegui comunque**.
+Scaricalo solo da qui o dal sito.
 
-- *BIOS Update Wizard*: Automatically detects motherboard manufacturer and model, installed BIOS version and date, with direct search for the latest available update
-- *Direct reboot to BIOS/UEFI* from a single menu item
-- *Unlock hidden BIOS settings* via NVRAM Export/Import
-- Dedicated "Reboot to BIOS" shortcut installable in the desktop context menu
+## Licenza e prova
 
----
+LollozzOS è un **software a pagamento**.
 
-## 🔄 Restore Manager
+- **Prova gratuita di 24 ore**, una volta per computer (per attivarla chiede
+  nome, email e telefono).
+- Due licenze: **LollozzOS** (tutta l’app) e **LollozzOS + Mod Audio** (in più
+  la Mod Audio Warzone).
+- La licenza vale per **un computer** ed è legata al suo hardware: non si
+  rivende, non si condivide e non si trasferisce.
+- Nell’app scegli la licenza e copia la richiesta (arriva anche a Lollozz),
+  scrivi sul [Discord](https://discord.gg/gd5cT3Jw9M) e incolla il codice di
+  sblocco che ricevi.
 
-- Create a *restore point* before each optimization session
-- Complete list of available restore points, with dedicated log
-- Directly launch a restore point from the menu
-- Information section on restore point usage and best practices
+I termini completi si leggono durante l’installazione.
 
----
+## Crediti
 
-## 📎 Office Manager
+Alcune funzioni aprono programmi di altri autori, che restano loro e con le
+loro licenze; gli strumenti con licenza MIT sono inclusi senza modifiche.
 
-- *Microsoft Office* installation wizard
-- Office activation integrated into the same module
+- [WinUtil](https://github.com/ChrisTitusTech/winutil) di Chris Titus Tech, MIT
+- [Win11Debloat](https://github.com/Raphire/Win11Debloat) di Raphire, MIT
+- [RemoveWindowsAI](https://github.com/zoicware/RemoveWindowsAI) di zoicware, MIT
+- Sparkle
+- Discord Debloat di insovs
+- O&O ShutUp10++ di O&O Software
+- TCP Optimizer di SpeedGuide
+- Misure delle cuffie: GadgetryTech, Earphones Archive, Paul Wasabi, Filk
+  (squig.link) e [AutoEq](https://github.com/jaakkopasanen/AutoEq) di
+  jaakkopasanen, MIT
+- Mod Audio: i preset BO7 di ArtTuneDB sono usati con il permesso di ArtIsWar;
+  Rara Gunshot Suppressor (Gunshots.dll) di Rara Audio LLC, incluso senza
+  modifiche con il permesso dell’autore
 
----
+E grazie alla comunità italiana del gaming competitivo, che ha provato,
+segnalato e migliorato questo lavoro.
 
-## 🕹️ Game Optimization 
+## Avvertenze
 
-"Choose Your Game" module to apply ready-to-use configurations directly to your game files:
+Il programma cambia valori del registro, servizi, impostazioni di rete, piani
+energetici e impostazioni dei driver. È fornito così com’è, senza garanzia:
+leggi cosa fa ogni interruttore prima di accenderlo e tieni il punto di
+ripristino che l’app ti propone. LollozzOS non è affiliato a Microsoft né agli
+editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi
+proprietari.
 
-- *Import of ready-made optimized configs*, automatically saved to the correct path in the game's user files
-- *Backup and restore* of the current configuration before any changes, to ensure full reversibility
-- Dedicated support for *Warzone, including download and automatic configuration of the **Audio Mod*, designed to improve the perception of footsteps and directional sounds in-game
-- Integrated technical documentation for each supported game
-- Ability to enable custom resolutions via CRU
----
+## Community
 
-## 🎥 OBS Studio Module 
-
-Standalone module integrated into the main menu that manages the entire OBS Studio lifecycle:
-
-- Automatic installation via Winget/Chocolatey with error handling
-- *Setup Wizard*: GPU detection, resolution selection (including default values) Custom/Fractional), FPS, connection type, automatic profile generation, JSON scene (Monitor/Mic/Webcam), and dynamically calculated CBR bitrate
-- *Debloat OBS*: Removal of non-Italian/English localization files, CEF language pack cleaning, unnecessary theme removal, cache/log/crash cleaning
-- Configuration reset and complete uninstallation
-
----
-
-## ⚙️ Windows Manager (debloat and privacy submenu)
-
-1. *Activate Windows*
-2. *LollozzOS Extra Settings*
-3. *Critus Tech* – dedicated debloat/optimization tools
-4. *Debloat Extra*
-5. *Other Optimizations*
-6. *Ultimate Windows Tweaker*
-7. *Remove Windows AI* (Copilot and built-in AI components)
-8. *Repair Windows*
-9. *Disable Windows Privacy* (based on O&O ShutUp10)
-10. *Search/Taskbar Manager*
-11. *Integrated Win11Debloat*
-12. *Browser Download*
-13. *Playbook Installation* (extra tools and configurations package)
-14. *CPU Chipset Update* (AMD/Intel auto-detection)
-15. *Debloat Chrome*
-16. *Debloat Discord*
-17. *OBS Studio Management*
-18. *Autoruns* (Sysinternals)
-19. Integrated Info/Changelog ("What does it do?")
-
-### Areas of focus in detail
-
-- *Telemetry and Privacy*: Completely disable DiagTrack, CEIP, WER, PerfTrack, Microsoft Account settings sync, Timeline/Activity Feed, voice data collection, KMS telemetry
-- *Services and Drivers*: Disable non-essential services (OneSyncSvc, TrkWks, PcaSvc, UCPD, etc.) and background drivers (GpuEnergyDrv, NetBT)
-- *Registry*: Hundreds of HKLM/HKCU tweaks applied to both the current user and the Default profile (for future new accounts), with custom LollozzOS branding in winver and boot entry
-- *Bloatware Removal*: Uninstall pre-installed AppX apps, block automatic reinstallation, remove OneDrive, Xbox, Cortana/Extended Search, LockApp, SmartScreen, sync programs
-- *Gaming & Performance*: Game Mode, 90% CPU priority for the active app, disabling Page Combining, removing SMB limits for LAN, resolution/refresh rate management
-- *Security/Defender*: Dedicated menu for controlled disabling of Windows Defender with automatic pre-change backup of services
-- *Maintenance*: Automatically generated restore scripts before each critical change, to ensure reversibility
-
----
-
-## 🛠️ Tweaks
-
-Windows Manager submenu that brings together 17 targeted and individually selectable tweaks in a single panel, for granular control without having to go through a full debloat:
-
-1. *Disable Windows Driver* – disable non-essential background drivers
-2. *Disable Microsoft Apps* – remove pre-installed system apps
-3. *Optimize Games/Apps* – prioritize and allocate resources to foreground processes
-4. *Disable Microsoft Edge* – block auto-start and background processes
-5. *Remove OneDrive* – complete uninstallation
-6. *Remove Lock App* – disable the lock screen
-7. *Remove SmartScreen*
-8. *Disable Core Isolation/VBS* – disable security virtualization to recover CPU performance
-9. *Disable Startup* – clean up auto-start programs
-10. *Manage Windows Defender*
-11. *Uninstall Microsoft Store*
-12. *Disable Hibernation*
-13. *Optimize Visual Settings* – disable unnecessary graphical effects
-14. *Disable Telemetry*
-15. *Set Priority Separation* – tune the CPU scheduler to favor foreground apps
-16. *Set Shortcuts* – create shortcuts to utilities
-17. *Disable Mitigations* – controlled deactivation of kernel security mitigations (Spectre/Meltdown, SEHOP, Control Flow Guard, DEP) to reduce performance overhead, with dedicated overrides to ensure compatibility with anti-cheat software for major games
-
-Each option applies the change independently and reversibly, so the user can choose exactly which optimizations to enable without affecting the rest of the system.
+[Discord](https://discord.gg/gd5cT3Jw9M) ·
+[TikTok](https://www.tiktok.com/@_lollozz_) ·
+[Instagram](https://www.instagram.com/_lollozz__) ·
+[Twitch](https://www.twitch.tv/lollozz__) ·
+[Sostieni LollozzOS con PayPal](https://www.paypal.me/lorenzoxiaomi)
 
 ---
 
-## 🧩 Technical Architecture
+<a id="english"></a>
 
-- Windows executable (.exe) with console interface and modular menu navigation
-- Integrated PowerShell logic for advanced registry, WMI, and GPU management operations
-- Dynamically generated restore scripts (rollback) before each invasive change
-- Multi-user management: Apply changes to both the current user and the Windows Default profile
+## English
+
+**Your PC, ready to play.** LollozzOS puts in one app what is usually scattered
+across dozens of scripts, guides and programs: fewer background processes,
+network and graphics card set up for gaming, ready-made configs for your games.
+The previous state is saved before each change, so everything can be undone.
+
+- **System:** Windows 10 and Windows 11, 64-bit
+- **Runs as:** administrator (it changes system settings)
+- **App language:** Italian (English is on the way)
+- **Free trial:** 24 hours, once per computer
+
+### What’s inside
+
+- **One-click optimize:** restore point, unnecessary services, gaming
+  optimizations, wallpaper, timer and power plan, then a restart. You see and
+  can edit the whole plan first; a copy of the current settings is always
+  included, the restore point starts selected and the restart can be
+  cancelled.
+- **Games:** ready-made configs for 9 games (and the next Call of Duty on the
+  way); where needed, the values that depend on the computer are recalculated
+  for yours (processor, display, graphics card). Your file is backed up first.
+- **GPU, network, power, privacy, debloat, apps, appearance, BIOS, diagnosis
+  and repair (55 fixes), tools**, each on its own page, plus competitive mode, a
+  guide written for your PC and one-click support.
+- **Warzone Audio Mod** (LollozzOS + Audio Mod license): automatic setup of
+  Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi and ReaPlugs, an EQ curve for
+  your headphones among 400+ measured models, ArtTuneDB’s BO7 preset (with
+  ArtIsWar’s permission), a check every 30 minutes and “Repair”.
+- **Everything is reversible:** the previous values are saved before each
+  change, and Restore undoes every change the app made, or one at a time (it
+  doesn’t bring back deleted apps and files, or theme, wallpaper and color).
+  Uninstalling the app does not undo the optimizations by itself: the
+  uninstaller lets you choose.
+
+### Install
+
+Download `LollozzOS_Setup_<version>.exe` from
+[Releases](https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest)
+and run it. The installer is not signed: if Windows SmartScreen warns you,
+choose **More info** and then **Run anyway**.
+
+### License
+
+LollozzOS is **paid software**, with a free 24-hour trial once per computer
+(it asks for your name, email and phone). A
+license covers **one computer** and is tied to its hardware; it cannot be
+resold, shared or transferred. In the app, pick your license and copy the
+request (Lollozz receives it too), write on
+[Discord](https://discord.gg/gd5cT3Jw9M) and paste the unlock code you receive.
+
+### Disclaimer
+
+This program changes registry values, services, network settings, power plans
+and driver settings. It is provided as is, without warranty. LollozzOS is not
+affiliated with Microsoft or with the publishers of the games mentioned; game
+names and images belong to their respective owners.
 
 ---
 
-## ⚠️ Note
-
-LollozzOS Configurator makes profound changes Registry, services, and system components. It is recommended to create a restore point before use and run the application with administrator privileges.
-
----
-
-## 🙏 Credits
-
-LollozzOS Configurator was also created thanks to the integration of several open source projects available on GitHub, including:
-
-- Chris Titus Tech's Windows Utility
-- RemoveWindowsAI Zoicware
-- Microsoft Activation Script (MAS)
-- Win11Debloat Raphire
-- DiscordDebloater insovs
-- OneClick by Quaked
-- other scripts present in github
-
----
-
-📦 Istruzioni di Installazione
-
-Metodo 1: Installazione Automatica via PowerShell (Consigliato)
-1. Apri PowerShell come Amministratore (Fai tasto destro sul pulsante Start -> seleziona Terminale (Amministratore) oppure Windows PowerShell (Amministratore)).
-2. Copia e incolla il seguente comando in riga unica e premi Invio:
-
-
-```powershell
-$dest = "C:\LollozzOS\LollozzOS_Configurator_v.3.7"; $zip = "$env:TEMP\LollozzOs_Configurator_v.3.7_Installer.zip"; irm "https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest/download/LollozzOs_Configurator_v.3.7_Installer.zip" -OutFile $zip; Expand-Archive -Path $zip -DestinationPath $dest -Force; $exe = Join-Path $dest "LollozzOs_Configurator_Installer.exe"; Start-Process -FilePath $exe -Verb RunAs
-```
-
-Questo script scarica automaticamente l'ultima versione, estrae i file nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.7, apre il file README.txt e avvia LollozzOS_Configurator_v.3.7.exe con i privilegi da Amministratore.
-
---------------------------------------------------------------------------------
-
-Metodo 2: Installazione Manuale
-1. Scarica l'archivio LollozzOS_Configurator_v.3.7.zip dalla sezione RELEASE in basso.
-2. Estrai il contenuto dello ZIP nella cartella C:\LollozzOS\LollozzOS_Configurator_v.3.7.
-3. Apri la cartella, fai tasto destro su LollozzOS_Configurator_v.3.7.exe e seleziona Esegui come amministratore.
-  
-
----
-
-
-## 🔗 Community
-
-- Discord: https://discord.gg/gd5cT3Jw9M
-- TikTok: https://www.tiktok.com/@lollozz_os?_r=1&_t=ZN-98MDYenbJBu
-- Instagram: https://www.instagram.com/lollozz_labs?igsh=dnRuYzB0dXQwNDZh&utm_source=qr
-
-
-
+<p align="center"><b>LollozzOS</b> · made by Lollozz · Lollozz Labs</p>
