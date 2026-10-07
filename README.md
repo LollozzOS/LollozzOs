@@ -10,9 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://lollozzos.github.io/LollozzOs_Configurator/"><b>Sito</b></a> ·
+  <a href="https://lollozzos.github.io/LollozzOs/"><b>Sito</b></a> ·
   <a href="#novita"><b>Novità</b></a> ·
-  <a href="https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest"><b>Scarica</b></a> ·
+  <a href="https://github.com/LollozzOS/LollozzOs/releases/latest"><b>Scarica</b></a> ·
   <a href="https://discord.gg/gd5cT3Jw9M"><b>Discord</b></a> ·
   <a href="#english">English</a>
 </p>
@@ -177,7 +177,7 @@ Windows com’era e poi toglierlo, o togliere anche backup, impostazioni e regis
 ## Installazione
 
 1. Scarica `LollozzOS_Setup_<versione>.exe` da
-   [Releases](https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest).
+   [Releases](https://github.com/LollozzOS/LollozzOs/releases/latest).
 2. Avvialo e segui i passi. L’app si installa per tutti gli utenti e parte come
    amministratore.
 
@@ -318,7 +318,7 @@ The previous state is saved before each change, so everything can be undone.
 ### Install
 
 Download `LollozzOS_Setup_<version>.exe` from
-[Releases](https://github.com/LollozzOS/LollozzOs_Configurator/releases/latest)
+[Releases](https://github.com/LollozzOS/LollozzOs/releases/latest)
 and run it. The installer is not signed: if Windows SmartScreen warns you,
 choose **More info** and then **Run anyway**.
 
