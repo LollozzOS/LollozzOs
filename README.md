@@ -27,35 +27,39 @@
 
 ## Novità
 
-*Aggiornato al 2 ottobre 2026.* L’app controlla da sola gli aggiornamenti: quando esce una versione nuova te lo dice, la scarica e apre l’installazione (licenza, impostazioni e backup restano).
+*Aggiornato al 7 ottobre 2026.* L’app controlla da sola gli aggiornamenti: quando esce una versione nuova te lo dice, la scarica e apre l’installazione (licenza, impostazioni e backup restano).
 
-- **Modalità competitiva intelligente** *(nuovo)*: la accendi una volta e fa
-  tutto da sola. Parte quando avvii un gioco e si spegne quando lo chiudi,
-  anche con LollozzOS chiusa. Il gioco a priorità alta, tutte le altre app in
-  risparmio, timer a 0,5 ms.
-- **Il resoconto di ogni partita** *(nuovo)*: FPS medi, 1% e 0,1% low, gli
-  scatti con quello che in quel momento usava il processore, la latenza e i
-  consigli. Gli ultimi 30 restano nell’app: li salvi sul desktop o li mandi a
-  Lollozz.
-- **Ottimizza con un click, più chiaro** *(nuovo)*: prima vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS, e “Vedi dettagli” con
-  tutto quello che cambia. L’avanzamento sta nella Home; alla fine il PC si
-  riavvia da solo e LollozzOS ti mostra il risultato.
-- **Windows nel colore che vuoi** *(nuovo)*: accento, modalità scura o chiara,
-  riquadro di selezione e 17 cursori in qualsiasi colore, con l’anteprima di
-  Esplora file e i cursori veri. Con “Un colore per tutto” si colora anche
-  l’app.
-- **Mod Audio a un pulsante**: “Applica Mod Audio Warzone” installa e configura
-  tutto e ti chiede solo le cuffie. Poi la catena resta sotto controllo, dal
-  gioco alle cuffie, e “Ripara” rimette quello che un aggiornamento ha rotto.
-- **Il BIOS più recente**: LollozzOS controlla sul sito del produttore se per la
-  tua scheda madre c’è un BIOS più recente, lo scarica e lo verifica.
-  L’aggiornamento lo fai tu, dal BIOS.
-- **Il menu del tasto destro**: Strumenti rapidi, Piani energetici, Mod Audio e
-  Pad nel menu del tasto destro del desktop: l’overclock del pad, che LollozzOS
-  copia sul PC, e il sito per calibrarlo.
-- **Più sicuro**: i punti di ripristino di Windows li crei e li usi dall’app,
-  il Ripristino annulla tutto o una modifica alla volta, e se Windows ha un
-  aggiornamento a metà LollozzOS aspetta prima di cambiare qualcosa.
+- **LollozzOS Debloat, una schermata sola** *(nuovo)*: privacy, pubblicità,
+  funzioni IA, Start, barra e prestazioni, 119 voci in una schermata. Le voci
+  doppie sono diventate una sola, la più completa. Applica solo quello che
+  spunti, quelle già fatte sono segnate “Già eseguito” e ognuna si annulla. È
+  anche dentro Ottimizza con un click, con la stessa schermata.
+- **Windows AI tolta davvero** *(nuovo)*: Copilot, Recall e le altre funzioni
+  IA tolte da Windows, non solo spente. Ognuna delle 12 voci dice se sul tuo PC
+  c’è ancora o è già tolta. Il preset Sicuro lascia stare le 3 che possono far
+  fallire Windows Update, e “Rimetti l’IA com’era” riporta tutto.
+- **Riparazioni che funzionano** *(nuovo)*: 54 riparazioni divise in 11 gruppi,
+  nella loro pagina e con la ricerca. Prima vedi i passi, poi l’esito di
+  ognuno. Lo Store si reinstalla anche se era stato tolto, Edge si rimette, e
+  DISM, SFC e il controllo del disco dicono il risultato vero.
+- **Gestione attività con i consigli** *(nuovo)*: accanto a ogni programma il
+  consiglio, priorità alta ai giochi, bassa a chi lavora in background, chiudi
+  a chi mangia processore o memoria. Lo scegli tu con un clic: LollozzOS non fa
+  niente da solo.
+- **Affinità della scheda video**: gli interrupt della scheda video vanno
+  sull’ultimo core, di solito il meno occupato, invece che sul Core 0. Su
+  alcuni PC i frametime diventano più regolari, con meno picchi; su altri non
+  cambia niente, per questo l’app misura prima e dopo. È già in Ottimizza con
+  un click.
+- **Otto ottimizzazioni in più**: niente manutenzione automatica che parte
+  mentre giochi, meno telemetria, niente registro energetico in background,
+  LLMNR spento e circa 7 GB di spazio riservato liberati. Ognuna ha il suo
+  interruttore, con scritto cosa perdi.
+- **Il Livello LollozzOS**: le ottimizzazioni accese e la salute del PC in un
+  numero solo. Se un aggiornamento di Windows ne annulla qualcuna il numero
+  scende, e Ottimizza con un click te lo propone di nuovo.
+- **Ottimizza con un click, più sicuro**: lo puoi interrompere mentre lavora,
+  le ottimizzazioni già fatte restano e il PC non si riavvia.
 
 ## Cos’è
 
@@ -71,9 +75,9 @@ modifica l’app salva com’era, quindi tutto si può annullare.
 
 ## Ottimizza con un click
 
-Il primo passo consigliato: punto di ripristino, servizi superflui, privacy,
-ottimizzazioni per il gaming, energia, rete e l’aspetto LollozzOS, poi un
-riavvio.
+Il primo passo consigliato: punto di ripristino, servizi superflui, LollozzOS
+Debloat, ottimizzazioni per il gaming, energia, rete e l’aspetto LollozzOS,
+poi un riavvio.
 
 - Prima di partire vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS. “Vedi dettagli” mostra tutto quello che cambia, gruppo per
   gruppo.
@@ -112,18 +116,18 @@ LollozzOS chiusa, dopo il riavvio e con qualunque launcher.
 
 | Sezione | Cosa fa |
 |---|---|
-| **Monitor di sistema** | CPU, GPU, RAM e dischi in tempo reale, processi, Ottimizza con un click, Modalità competitiva intelligente con il resoconto di ogni partita, diagnosi del PC e pulizia del disco |
-| **Debloat** | App superflue, servizi di Windows uno per uno (con cosa fanno e cosa smette di funzionare), WinUtil, Win11Debloat e RemoveWindowsAI (Copilot, Recall e le altre funzioni IA) pronti da aprire |
+| **Monitor di sistema** | CPU, GPU, RAM e dischi in tempo reale, il Livello LollozzOS, la Gestione attività per programma con i consigli, Ottimizza con un click, Modalità competitiva intelligente con il resoconto di ogni partita |
+| **Debloat** | LollozzOS Debloat (privacy, pubblicità, funzioni IA, Start, barra, Esplora file e prestazioni: 119 voci in una schermata, con i preset, ognuna si annulla), app superflue, Rimuovi Windows AI (Copilot, Recall e le altre funzioni IA, voce per voce) e servizi di Windows uno per uno |
 | **Tools e utility** | HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, divisi per categoria |
 | **Giochi** | Configurazioni pronte per 9 giochi (e il prossimo Call of Duty in arrivo), con i valori del tuo PC dove servono; più gli interruttori che valgono per tutti i giochi |
-| **GPU e grafica** | Driver video con l’ultima versione da scaricare, MPO, preemption, timeout e preset per NVIDIA, AMD e Intel |
+| **GPU e grafica** | Driver video con l’ultima versione da scaricare, MPO, preemption, timeout e preset per NVIDIA, AMD e Intel, e l’Affinità: gli interrupt della scheda video sull’ultimo core, misurati prima e dopo |
 | **Rete** | Rete impostata sulla latenza, test di 14 DNS, velocità, pacchetti persi, latenza sotto carico, priorità di rete per i giochi |
-| **Audio** | Equalizzazione sonorità, volume che non si abbassa nelle chiamate, ritardo audio minimo; la Mod Audio Warzone |
+| **Audio** | Equalizzazione sonorità, volume che non si abbassa nelle chiamate, Nahimic spento, ritardo audio minimo |
 | **Energia e prestazioni** | Piani Quotidiano e Gaming fatti per il tuo PC, timer e reattività, risparmio di CPU, USB e PCI Express, interrupt MSI |
 | **Gestione app** | Programmi installati dalla fonte ufficiale con winget, disinstallazione, avvio automatico |
-| **Personalizzazione visiva** | Sfondi e schermata di blocco, Windows nel colore che vuoi (accento, tema, selezione e 17 cursori), i suoni LollozzOS, schermi, menu del tasto destro del desktop con Strumenti rapidi, Piani energetici, Mod Audio e Pad |
-| **Privacy** | Telemetria, pubblicità, cronologia delle attività, posizione, Cortana, segnalazione errori su una schermata, con “Blocca tutto” |
-| **Diagnosi e riparazione** | Salute dei dischi, spazio usato, 55 riparazioni divise per problema, registro di tutto quello che è stato fatto |
+| **Personalizzazione visiva** | Sfondi e schermata di blocco, Windows nel colore che vuoi (accento, tema, selezione e 17 cursori), i suoni LollozzOS, schermi, menu del tasto destro del desktop con Strumenti rapidi, Piani energetici e Pad |
+| **Diagnosi e manutenzione** | Salute dei dischi, spazio usato, Pulizia del disco e Prepara il PC, le misure del PC, registro di tutto quello che è stato fatto |
+| **Fix e riparazioni** | 54 riparazioni divise in 11 gruppi (rete, audio, Update e Store, Esplora file…), con la ricerca: prima i passi, poi l’esito di ognuno |
 | **BIOS** | Secure Boot, TPM, virtualizzazione e profilo della RAM letti dal PC, il BIOS più recente dal sito del produttore (scaricato e verificato; lo installi tu), una guida BIOS per la tua scheda madre, “Riavvia nel BIOS” |
 | **Modifiche estreme** | Chiuse a chiave: tolgono difese di Windows e non servono per giocare meglio. Punto di ripristino prima |
 | **Ripristino** | “Ripristina tutto” annulla tutte le modifiche dell’app; dalla cronologia una alla volta; i punti di ripristino di Windows li crei e li usi dall’app |
@@ -148,25 +152,6 @@ Fortnite · Rainbow Six Siege · PUBG: Battlegrounds · ARC Raiders ·
 Battlefield 6 · Valorant · Call of Duty, prossimo capitolo (in arrivo)
 
 <p align="center"><img src="docs/assets/giochi.jpg" alt="La pagina Giochi" width="820"></p>
-
-## Mod Audio Warzone
-
-Con la licenza **LollozzOS + Mod Audio**. La catena audio della stagione per
-Warzone e Black Ops 7, con la correzione per le tue cuffie.
-
-- “Applica Mod Audio Warzone”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi
-  e ReaPlugs dai siti ufficiali, configurati da soli, anche dentro Warzone. Ti
-  chiede solo le tue cuffie.
-- Curva EQ per le tue cuffie, fra oltre 1.600 misure (GadgetryTech, Earphones
-  Archive, Paul Wasabi, Filk e AutoEq).
-- Il preset BO7 di ArtTuneDB (con il permesso di ArtIsWar) e la Riduzione Arma
-  Adattiva.
-- La catena sotto controllo mentre LollozzOS è aperta (anche nella barra): all’apertura e ogni 30 minuti, mai durante una partita: se un aggiornamento rompe qualcosa, “Ripara”.
-- “Prova il suono”: un soffio da ogni direzione del 7.1, attraverso la catena
-  della Mod Audio.
-- “Rimuovi tutto” rimette com’erano Windows, VoiceMeeter e Warzone.
-
-<p align="center"><img src="docs/assets/modaudio.jpg" alt="La Mod Audio Warzone" width="820"></p>
 
 ## Tutto reversibile
 
@@ -205,11 +190,10 @@ Scaricalo solo da qui o dal sito.
 LollozzOS è un **software a pagamento**.
 
 - **Prova gratuita di 24 ore**, una volta per computer (per attivarla chiede nome e cognome, email e telefono).
-- Due licenze: **LollozzOS** (tutta l’app) e **LollozzOS + Mod Audio** (in più
-  la Mod Audio Warzone).
+- Una licenza, **LollozzOS**: tutta l’app.
 - La licenza vale per **un computer** ed è legata al suo hardware: non si
   rivende, non si condivide e non si trasferisce.
-- Nell’app scegli la licenza e copia la richiesta (arriva anche a Lollozz),
+- Nell’app copia la richiesta di licenza (arriva anche a Lollozz),
   scrivi sul [Discord](https://discord.gg/gd5cT3Jw9M) e incolla il codice di
   sblocco che ricevi.
 
@@ -218,7 +202,10 @@ I termini completi si leggono durante l’installazione.
 ## Crediti
 
 Alcune funzioni aprono programmi di altri autori, che restano loro e con le
-loro licenze; gli strumenti con licenza MIT sono inclusi senza modifiche.
+loro licenze. Rimuovi Windows AI è RemoveWindowsAI con l’aspetto LollozzOS;
+LollozzOS Debloat riunisce dentro LollozzOS le impostazioni e gli script di
+WinUtil e Win11Debloat. Tutto con il permesso dei loro autori e la loro licenza
+MIT accanto.
 
 - [WinUtil](https://github.com/ChrisTitusTech/winutil) di Chris Titus Tech, MIT
 - [Win11Debloat](https://github.com/Raphire/Win11Debloat) di Raphire, MIT
@@ -227,12 +214,10 @@ loro licenze; gli strumenti con licenza MIT sono inclusi senza modifiche.
 - Discord Debloat di insovs
 - O&O ShutUp10++ di O&O Software
 - TCP Optimizer di SpeedGuide
-- Misure delle cuffie: GadgetryTech, Earphones Archive, Paul Wasabi, Filk
-  (squig.link) e [AutoEq](https://github.com/jaakkopasanen/AutoEq) di
-  jaakkopasanen, MIT
-- Mod Audio: i preset BO7 di ArtTuneDB sono usati con il permesso di ArtIsWar;
-  Rara Gunshot Suppressor (Gunshots.dll) di Rara Audio LLC, incluso senza
-  modifiche con il permesso dell’autore
+- NVIDIA Profile Inspector di Orbmu2k, MIT (il profilo NVIDIA parla con il
+  driver come fa lui)
+- [PresentMon](https://github.com/GameTechDev/PresentMon) 2.6.0 di Intel, MIT
+  (FPS, scatti e latenza della Modalità competitiva intelligente)
 
 E grazie alla comunità italiana del gaming competitivo, che ha provato,
 segnalato e migliorato questo lavoro.
@@ -274,54 +259,56 @@ The previous state is saved before each change, so everything can be undone.
 
 ### What’s new
 
-*Updated on 2 October 2026.* The app checks for updates by itself: when a new version is out it tells you, downloads it and opens the installer (license, settings and backups stay).
+*Updated on 7 October 2026.* The app checks for updates by itself: when a new version is out it tells you, downloads it and opens the installer (license, settings and backups stay).
 
-- **Smart Competitive Mode** *(new)*: turn it on once and it does everything by
-  itself. It starts when you launch a game and stops when you close it, even
-  with LollozzOS closed. The game at high priority, every other app in
-  efficiency mode, timer at 0.5 ms. It never puts Windows processes, Microsoft Defender, anti-cheats, the audio chain, video drivers or programs that remap keyboard and controller in efficiency mode; anything using too much processor is only slowed down, and everything goes back as it was after the match.
-- **A report for every match** *(new)*: average FPS, 1% and 0.1% low, the
-  stutters with whatever was using the processor at that moment, latency and
-  tips. The last 30 stay in the app: save them to the desktop or send them to
-  Lollozz.
-- **One-click optimize, clearer** *(new)*: first you see the processes now, counted on your PC, and the estimate with LollozzOS, and “See details” with everything that
-  changes. The progress is on the Home screen; at the end the PC restarts by
-  itself after 20 seconds and LollozzOS shows you the result.
-- **Windows in any color** *(new)*: accent, dark or light mode, selection box
-  and 17 cursors in any color, with a File Explorer preview and the real
-  cursors. With “One color for everything” the app takes the color too.
-- **Audio Mod in one button**: “Apply Mod Audio Warzone” installs and sets up
-  everything and only asks for your headphones. Then the chain stays under
-  watch, from the game to your headphones, and “Repair” puts back whatever an
-  update broke.
-- **The latest BIOS**: LollozzOS checks on the manufacturer’s website whether
-  there is a newer BIOS for your motherboard, downloads it and verifies it. You
-  install it yourself, from the BIOS.
-- **The right-click menu**: Quick tools, Power plans, Audio Mod and Pad in the
-  desktop right-click menu: the pad overclock, which LollozzOS copies to your
-  PC, and the website to calibrate it.
-- **Safer**: you create and use Windows restore points from the app, Restore
-  undoes everything or one change at a time, and if Windows has an update half
-  done LollozzOS waits before changing anything.
+- **LollozzOS Debloat on one screen** *(new)*: privacy, ads, AI features,
+  Start, taskbar and performance, 119 items on one screen. Duplicate items
+  became a single one, the most complete. It applies only what you tick, the
+  ones already done are marked “Already done” and each one can be undone. It
+  is also inside One-click optimize, with the same screen.
+- **Windows AI really removed** *(new)*: Copilot, Recall and the other AI
+  features removed from Windows, not just turned off. Each of the 12 items
+  tells you whether it is still on your PC or already gone. The Safe preset
+  leaves out the 3 that can make Windows Update fail, and “Bring the AI back”
+  puts everything back.
+- **Repairs that really work** *(new)*: 54 fixes in 11 groups, on their own
+  page and with search. First you see the steps, then the result of each one.
+  The Store reinstalls even if it had been removed, Edge comes back, and DISM,
+  SFC and the disk check report the real result.
+- **Task manager with tips** *(new)*: next to every program a tip, high
+  priority for games, low for whatever works in the background, close it if it
+  eats processor or memory. You choose with one click: LollozzOS never does
+  anything by itself.
+- **Graphics card Affinity**: the graphics card interrupts go to the last
+  core, usually the least busy, instead of Core 0. On some PCs frametimes get
+  steadier, with fewer spikes; on others nothing changes, so the app measures
+  before and after. It is already in One-click optimize.
+- **Eight more optimizations**: no automatic maintenance starting while you
+  play, less telemetry, no energy log in the background, LLMNR off and about
+  7 GB of reserved storage freed. Each one has its own switch, with what you
+  give up written next to it.
+- **The LollozzOS Level**: the optimizations that are on and the PC health in
+  one number. If a Windows update undoes some of them the number drops, and
+  One-click optimize is offered again.
+- **One-click optimize, safer**: you can stop it while it works, the
+  optimizations already done stay and the PC does not restart.
 
 ### What’s inside
 
-- **One-click optimize:** restore point, unnecessary services, privacy, gaming
-  optimizations, power, network and the LollozzOS look, then a restart. You see
+- **One-click optimize:** restore point, unnecessary services, LollozzOS
+  Debloat, gaming optimizations, power, network and the LollozzOS look, then a
+  restart. You see
   and can edit the whole plan first; a copy of the current settings is always
   included and the restore point starts selected. At the end the PC restarts
   by itself after 20 seconds: save your open work first.
 - **Games:** ready-made configs for 9 games (and the next Call of Duty on the
   way); where needed, the values that depend on the computer are recalculated
   for yours (processor, display, graphics card). Your file is backed up first.
-- **GPU, network, power, privacy, debloat, apps, appearance, BIOS, diagnosis
-  and repair (55 fixes), tools**, each on its own page, plus Smart Competitive
-  Mode, a guide written for your PC and one-click support.
-- **Warzone Audio Mod** (LollozzOS + Audio Mod license): one button, “Apply
-  Mod Audio Warzone”, sets up Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi
-  and ReaPlugs; an EQ curve for your headphones among more than 1,600
-  measurements, ArtTuneDB’s BO7 preset (with ArtIsWar’s permission), a check at
-  startup and every 30 minutes and “Repair”.
+- **Debloat** (LollozzOS Debloat, unneeded apps, Remove Windows AI,
+  services), **GPU, network, audio, power, apps, appearance, BIOS, diagnosis
+  and maintenance, fixes & repairs (54 fixes), tools**, each on its own page,
+  plus Smart Competitive Mode, a guide written for your PC and one-click
+  support.
 - **Everything is reversible:** the previous values are saved before each
   change, and Restore undoes every change the app made, or one at a time (it
   doesn’t bring back deleted apps and files, or theme, wallpaper and color).
@@ -338,9 +325,10 @@ choose **More info** and then **Run anyway**.
 ### License
 
 LollozzOS is **paid software**, with a free 24-hour trial once per computer
-(it asks for your first and last name, email and phone). A
+(it asks for your first and last name, email and phone). One license,
+**LollozzOS**, for the whole app. A
 license covers **one computer** and is tied to its hardware; it cannot be
-resold, shared or transferred. In the app, pick your license and copy the
+resold, shared or transferred. In the app, copy the license
 request (Lollozz receives it too), write on
 [Discord](https://discord.gg/gd5cT3Jw9M) and paste the unlock code you receive.
 

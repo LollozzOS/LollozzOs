@@ -202,6 +202,7 @@ h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; letter-spacing: -.0
 .lic .sotto { color: var(--text-dim); font-size: 14.5px; margin: -6px 0 0; }
 .lic .lista li { font-size: 14.5px; }
 .lic .btn { margin-top: auto; }
+.licenze.una { grid-template-columns: minmax(0, 1fr); max-width: 520px; }
 .lic-nota { text-align: center; color: var(--text-mute); font-size: 13.5px; margin: 18px 0 0; }
 
 /* ---------- faq ---------- */
@@ -299,6 +300,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
     <symbol id="i-brush" viewBox="0 0 24 24"><path d="M9.5 14.5 19 5a2 2 0 0 0-3-3l-9.5 9.5"/><path d="M6.5 11.5c-2 0-3.5 1.5-3.5 3.5 0 1.5-.5 3-1.5 4 3.5.5 7-1 7.5-4 .3-1.8-.8-3.5-2.5-3.5z"/></symbol>
     <symbol id="i-apps" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18M10 13v2h4v-2"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.3-1.3a4 4 0 0 0-5-5L3 10l3-3 3 3 1.3-1.3a4 4 0 0 1 4.4-2.4z"/></symbol>
     <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></symbol>
@@ -328,7 +330,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
       <a href="#competitiva" data-t="nav6">Competitiva</a>
       <a href="#funzioni" data-t="nav2">Funzioni</a>
       <a href="#giochi" data-t="nav3">Giochi</a>
-      <a href="#modaudio" data-t="nav4">Mod Audio</a>
       <a href="#inizia" data-t="nav5">Inizia</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -360,7 +361,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
           <span><svg class="i"><use href="#i-check"/></svg><span data-t="n2">Backup prima di ogni modifica</span></span>
           <span><svg class="i"><use href="#i-check"/></svg><span data-t="n3">Ogni modifica si annulla</span></span>
         </div>
-        <a class="nov-link" href="#novita"><span data-t="hero-nov">Novità: Modalità competitiva intelligente e Ottimizza con un click rifatto</span> <span aria-hidden="true">→</span></a>
+        <a class="nov-link" href="#novita"><span data-t="hero-nov">Novità: il Debloat in una schermata sola e riparazioni che funzionano</span> <span aria-hidden="true">→</span></a>
       </div>
       <div class="shot rivela">
         <img src="assets/home.jpg" width="1600" height="1000" alt="La schermata principale di LollozzOS: Windows, processore, scheda video, memoria, Diagnosi PC, Ottimizza con un click e la Modalità competitiva intelligente" data-alt-en="The LollozzOS home screen: Windows, processor, graphics card, memory, PC diagnosis, One-click optimize and Smart Competitive Mode">
@@ -370,7 +371,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
       <div class="numeri rivela">
         <div class="num"><b>~120 <em>→</em> ~50-70</b><span data-t="k1">processi in background, con un click (valori tipici)</span></div>
         <div class="num"><b>9</b><span data-t="k2">giochi con la configurazione pronta, e il prossimo Call of Duty in arrivo</span></div>
-        <div class="num"><b>55</b><span data-t="k3">riparazioni divise per problema: rete, audio, Windows Update…</span></div>
+        <div class="num"><b>54</b><span data-t="k3">riparazioni divise per problema: rete, audio, Windows Update…</span></div>
         <div class="num"><b data-t="k4b">Tutto</b><span data-t="k4">reversibile: prima di ogni modifica si salva com’era</span></div>
       </div>
     </div>
@@ -383,17 +384,17 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
         <span class="eyebrow" data-t="nv-eye">Novità</span>
         <h2 data-t="nv-h">Le ultime novità</h2>
         <p data-t="nv-p">Quello che è arrivato nelle ultime versioni. L’app controlla da sola gli aggiornamenti: quando esce una versione nuova te lo dice, la scarica e apre l’installazione (licenza, impostazioni e backup restano).</p>
-        <span class="nov-data"><span class="dot"></span><span data-t="nv-data">Aggiornato al 2 ottobre 2026</span></span>
+        <span class="nov-data"><span class="dot"></span><span data-t="nv-data">Aggiornato al 7 ottobre 2026</span></span>
       </div>
       <div class="nov">
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo1">NUOVO</span><div class="ico"><svg class="i"><use href="#i-target"/></svg></div><h3 data-t="nv1h">Modalità competitiva intelligente</h3><p data-t="nv1">La accendi una volta e fa tutto da sola: parte quando avvii un gioco e si spegne quando lo chiudi, anche con LollozzOS chiusa. Il gioco a priorità alta, tutte le altre app in risparmio, timer a 0,5 ms.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo2">NUOVO</span><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="nv2h">Il resoconto di ogni partita</h3><p data-t="nv2">FPS medi, 1% e 0,1% low, gli scatti con quello che in quel momento usava il processore, la latenza e i consigli. Gli ultimi 30 restano nell’app: li salvi sul desktop o li mandi a Lollozz.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo3">NUOVO</span><div class="ico"><svg class="i"><use href="#i-bolt"/></svg></div><h3 data-t="nv3h">Ottimizza con un click, più chiaro</h3><p data-t="nv3">Prima vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS, e “Vedi dettagli” con tutto quello che cambia. L’avanzamento sta nella Home; alla fine il PC si riavvia da solo e LollozzOS ti mostra il risultato.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo4">NUOVO</span><div class="ico"><svg class="i"><use href="#i-brush"/></svg></div><h3 data-t="nv4h">Windows nel colore che vuoi</h3><p data-t="nv4">Accento, modalità scura o chiara, riquadro di selezione e 17 cursori in qualsiasi colore, con l’anteprima di Esplora file e i cursori veri. Con “Un colore per tutto” si colora anche l’app.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-head"/></svg></div><h3 data-t="nv5h">Mod Audio a un pulsante</h3><p data-t="nv5">“Applica Mod Audio Warzone” installa e configura tutto e ti chiede solo le cuffie. Poi la catena resta sotto controllo, dal gioco alle cuffie, e “Ripara” rimette quello che un aggiornamento ha rotto.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-cpu"/></svg></div><h3 data-t="nv6h">Il BIOS più recente</h3><p data-t="nv6">LollozzOS controlla sul sito del produttore se per la tua scheda madre c’è un BIOS più recente, lo scarica e lo verifica. L’aggiornamento lo fai tu, dal BIOS.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gamepad"/></svg></div><h3 data-t="nv7h">Il menu del tasto destro</h3><p data-t="nv7">Strumenti rapidi, Piani energetici, Mod Audio e Pad nel menu del tasto destro del desktop: l’overclock del pad, che LollozzOS copia sul PC, e il sito per calibrarlo.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-undo"/></svg></div><h3 data-t="nv8h">Più sicuro</h3><p data-t="nv8">I punti di ripristino di Windows li crei e li usi dall’app, il Ripristino annulla tutto o una modifica alla volta, e se Windows ha un aggiornamento a metà LollozzOS aspetta prima di cambiare qualcosa.</p></div>
+        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo1">NUOVO</span><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3 data-t="nv1h">LollozzOS Debloat, una schermata sola</h3><p data-t="nv1">Privacy, pubblicità, funzioni IA, Start, barra e prestazioni: 119 voci in una schermata. Applica solo quello che spunti, quelle già fatte sono segnate “Già eseguito” e ognuna si annulla. È anche in Ottimizza con un click.</p></div>
+        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo2">NUOVO</span><div class="ico"><svg class="i"><use href="#i-shield"/></svg></div><h3 data-t="nv2h">Windows AI tolta davvero</h3><p data-t="nv2">Copilot, Recall e le altre funzioni IA tolte da Windows, non solo spente. Ognuna delle 12 voci dice se sul tuo PC c’è ancora o è già tolta. Il preset Sicuro lascia stare le 3 che possono far fallire Windows Update, e “Rimetti l’IA com’era” riporta tutto.</p></div>
+        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo3">NUOVO</span><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="nv3h">Riparazioni che funzionano</h3><p data-t="nv3">54 riparazioni divise in 11 gruppi, nella loro pagina e con la ricerca. Prima vedi i passi, poi l’esito di ognuno. Lo Store si reinstalla anche se era stato tolto, Edge si rimette, e DISM, SFC e il controllo del disco dicono il risultato vero.</p></div>
+        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo4">NUOVO</span><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="nv4h">Gestione attività con i consigli</h3><p data-t="nv4">Accanto a ogni programma il consiglio: priorità alta ai giochi, bassa a chi lavora in background, chiudi a chi mangia processore o memoria. Lo scegli tu con un clic: LollozzOS non fa niente da solo.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="nv5h">Affinità della scheda video</h3><p data-t="nv5">Gli interrupt della scheda video vanno sull’ultimo core, di solito il meno occupato, invece che sul Core 0. Su alcuni PC i frametime diventano più regolari, con meno picchi; su altri non cambia niente, per questo l’app misura prima e dopo. È già in Ottimizza con un click.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3 data-t="nv6h">Otto ottimizzazioni in più</h3><p data-t="nv6">Niente manutenzione automatica che parte mentre giochi, meno telemetria, niente registro energetico in background, LLMNR spento e circa 7 GB di spazio riservato liberati. Ognuna ha il suo interruttore, con scritto cosa perdi.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-check"/></svg></div><h3 data-t="nv7h">Il Livello LollozzOS</h3><p data-t="nv7">Le ottimizzazioni accese e la salute del PC in un numero solo. Se un aggiornamento di Windows ne annulla qualcuna il numero scende, e Ottimizza con un click te lo propone di nuovo.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-bolt"/></svg></div><h3 data-t="nv8h">Ottimizza con un click, più sicuro</h3><p data-t="nv8">Lo puoi interrompere mentre lavora: le ottimizzazioni già fatte restano e il PC non si riavvia.</p></div>
       </div>
     </div>
   </section>
@@ -405,7 +406,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
       <div class="rivela">
         <span class="eyebrow" data-t="c-eye">Il primo passo</span>
         <h2 data-t="c-h">Ottimizza con un click</h2>
-        <p data-t="c-p">Punto di ripristino, servizi superflui, privacy, ottimizzazioni per il gaming, energia, rete e l’aspetto LollozzOS, poi un riavvio. Prima di partire vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.</p>
+        <p data-t="c-p">Punto di ripristino, servizi superflui, LollozzOS Debloat, ottimizzazioni per il gaming, energia, rete e l’aspetto LollozzOS, poi un riavvio. Prima di partire vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.</p>
         <ul class="lista">
           <li><svg class="i"><use href="#i-check"/></svg><span data-t="c1">“Vedi dettagli” mostra tutto quello che cambia, gruppo per gruppo. Qualche domanda (Wi-Fi, Bluetooth, stampa, Store, Xbox, colori…) decide cosa resta, con la risposta consigliata già segnata; con “Personalizza” accendi e spegni le voci una per una.</span></li>
           <li><svg class="i"><use href="#i-check"/></svg><span data-t="c2">La copia delle impostazioni attuali c’è sempre, ed è quella che permette di annullare tutto. Il punto di ripristino di Windows parte già segnato.</span></li>
@@ -444,18 +445,18 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
         <p data-t="f-p">Ogni interruttore legge lo stato vero dal sistema: vedi quello che Windows sta facendo davvero, non quello che speri.</p>
       </div>
       <div class="griglia">
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-monitor"/></svg></div><h3 data-t="g1h">Monitor di sistema</h3><p data-t="g1">CPU, GPU, RAM e dischi in tempo reale, Ottimizza con un click, la Modalità competitiva intelligente, la diagnosi del PC e la pulizia del disco.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3>Debloat</h3><p data-t="g2">WinUtil, Win11Debloat e RemoveWindowsAI (Copilot, Recall e le altre funzioni IA) pronti da aprire, le app superflue, pubblicità e suggerimenti di Windows, la privacy e i servizi uno per uno.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="g3h">GPU e grafica</h3><p data-t="g3">Le ottimizzazioni della tua scheda (NVIDIA, AMD o Intel), il driver video con l’ultima versione da scaricare e le utility del produttore.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-monitor"/></svg></div><h3 data-t="g1h">Monitor di sistema</h3><p data-t="g1">CPU, GPU, RAM e dischi in tempo reale, il Livello LollozzOS, la Gestione attività con i consigli, Ottimizza con un click e la Modalità competitiva intelligente.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3>Debloat</h3><p data-t="g2">LollozzOS Debloat: privacy, pubblicità, funzioni IA, Start, barra, Esplora file e prestazioni in una schermata, 119 voci che si annullano una per una. Poi le app superflue, Rimuovi Windows AI (Copilot, Recall e le altre IA) e i servizi uno per uno.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="g3h">GPU e grafica</h3><p data-t="g3">Le ottimizzazioni della tua scheda (NVIDIA, AMD o Intel), il driver video con l’ultima versione da scaricare, le utility del produttore e l’Affinità: gli interrupt della scheda video sull’ultimo core, misurati prima e dopo.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wifi"/></svg></div><h3 data-t="g4h">Rete</h3><p data-t="g4">Rete impostata sulla latenza, test di 14 DNS, velocità, pacchetti persi, latenza sotto carico e priorità di rete per i giochi.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-head"/></svg></div><h3>Audio</h3><p data-t="g5">Equalizzazione sonorità per sentire meglio i passi, volume che non si abbassa nelle chiamate, ritardo audio minimo. E la Mod Audio Warzone.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-head"/></svg></div><h3>Audio</h3><p data-t="g5">Equalizzazione sonorità per sentire meglio i passi, volume che non si abbassa nelle chiamate, Nahimic spento e ritardo audio minimo, anche tutto in un clic.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3 data-t="g6h">Energia e prestazioni</h3><p data-t="g6">Piani Quotidiano e Gaming fatti per il tuo PC, timer e reattività, risparmio di CPU, USB e PCI Express, interrupt MSI.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-eye"/></svg></div><h3>Privacy</h3><p data-t="g7">Telemetria, pubblicità, cronologia delle attività, posizione, Cortana, segnalazione errori: tutto su una schermata, e “Blocca tutto” in un clic.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="g8h">Diagnosi e riparazione</h3><p data-t="g8">Salute dei dischi, spazio usato, 55 riparazioni divise per problema e il registro di tutto quello che è stato fatto.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="g7h">Fix e riparazioni</h3><p data-t="g7">54 riparazioni divise in 11 gruppi (rete, audio, Update e Store, Esplora file…), con la ricerca. Prima vedi i passi, poi l’esito di ognuno.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="g8h">Diagnosi e manutenzione</h3><p data-t="g8">Salute dei dischi, spazio usato, Pulizia del disco e Prepara il PC, le misure del PC e il registro di tutto quello che è stato fatto.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-cpu"/></svg></div><h3>BIOS</h3><p data-t="g9">Secure Boot, TPM, virtualizzazione e profilo della RAM letti dal PC, il BIOS più recente dal sito del produttore, una guida BIOS per la tua scheda madre e “Riavvia nel BIOS”.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-brush"/></svg></div><h3 data-t="g10h">Personalizzazione</h3><p data-t="g10">Sfondi e schermata di blocco, Windows nel colore che vuoi con 17 cursori, i suoni LollozzOS, i monitor e le scorciatoie nel tasto destro del desktop.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-apps"/></svg></div><h3 data-t="g11h">Gestione app</h3><p data-t="g11">I programmi più usati installati dalla fonte ufficiale con winget, la disinstallazione e cosa parte con Windows.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="g12h">Tools e utility</h3><p data-t="g12">HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, pronti da aprire.</p></div>
+        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-tools"/></svg></div><h3 data-t="g12h">Tools e utility</h3><p data-t="g12">HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, pronti da aprire.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-target"/></svg></div><h3 data-t="g13h">Modalità competitiva intelligente</h3><p data-t="g13">La accendi una volta: parte da sola con i giochi, mette le altre app in risparmio e a fine partita ti dà il resoconto.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-book"/></svg></div><h3 data-t="g14h">Una guida per il tuo PC</h3><p data-t="g14">Scritta sul tuo computer: i tuoi componenti, i giochi installati, cosa conviene attivare e in che ordine.</p></div>
         <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-chat"/></svg></div><h3 data-t="g16h">Assistenza in un clic</h3><p data-t="g16">Dal pulsante dell’assistenza mandi una segnalazione con tutto quello che serve per capire il problema, o apri la chat con i file già pronti.</p></div>
@@ -487,26 +488,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
         <ul class="lista">
           <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi1">Prima si salva il tuo file: “Rimetti com’erano” lo riporta indietro.</span></li>
           <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi2">In “Per tutti i giochi”: Modalità gioco, schermo intero, mouse e tastiera.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOD AUDIO -->
-  <section id="modaudio">
-    <div class="wrap duo">
-      <div class="duo-img rivela"><img src="assets/modaudio.jpg" width="1600" height="1000" loading="lazy" alt="La Mod Audio Warzone attiva: la catena da Warzone alle cuffie, tutta a posto" data-alt-en="The Warzone Audio Mod on: the chain from Warzone to your headphones, all fine"></div>
-      <div class="rivela">
-        <span class="tag"><svg class="i" style="width:14px;height:14px"><use href="#i-key"/></svg><span data-t="ma-tag">Con la licenza LollozzOS + Mod Audio</span></span>
-        <h2 data-t="ma-h">Mod Audio Warzone</h2>
-        <p data-t="ma-p">La catena audio della stagione per Warzone e Black Ops 7, con la correzione per le tue cuffie. Un pulsante: l’app installa e configura tutto da sola.</p>
-        <ul class="lista">
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma1">“Applica Mod Audio Warzone”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi e ReaPlugs dai siti ufficiali, configurati da soli, anche dentro Warzone. Ti chiede solo le tue cuffie.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma2">Curva EQ per le tue cuffie, fra oltre 1.600 misure (GadgetryTech, Earphones Archive, Paul Wasabi, Filk e AutoEq).</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma3">Il preset BO7 di ArtTuneDB, usato con il permesso di ArtIsWar, e la Riduzione Arma Adattiva.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma4">La catena sotto controllo mentre LollozzOS è aperta (anche nella barra): all’apertura e ogni 30 minuti, mai durante una partita: se un aggiornamento rompe qualcosa, “Ripara”.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma6">“Prova il suono”: un soffio da ogni direzione del 7.1, attraverso la catena della Mod Audio.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="ma5">“Rimuovi tutto” rimette com’erano Windows, VoiceMeeter e Warzone.</span></li>
         </ul>
       </div>
     </div>
@@ -544,7 +525,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
         <button type="button" role="tab" aria-selected="false" data-img="installa" data-t="t6">Avanzamento</button>
         <button type="button" role="tab" aria-selected="false" data-img="competitiva" data-t="t7">Resoconto</button>
         <button type="button" role="tab" aria-selected="false" data-img="giochi" data-t="t3">Giochi</button>
-        <button type="button" role="tab" aria-selected="false" data-img="modaudio" data-t="t4">Mod Audio</button>
         <button type="button" role="tab" aria-selected="false" data-img="aspetto" data-t="t5">Colori</button>
         <button type="button" role="tab" aria-selected="false" data-img="bios">BIOS</button>
       </div>
@@ -567,7 +547,7 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
       <div class="passi">
         <div class="passo rivela"><h3 data-t="p1h">Scarica e installa</h3><p data-t="p1">Scarica <kbd>LollozzOS_Setup</kbd> dalla pagina delle versioni e avvialo. Il programma d’installazione non è firmato: se Windows SmartScreen avvisa, “Ulteriori informazioni” e poi “Esegui comunque”.</p></div>
         <div class="passo rivela"><h3 data-t="p2h">Provalo per 24 ore</h3><p data-t="p2">La prova gratuita dura 24 ore, una volta per computer: per attivarla ti chiede nome e cognome, email e telefono. Parti da “Ottimizza con un click” nella Home.</p></div>
-        <div class="passo rivela"><h3 data-t="p3h">Attiva la licenza</h3><p data-t="p3">Nell’app scegli LollozzOS o LollozzOS + Mod Audio e copia la richiesta di licenza: arriva anche a Lollozz. Scrivi sul Discord e incolla il codice di sblocco che ricevi. Vale per un computer.</p></div>
+        <div class="passo rivela"><h3 data-t="p3h">Attiva la licenza</h3><p data-t="p3">Nell’app copia la richiesta di licenza: arriva anche a Lollozz. Scrivi sul Discord e incolla il codice di sblocco che ricevi. Vale per un computer.</p></div>
       </div>
     </div>
   </section>
@@ -576,29 +556,20 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
   <section id="licenze">
     <div class="wrap">
       <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="l-eye">Licenze</span>
-        <h2 data-t="l-h">Scegli la tua</h2>
+        <span class="eyebrow" data-t="l-eye">Licenza</span>
+        <h2 data-t="l-h">Una licenza, tutta l’app</h2>
       </div>
-      <div class="licenze">
-        <div class="lic rivela">
+      <div class="licenze una">
+        <div class="lic top-lic rivela">
           <h3>LollozzOS</h3>
           <p class="sotto" data-t="l1s">Tutta l’app, su un computer.</p>
           <ul class="lista">
             <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1a">Ottimizza con un click e tutte le sezioni</span></li>
+            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1d">LollozzOS Debloat, Rimuovi Windows AI e le riparazioni</span></li>
             <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1b">Configurazioni dei giochi e guida per il tuo PC</span></li>
             <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1c">Aggiornamenti dall’app</span></li>
           </ul>
-          <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn">Chiedila sul Discord</a>
-        </div>
-        <div class="lic top-lic rivela">
-          <h3>LollozzOS + Mod Audio</h3>
-          <p class="sotto" data-t="l2s">Tutta l’app, più la Mod Audio Warzone.</p>
-          <ul class="lista">
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2a">Tutto quello della licenza LollozzOS</span></li>
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2b">Mod Audio Warzone con installazione automatica</span></li>
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l2c">Curva EQ per le tue cuffie e preset della stagione</span></li>
-          </ul>
-          <a class="btn btn-p" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn2">Chiedila sul Discord</a>
+          <a class="btn btn-p" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn">Chiedila sul Discord</a>
         </div>
       </div>
       <p class="lic-nota rivela" data-t="l-nota">La licenza è legata all’hardware del computer: non si rivende, non si condivide e non si trasferisce. Prezzi e dettagli sul Discord.</p>
@@ -616,9 +587,8 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
         <details class="rivela"><summary><span data-t="q1">È sicuro per il mio PC?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a1">Prima di ogni modifica LollozzOS salva i valori di prima, e in Ottimizza con un click e prima delle modifiche estreme ti propone anche un punto di ripristino di Windows. Ogni interruttore si rispegne, e “Ripristina tutto” annulla tutte le modifiche dell’app.</p></details>
         <details class="rivela"><summary><span data-t="q2">Su quali Windows funziona?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a2">Windows 10 e Windows 11 a 64 bit. L’app parte come amministratore, perché cambia impostazioni di sistema.</p></details>
         <details class="rivela"><summary><span data-t="q3">In che lingua è l’app?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a3">In italiano e in inglese: segue la lingua di Windows, e la cambi quando vuoi dal globo in basso a sinistra.</p></details>
-        <details class="rivela"><summary><span data-t="q4">Mi serve la Mod Audio per usare LollozzOS?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a4">No. La Mod Audio Warzone è un’aggiunta, con la licenza LollozzOS + Mod Audio. Tutto il resto funziona con la licenza LollozzOS.</p></details>
         <details class="rivela"><summary><span data-t="q6">La Modalità competitiva intelligente rallenta il PC quando non gioco?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a6">No. Aspetta un gioco senza fare niente; quando ne parte uno cambia le precedenze solo per quella partita, e quando lo chiudi rimette tutto com’era. Se passi a un’altra finestra (Alt+Tab) le app tornano normali finché non torni nel gioco.</p></details>
-        <details class="rivela"><summary><span data-t="q7">Dopo un aggiornamento di Windows devo rifare Ottimizza con un click?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a7">Solo se serve: la diagnosi nella Home controlla il PC, e se Windows ha cambiato qualcosa e il punteggio scende sotto 80 il riquadro te lo propone di nuovo.</p></details>
+        <details class="rivela"><summary><span data-t="q7">Dopo un aggiornamento di Windows devo rifare Ottimizza con un click?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a7">Solo se serve: il Livello LollozzOS nella Home controlla il PC, e se Windows ha annullato qualcosa e il Livello scende sotto l’80% il riquadro te lo propone di nuovo.</p></details>
         <details class="rivela"><summary><span data-t="q5">Windows dice che il programma non è riconosciuto. Cosa faccio?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a5">Il programma d’installazione non è firmato, quindi al primo avvio Windows SmartScreen può avvisare. Clicca “Ulteriori informazioni” e poi “Esegui comunque”. Scaricalo solo da questa pagina o dal GitHub di LollozzOS.</p></details>
       </div>
     </div>
@@ -688,35 +658,34 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
   // L'italiano sta nella pagina; qui c'e' solo l'inglese. Le chiavi sono i
   // data-t degli elementi.
   var EN = {
-    'nav4': 'Audio Mod', 't4': 'Audio Mod',
     'nav0': 'What’s new',
     'nav6': 'Competitive',
     'f-nov': 'What’s new',
-    'hero-nov': 'New: Smart Competitive Mode and a clearer One-click optimize',
+    'hero-nov': 'New: Debloat on one screen and repairs that really work',
     'nv-eye': 'What’s new',
     'nv-h': 'The latest news',
     'nv-p': 'What arrived in the latest versions. The app checks for updates by itself: when a new version is out it tells you, downloads it and opens the installer (license, settings and backups stay).',
-    'nv-data': 'Updated on 2 October 2026',
+    'nv-data': 'Updated on 7 October 2026',
     'nv-nuovo1': 'NEW',
     'nv-nuovo2': 'NEW',
     'nv-nuovo3': 'NEW',
     'nv-nuovo4': 'NEW',
-    'nv1h': 'Smart Competitive Mode',
-    'nv1': 'Turn it on once and it does everything by itself: it starts when you launch a game and stops when you close it, even with LollozzOS closed. The game at high priority, every other app in efficiency mode, timer at 0.5 ms.',
-    'nv2h': 'A report for every match',
-    'nv2': 'Average FPS, 1% and 0.1% low, the stutters with whatever was using the processor at that moment, latency and tips. The last 30 stay in the app: save them to the desktop or send them to Lollozz.',
-    'nv3h': 'One-click optimize, clearer',
-    'nv3': 'First you see the processes now, counted on your PC, and the estimate with LollozzOS, and “See details” with everything that changes. The progress is on the Home screen; at the end the PC restarts by itself and LollozzOS shows you the result.',
-    'nv4h': 'Windows in any color',
-    'nv4': 'Accent, dark or light mode, selection box and 17 cursors in any color, with a File Explorer preview and the real cursors. With “One color for everything” the app takes the color too.',
-    'nv5h': 'Audio Mod in one button',
-    'nv5': '“Apply Mod Audio Warzone” installs and sets up everything and only asks for your headphones. Then the chain stays under watch, from the game to your headphones, and “Repair” puts back whatever an update broke.',
-    'nv6h': 'The latest BIOS',
-    'nv6': 'LollozzOS checks on the manufacturer’s website whether there is a newer BIOS for your motherboard, downloads it and verifies it. You install it yourself, from the BIOS.',
-    'nv7h': 'The right-click menu',
-    'nv7': 'Quick tools, Power plans, Audio Mod and Pad in the desktop right-click menu: the pad overclock, which LollozzOS copies to your PC, and the website to calibrate it.',
-    'nv8h': 'Safer',
-    'nv8': 'You create and use Windows restore points from the app, Restore undoes everything or one change at a time, and if Windows has an update half done LollozzOS waits before changing anything.',
+    'nv1h': "LollozzOS Debloat on one screen",
+    'nv1': "Privacy, ads, AI features, Start, taskbar and performance: 119 items on one screen. It applies only what you tick, the ones already done are marked “Already done” and each one can be undone. It is in One-click optimize too.",
+    'nv2h': "Windows AI really removed",
+    'nv2': "Copilot, Recall and the other AI features removed from Windows, not just turned off. Each of the 12 items tells you whether it is still on your PC or already gone. The Safe preset leaves out the 3 that can make Windows Update fail, and “Bring the AI back” puts everything back.",
+    'nv3h': "Repairs that really work",
+    'nv3': "54 fixes in 11 groups, on their own page and with search. First you see the steps, then the result of each one. The Store reinstalls even if it had been removed, Edge comes back, and DISM, SFC and the disk check report the real result.",
+    'nv4h': "Task manager with tips",
+    'nv4': "Next to every program, a tip: high priority for games, low for whatever works in the background, close it if it eats processor or memory. You choose with one click: LollozzOS never does anything by itself.",
+    'nv5h': "Graphics card Affinity",
+    'nv5': "The graphics card interrupts go to the last core, usually the least busy, instead of Core 0. On some PCs frametimes get steadier, with fewer spikes; on others nothing changes, so the app measures before and after. It is already in One-click optimize.",
+    'nv6h': "Eight more optimizations",
+    'nv6': "No automatic maintenance starting while you play, less telemetry, no energy log in the background, LLMNR off and about 7 GB of reserved storage freed. Each one has its own switch, with what you give up written next to it.",
+    'nv7h': "The LollozzOS Level",
+    'nv7': "The optimizations that are on and the PC health in one number. If a Windows update undoes some of them the number drops, and One-click optimize is offered again.",
+    'nv8h': "One-click optimize, safer",
+    'nv8': "You can stop it while it works: the optimizations already done stay and the PC does not restart.",
     'c3': 'You follow the progress in the Home panel: the percentage, the current step and the phases.',
     'mc-eye': 'Every match',
     'mc-h': 'Smart Competitive Mode',
@@ -726,14 +695,13 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'mc3': 'Game Bar off, services not needed for gaming paused, mouse acceleration off, the Lollozz Gaming power plan, notifications off.',
     'mc4': 'It never puts Windows processes, Microsoft Defender, anti-cheats, the audio chain, video drivers or programs that remap keyboard and controller in efficiency mode; anything using too much processor is only slowed down, and everything goes back as it was after the match.',
     'mc5': 'At the end of the match, the report: average FPS, 1% and 0.1% low, stutters, latency and tips. Save it to the desktop or send it to Lollozz.',
-    'ma6': '“Test the sound”: a whoosh from each direction of 7.1, through the Audio Mod chain.',
     's5': 'If Windows has an update to finish, LollozzOS waits before changing anything.',
     't6': 'Progress',
     't7': 'Report',
     'q6': 'Does Smart Competitive Mode slow the PC down when I’m not playing?',
     'a6': 'No. It waits for a game doing nothing; when one starts it changes priorities for that match only, and when you close it everything goes back as it was. If you switch to another window (Alt+Tab) the apps go back to normal until you return to the game.',
     'q7': 'After a Windows update, do I need to run One-click optimize again?',
-    'a7': 'Only if needed: the diagnosis on the Home screen checks the PC, and if Windows changed something and the score drops below 80 the panel offers it again.',
+    'a7': 'Only if needed: the LollozzOS Level on the Home screen checks the PC, and if Windows undid something and the Level drops below 80% the panel offers it again.',
     'nav1': 'One click', 'nav2': 'Features', 'nav3': 'Games', 'nav5': 'Get started',
     'scarica-s': 'Download',
     'pill': 'Windows 10 and 11 · Made by Lollozz',
@@ -746,20 +714,20 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'k3': 'fixes grouped by problem: network, audio, Windows Update…',
     'k4b': 'All', 'k4': 'reversible: the previous state is saved before each change',
     'c-eye': 'The first step', 'c-h': 'One-click optimize',
-    'c-p': 'Restore point, unnecessary services, privacy, gaming optimizations, power, network and the LollozzOS look, then a restart. Before it starts you see the processes now, counted on your PC, and the estimate with LollozzOS.',
+    'c-p': 'Restore point, unnecessary services, LollozzOS Debloat, gaming optimizations, power, network and the LollozzOS look, then a restart. Before it starts you see the processes now, counted on your PC, and the estimate with LollozzOS.',
     'c1': '“See details” shows everything that changes, group by group. A few questions (Wi-Fi, Bluetooth, printing, Store, Xbox, colors…) decide what stays, with the recommended answer already selected; with “Customize” you turn items on and off one by one.',
     'c2': 'A copy of the current settings is always included: it is what makes undoing everything possible. The Windows restore point starts already selected.',
     'c4': 'At the end the PC restarts by itself after 20 seconds. After the restart LollozzOS opens again and shows you processes, services and Windows boot time before and after.',
     'f-eye': 'All in one app', 'f-h': 'Every part of Windows that matters for gaming',
     'f-p': 'Every switch reads the real state from the system: you see what Windows is actually doing, not what you hope.',
-    'g1h': 'System monitor', 'g1': 'Live CPU, GPU, RAM and disks, One-click optimize, Smart Competitive Mode, the PC diagnosis and disk cleanup.',
-    'g2': 'WinUtil, Win11Debloat and RemoveWindowsAI (Copilot, Recall and the other AI features) ready to open, unneeded apps, Windows ads and suggestions, privacy and services one by one.',
-    'g3h': 'GPU & graphics', 'g3': 'The optimizations for your card (NVIDIA, AMD or Intel), the video driver with the latest version to download and the manufacturer’s utilities.',
+    'g1h': 'System monitor', 'g1': 'Live CPU, GPU, RAM and disks, the LollozzOS Level, the Task manager with tips, One-click optimize and Smart Competitive Mode.',
+    'g2': 'LollozzOS Debloat: privacy, ads, AI features, Start, taskbar, File Explorer and performance on one screen, 119 items that can be undone one by one. Then unneeded apps, Remove Windows AI (Copilot, Recall and the other AI) and services one by one.',
+    'g3h': 'GPU & graphics', 'g3': 'The optimizations for your card (NVIDIA, AMD or Intel), the video driver with the latest version to download, the manufacturer’s utilities and Affinity: the graphics card interrupts on the last core, measured before and after.',
     'g4h': 'Network', 'g4': 'Latency-oriented network, a test of 14 DNS providers, speed, packet loss, latency under load and network priority for games.',
-    'g5': 'Loudness equalization to hear footsteps better, volume that doesn’t drop during calls, minimum audio latency. And the Warzone Audio Mod.',
+    'g5': 'Loudness equalization to hear footsteps better, volume that doesn’t drop during calls, Nahimic off and minimum audio latency, all in one click too.',
     'g6h': 'Power & performance', 'g6': 'Everyday and Gaming power plans built for your PC, timer and responsiveness, CPU, USB and PCI Express power saving, MSI interrupts.',
-    'g7': 'Telemetry, ads, activity history, location, Cortana, error reporting: all on one screen, and “Block everything” in one click.',
-    'g8h': 'Diagnosis & repair', 'g8': 'Disk health, used space, 55 fixes grouped by problem and a log of everything that was done.',
+    'g7h': 'Fixes & repairs', 'g7': '54 fixes in 11 groups (network, audio, Update and Store, File Explorer…), with search. First you see the steps, then the result of each one.',
+    'g8h': 'Diagnosis & maintenance', 'g8': 'Disk health, used space, Disk cleanup and Prepare the PC, PC measurements and a log of everything that was done.',
     'g9': 'Secure Boot, TPM, virtualization and memory profile read from the PC, the latest BIOS from the manufacturer’s website, a BIOS guide for your motherboard and “Restart into BIOS”.',
     'g10h': 'Appearance', 'g10': 'Wallpapers and lock screen, Windows in any color with 17 cursors, LollozzOS sounds, displays and the desktop right-click shortcuts.',
     'g11h': 'Apps', 'g11': 'Popular programs installed from the official source with winget, uninstalling, and what starts with Windows.',
@@ -773,13 +741,6 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'e': 'and', 'cod-next': 'Call of Duty, next installment (coming soon)',
     'gi1': 'Your file is backed up first: “Put it back” restores it.',
     'gi2': 'In “For every game”: Game Mode, fullscreen, mouse and keyboard.',
-    'ma-tag': 'With the LollozzOS + Audio Mod license', 'ma-h': 'Warzone Audio Mod',
-    'ma-p': 'The season’s audio chain for Warzone and Black Ops 7, with the correction for your headphones. One button: the app installs and sets up everything by itself.',
-    'ma1': '“Apply Mod Audio Warzone”: Hi-Fi Cable, VoiceMeeter, Equalizer APO, HeSuVi and ReaPlugs from the official websites, set up by themselves, inside Warzone too. It only asks for your headphones.',
-    'ma2': 'EQ curve for your headphones, among more than 1,600 measurements (GadgetryTech, Earphones Archive, Paul Wasabi, Filk and AutoEq).',
-    'ma3': 'ArtTuneDB’s BO7 preset, used with ArtIsWar’s permission, and Adaptive Weapon Reduction.',
-    'ma4': 'The chain under watch while LollozzOS is open (tray included): at launch and every 30 minutes, never during a match: if an update breaks something, “Repair”.',
-    'ma5': '“Remove everything” puts Windows, VoiceMeeter and Warzone back as they were.',
     's-eye': 'Safe and reversible', 's-h': 'The difference between a tool and a gamble',
     's-p': 'Every optimization is written as data: its value when on and its value when off. The same data is used to apply it, undo it and read how it really is.',
     's1': 'The previous values are saved before each change. Turn a switch off and it goes back to how it was.',
@@ -791,17 +752,15 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'i-eye': 'Get started', 'i-h': 'Three steps and you’re ready',
     'p1h': 'Download and install', 'p1': 'Download <kbd>LollozzOS_Setup</kbd> from the releases page and run it. The installer is not signed: if Windows SmartScreen warns you, choose “More info” and then “Run anyway”.',
     'p2h': 'Try it for 24 hours', 'p2': 'The free trial lasts 24 hours, once per computer: to start it, it asks for your first and last name, email and phone. Start from “One-click optimize” on the Home screen.',
-    'p3h': 'Activate your license', 'p3': 'In the app pick LollozzOS or LollozzOS + Audio Mod and copy the license request: Lollozz receives it too. Write on Discord and paste the unlock code you receive. It covers one computer.',
-    'l-eye': 'Licenses', 'l-h': 'Pick yours',
-    'l1s': 'The whole app, on one computer.', 'l1a': 'One-click optimize and every section', 'l1b': 'Game configs and a guide for your PC', 'l1c': 'Updates from inside the app',
-    'l2s': 'The whole app, plus the Warzone Audio Mod.', 'l2a': 'Everything in the LollozzOS license', 'l2b': 'Warzone Audio Mod with automatic setup', 'l2c': 'EQ curve for your headphones and season presets',
-    'l-btn': 'Ask on Discord', 'l-btn2': 'Ask on Discord',
+    'p3h': 'Activate your license', 'p3': 'In the app copy the license request: Lollozz receives it too. Write on Discord and paste the unlock code you receive. It covers one computer.',
+    'l-eye': 'License', 'l-h': 'One license, the whole app',
+    'l1s': 'The whole app, on one computer.', 'l1a': 'One-click optimize and every section', 'l1b': 'Game configs and a guide for your PC', 'l1c': 'Updates from inside the app', 'l1d': 'LollozzOS Debloat, Remove Windows AI and the repairs',
+    'l-btn': 'Ask on Discord',
     'l-nota': 'The license is tied to the computer’s hardware: it cannot be resold, shared or transferred. Prices and details on Discord.',
     'q-h': 'Frequently asked questions',
     'q1': 'Is it safe for my PC?', 'a1': 'Before each change LollozzOS saves the previous values, and in One-click optimize and before extreme changes it also offers a Windows restore point. Every switch can be turned off again, and “Restore everything” undoes every change the app made.',
     'q2': 'Which Windows does it run on?', 'a2': 'Windows 10 and Windows 11, 64-bit. The app runs as administrator, because it changes system settings.',
     'q3': 'What language is the app in?', 'a3': 'Italian and English: it follows the Windows language, and you can switch it any time from the globe at the bottom left.',
-    'q4': 'Do I need the Audio Mod to use LollozzOS?', 'a4': 'No. The Warzone Audio Mod is an add-on, with the LollozzOS + Audio Mod license. Everything else works with the LollozzOS license.',
     'q5': 'Windows says the program isn’t recognized. What do I do?', 'a5': 'The installer is not signed, so Windows SmartScreen may warn you the first time. Click “More info” and then “Run anyway”. Only download it from this page or from the LollozzOS GitHub.',
     'co-h': 'Join the community', 'co-p': 'Support, licenses, news and the Italian competitive gaming community that tests and improves LollozzOS.',
     'so1': 'Support and licenses',
@@ -811,8 +770,8 @@ footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 
     'legale': 'LollozzOS changes registry values, services, network settings, power plans and driver settings. It is provided as is, without warranty: read what each switch does before turning it on, and keep the restore point the app offers to create. LollozzOS is not affiliated with Microsoft or with the publishers of the games mentioned; game names and images belong to their respective owners. Some features open programs by other authors, which remain theirs and keep their own licenses.'
   };
   var DIDASCALIE = {
-    it: { home: 'La Home: il tuo PC in tempo reale, Ottimizza con un click, la Modalità competitiva intelligente e la diagnosi.', oneclick: 'Verrà installato LollozzOS: i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.', installa: 'L’avanzamento nel riquadro della Home: la percentuale, il passo in corso e le fasi.', competitiva: 'Il resoconto di una partita: FPS, 1% e 0,1% low, scatti, processore e consigli.', giochi: 'Giochi: la configurazione pronta per ogni gioco, ricalcolata sul tuo PC.', modaudio: 'Mod Audio Warzone: la catena controllata, dal gioco alle tue cuffie.', aspetto: 'Colore e tema di Windows: accento, modalità, selezione e cursori in qualsiasi colore, con l’anteprima.', bios: 'BIOS: cosa c’è da sistemare, il BIOS più recente dal sito del produttore e una guida per la tua scheda madre.' },
-    en: { home: 'Home: your PC live, One-click optimize, Smart Competitive Mode and the diagnosis.', oneclick: 'LollozzOS will be installed: the processes now, counted on your PC, and the estimate with LollozzOS.', installa: 'The progress in the Home panel: the percentage, the current step and the phases.', competitiva: 'A match report: FPS, 1% and 0.1% low, stutters, processor and tips.', giochi: 'Games: the ready-made config for each game, recalculated for your PC.', modaudio: 'Warzone Audio Mod: the chain under watch, from the game to your headphones.', aspetto: 'Windows color and theme: accent, mode, selection and cursors in any color, with a preview.', bios: 'BIOS: what needs fixing, the latest BIOS from the manufacturer’s website and a guide for your motherboard.' }
+    it: { home: 'La Home: il tuo PC in tempo reale, Ottimizza con un click, la Modalità competitiva intelligente e la diagnosi.', oneclick: 'Verrà installato LollozzOS: i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.', installa: 'L’avanzamento nel riquadro della Home: la percentuale, il passo in corso e le fasi.', competitiva: 'Il resoconto di una partita: FPS, 1% e 0,1% low, scatti, processore e consigli.', giochi: 'Giochi: la configurazione pronta per ogni gioco, ricalcolata sul tuo PC.', aspetto: 'Colore e tema di Windows: accento, modalità, selezione e cursori in qualsiasi colore, con l’anteprima.', bios: 'BIOS: cosa c’è da sistemare, il BIOS più recente dal sito del produttore e una guida per la tua scheda madre.' },
+    en: { home: 'Home: your PC live, One-click optimize, Smart Competitive Mode and the diagnosis.', oneclick: 'LollozzOS will be installed: the processes now, counted on your PC, and the estimate with LollozzOS.', installa: 'The progress in the Home panel: the percentage, the current step and the phases.', competitiva: 'A match report: FPS, 1% and 0.1% low, stutters, processor and tips.', giochi: 'Games: the ready-made config for each game, recalculated for your PC.', aspetto: 'Windows color and theme: accent, mode, selection and cursors in any color, with a preview.', bios: 'BIOS: what needs fixing, the latest BIOS from the manufacturer’s website and a guide for your motherboard.' }
   };
   var TITOLI = {
     it: ['LollozzOS — Il tuo PC, pronto per giocare', 'LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e GPU impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.'],
