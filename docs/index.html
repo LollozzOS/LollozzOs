@@ -2,848 +2,771 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LollozzOS — Il tuo PC, pronto per giocare</title>
-<meta name="description" content="LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e GPU impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.">
-<meta name="theme-color" content="#050507">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LollozzOS: il tuo PC, pronto per giocare</title>
+<meta name="description" content="LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e scheda video impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.">
+<meta name="theme-color" content="#000000">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/logo-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LollozzOS — Il tuo PC, pronto per giocare">
-<meta property="og:description" content="Ottimizzazione di Windows per il gaming in un'app sola. Tutto reversibile. Prova gratuita di 24 ore.">
+<meta property="og:title" content="LollozzOS: il tuo PC, pronto per giocare">
+<meta property="og:description" content="Ottimizzazione di Windows per il gaming in un'app sola. Ogni modifica si annulla. Prova gratuita di 24 ore.">
 <meta property="og:image" content="https://lollozzos.github.io/LollozzOs/assets/og.jpg">
 <meta property="og:url" content="https://lollozzos.github.io/LollozzOs/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/font/poppins-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="assets/lettering.png" as="image">
 <style>
+@font-face { font-family: 'Poppins'; font-weight: 300; font-display: swap; src: url(assets/font/poppins-300.woff) format('woff'); }
+@font-face { font-family: 'Poppins'; font-weight: 400; font-display: swap; src: url(assets/font/poppins-400.woff) format('woff'); }
+@font-face { font-family: 'Poppins'; font-weight: 500; font-display: swap; src: url(assets/font/poppins-500.woff) format('woff'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; font-display: swap; src: url(assets/font/poppins-700.woff) format('woff'); }
+
+/* Il marchio degli sfondi LollozzOS: nero OLED, un viola solo, la scritta sottile.
+   Il sito e' il desktop LollozzOS (barra in basso, menu Start, finestre),
+   con il pavimento lucido dello sfondo "riflesso" sotto la scritta e sotto
+   l'app, e dentro le finestre l'impaginazione dello sfondo "editoriale". */
 :root {
-  --bg: #050507;
-  --bg-2: #0a0910;
-  --panel: #0e0c15;
-  --panel-2: #14111d;
-  --border: #221d30;
-  --border-2: #2e2743;
-  --text: #f6f4fb;
-  --text-dim: #a19cb0;
-  --text-mute: #6f6a80;
-  --violet: #8b5cf6;
-  --violet-2: #a78bfa;
-  --violet-deep: #6d28d9;
-  --violet-rgb: 139, 92, 246;
-  --green: #34d399;
-  --amber: #fbbf24;
-  --radius: 16px;
-  --font: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Roboto, Arial, sans-serif;
-  --mono: 'Cascadia Mono', Consolas, ui-monospace, 'SF Mono', Menlo, monospace;
+  --nero: #000000;
+  --viola: #5900FF;
+  --viola-luce: #8A4DFF;
+  --testo: #ECEBF3;
+  --dim: #918CA8;
+  --filo: rgba(255, 255, 255, .09);
+  --finestra: #07050D;
+  --titolo: #0C0916;
+  --bordo-viola: rgba(138, 77, 255, .28);
+  --barra: 58px;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-bottom: calc(var(--barra) + 24px); }
 body {
-  margin: 0; background: var(--bg); color: var(--text); font-family: var(--font);
-  font-size: 16px; line-height: 1.6; overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  margin: 0; background: var(--nero); color: var(--testo);
+  font: 400 16.5px/1.7 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased; padding-bottom: var(--barra); overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-.os { color: var(--violet-2); }
-.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+:focus-visible { outline: 2px solid var(--viola-luce); outline-offset: 3px; border-radius: 6px; }
+.ancora { display: block; height: 0; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-svg.i { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.salta { position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--viola); color: #fff; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+.salta:focus { top: 12px; }
+svg.i { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-/* ---------- barra in alto ---------- */
-.top {
-  position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  background: rgba(5, 5, 7, .72); border-bottom: 1px solid rgba(255, 255, 255, .06);
+/* ---------- bottoni ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; font: 500 15px/1 'Poppins', sans-serif; text-decoration: none; white-space: nowrap; transition: background .2s, border-color .2s, box-shadow .2s; }
+.btn.p { background: var(--viola); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14), 0 14px 44px rgba(89, 0, 255, .45); }
+.btn.p:hover { background: #6814ff; }
+.btn.s { border: 1px solid rgba(255, 255, 255, .2); color: var(--testo); background: rgba(0, 0, 0, .35); }
+.btn.s:hover { border-color: rgba(255, 255, 255, .42); }
+
+/* ---------- il desktop ---------- */
+.desk { position: relative; min-height: calc(100vh - var(--barra) - 120px); min-height: calc(100svh - var(--barra) - 120px); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 90px 24px 70px; overflow-x: hidden; overflow-x: clip; overflow-y: visible; isolation: isolate; }
+.luce { position: absolute; z-index: -1; pointer-events: none; border-radius: 50%; }
+.luce.ed { right: -8%; top: -24%; width: 1150px; height: 900px; background: radial-gradient(closest-side, rgba(89, 0, 255, .62), rgba(70, 0, 200, .22) 40%, rgba(40, 0, 120, .08) 64%, transparent 80%); }
+.luce.pu { left: -12%; bottom: -30%; width: 760px; height: 640px; background: radial-gradient(closest-side, rgba(89, 0, 255, .42), rgba(60, 0, 170, .12) 50%, transparent 76%); }
+.luce.ri { left: 50%; top: 30%; width: 1000px; height: 360px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(89, 0, 255, .5), rgba(89, 0, 255, .1) 60%, transparent 80%); }
+
+.icone { position: absolute; left: 22px; top: 22px; display: grid; gap: 20px; margin: 0; padding: 0; list-style: none; }
+.icone a { width: 96px; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 8px 4px; border-radius: 10px; text-decoration: none; font-size: 12.5px; line-height: 1.3; text-align: center; color: #fff; text-shadow: 0 1px 3px #000; }
+.icone a:hover { background: rgba(255, 255, 255, .06); }
+.icone .q { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(145deg, #1a1230, #07050d); border: 1px solid rgba(138, 77, 255, .45); box-shadow: 0 8px 24px rgba(89, 0, 255, .25); }
+.icone .q svg { width: 25px; height: 25px; }
+.icone img { width: 52px; height: 52px; border-radius: 13px; box-shadow: 0 8px 24px rgba(89, 0, 255, .3); }
+
+.marchio { width: min(780px, 86vw); margin: 0; }
+.marchio img { width: 100%; height: auto; }
+.marchio .rif { transform: scaleY(-1); opacity: .3; margin-top: 8px; -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, .9), transparent 68%); mask-image: linear-gradient(to top, rgba(0, 0, 0, .9), transparent 68%); }
+.by { position: relative; display: flex; align-items: center; gap: 18px; width: min(780px, 86vw); margin-top: calc(min(780px, 86vw) * -.075); font-size: 17px; }
+.by i { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, var(--viola)); }
+.by i:last-child { background: linear-gradient(90deg, var(--viola), transparent); }
+.by b { font-weight: 700; }
+.pavimento { width: 100vw; height: 1px; margin-top: 30px; background: linear-gradient(90deg, transparent, rgba(138, 77, 255, .45), transparent); }
+.slogan { margin: 34px 0 0; font-weight: 300; font-size: clamp(24px, 3vw, 32px); line-height: 1.25; text-align: center; letter-spacing: .005em; }
+.cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 28px; }
+.nota { margin: 16px 0 0; font-size: 13.5px; color: var(--dim); text-align: center; }
+
+/* il momento d'apertura: la scritta sale dal pavimento, una volta */
+@media (prefers-reduced-motion: no-preference) {
+  .marchio > img:first-child { animation: sale 1.1s cubic-bezier(.2, .7, .2, 1) both; }
+  .marchio .rif { animation: rif 1.4s .25s ease-out both; }
+  .luce.ri { animation: accende 1.8s ease-out both; }
+  .barra { animation: barra .7s .5s cubic-bezier(.2, .7, .2, 1) both; }
 }
-.top .wrap { display: flex; align-items: center; gap: 20px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 18px; letter-spacing: -.01em; }
-.brand img { width: 34px; height: 34px; border-radius: 50%; }
-.nav { display: flex; gap: 4px; margin-left: 12px; }
-.nav a { text-decoration: none; color: var(--text-dim); font-size: 14px; font-weight: 600; padding: 8px 12px; border-radius: 10px; transition: color .15s, background .15s; }
-.nav a:hover { color: var(--text); background: rgba(255, 255, 255, .05); }
-.top-dx { margin-left: auto; display: flex; align-items: center; gap: 10px; }
-.lang { display: inline-flex; border: 1px solid var(--border-2); border-radius: 999px; padding: 3px; background: var(--panel); }
-.lang button {
-  font: 700 12px/1 var(--font); letter-spacing: .04em; color: var(--text-dim); background: none; border: 0;
-  padding: 7px 11px; border-radius: 999px; cursor: pointer;
-}
-.lang button[aria-pressed="true"] { background: var(--violet); color: #fff; }
-.menu-btn { display: none; background: none; border: 1px solid var(--border-2); color: var(--text); border-radius: 10px; width: 40px; height: 40px; align-items: center; justify-content: center; cursor: pointer; }
+@keyframes sale { from { opacity: 0; transform: translateY(18px); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes rif { from { opacity: 0; } to { opacity: .3; } }
+@keyframes accende { from { opacity: 0; } to { opacity: 1; } }
+@keyframes barra { from { transform: translateY(100%); } to { transform: none; } }
 
-/* ---------- pulsanti ---------- */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; cursor: pointer;
-  font: 700 15px/1 var(--font); padding: 15px 22px; border-radius: 12px; border: 1px solid transparent;
-  transition: transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-}
-.btn:hover { transform: translateY(-1px); }
-.btn-p { background: linear-gradient(135deg, var(--violet) 0%, var(--violet-deep) 100%); color: #fff; box-shadow: 0 10px 30px rgba(var(--violet-rgb), .35), inset 0 1px 0 rgba(255, 255, 255, .18); }
-.btn-p:hover { box-shadow: 0 14px 38px rgba(var(--violet-rgb), .5), inset 0 1px 0 rgba(255, 255, 255, .18); }
-.btn-g { background: rgba(255, 255, 255, .04); border-color: var(--border-2); color: var(--text); }
-.btn-g:hover { border-color: rgba(var(--violet-rgb), .6); background: rgba(var(--violet-rgb), .08); }
-.btn-s { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+/* ---------- la barra delle applicazioni ---------- */
+.barra { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; height: var(--barra); padding-bottom: env(safe-area-inset-bottom); display: flex; align-items: center; justify-content: center; background: rgba(14, 10, 26, .78); -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3); border-top: 1px solid rgba(255, 255, 255, .07); }
+.barra .mezzo { display: flex; align-items: center; gap: 4px; }
+.barra .start, .barra .voce { position: relative; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 9px; border: 0; background: none; color: #d9d6e6; font: 400 14px/1 'Poppins', sans-serif; text-decoration: none; cursor: pointer; }
+.barra .start { padding: 0 7px; }
+.barra .start img { width: 32px; height: 32px; border-radius: 8px; }
+.barra .voce:hover, .barra .start:hover, .barra .start[aria-expanded="true"] { background: rgba(255, 255, 255, .07); }
+.barra .voce.qui::after { content: ""; position: absolute; left: 50%; bottom: 4px; width: 18px; height: 3px; margin-left: -9px; border-radius: 2px; background: var(--viola-luce); }
+.barra .vassoio { position: absolute; right: 14px; top: 0; height: var(--barra); display: flex; align-items: center; gap: 10px; }
+.lingua { display: flex; border: 1px solid rgba(255, 255, 255, .12); border-radius: 999px; padding: 2px; }
+.lingua button { border: 0; background: none; color: var(--dim); font: 500 12.5px/1 'Poppins', sans-serif; padding: 7px 11px; border-radius: 999px; cursor: pointer; }
+.lingua button[aria-pressed="true"] { background: rgba(255, 255, 255, .1); color: #fff; }
+.barra .scarica { height: 38px; padding: 0 18px; font-size: 13.5px; }
+.ora { font-size: 12.5px; line-height: 1.3; text-align: right; color: #d9d6e6; min-width: 76px; }
+.barra .menu-m { display: none; }
 
-/* ---------- hero ---------- */
-.hero { position: relative; padding: 84px 0 40px; overflow: hidden; }
-.hero::before {
-  content: ''; position: absolute; inset: -20% -10% auto; height: 820px; pointer-events: none; z-index: -1;
-  background:
-    radial-gradient(40% 50% at 50% 12%, rgba(var(--violet-rgb), .30), transparent 70%),
-    radial-gradient(30% 35% at 85% 40%, rgba(109, 40, 217, .20), transparent 70%),
-    radial-gradient(30% 35% at 12% 45%, rgba(139, 92, 246, .12), transparent 70%);
-}
-.hero::after {
-  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .35;
-  background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
-  background-size: 56px 56px; mask-image: radial-gradient(60% 55% at 50% 30%, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(60% 55% at 50% 30%, #000 30%, transparent 75%);
-}
-.hero-in { text-align: center; max-width: 860px; margin: 0 auto; }
-.pill {
-  display: inline-flex; align-items: center; gap: 8px; font: 600 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--violet-2);
-  padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(var(--violet-rgb), .35); background: rgba(var(--violet-rgb), .08);
-}
-.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
-h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1.02; letter-spacing: -.035em; font-weight: 800; margin: 22px 0 18px; }
-h1 .grad { background: linear-gradient(100deg, #fff 10%, var(--violet-2) 55%, var(--violet) 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.lead { font-size: clamp(17px, 2.1vw, 20px); color: var(--text-dim); max-width: 720px; margin: 0 auto; }
-.cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 34px 0 16px; }
-.nota { font-size: 13.5px; color: var(--text-mute); display: flex; gap: 8px 18px; justify-content: center; flex-wrap: wrap; }
-.nota span { display: inline-flex; align-items: center; gap: 6px; }
-.nota svg.i { width: 15px; height: 15px; color: var(--green); }
-.shot {
-  position: relative; margin: 56px auto 0; max-width: 1080px; border-radius: 18px; padding: 8px;
-  background: linear-gradient(180deg, rgba(var(--violet-rgb), .35), rgba(var(--violet-rgb), .05) 60%, transparent);
-  box-shadow: 0 40px 120px rgba(var(--violet-rgb), .22), 0 20px 60px rgba(0, 0, 0, .6);
-}
-.shot img:not(.firma) { border-radius: 12px; border: 1px solid rgba(255, 255, 255, .08); width: 100%; height: auto; aspect-ratio: 16 / 10; background: var(--panel); }
-.firma { position: absolute; right: -30px; bottom: -40px; width: 260px; opacity: .08; pointer-events: none; }
+/* il menu Start: tutto il sito da un bottone */
+.start-menu { position: fixed; z-index: 70; left: 50%; bottom: calc(var(--barra) + 12px); width: min(560px, calc(100vw - 24px)); transform: translateX(-50%); padding: 22px; border-radius: 14px; background: rgba(16, 12, 28, .9); -webkit-backdrop-filter: blur(26px); backdrop-filter: blur(26px); border: 1px solid rgba(138, 77, 255, .3); box-shadow: 0 30px 90px rgba(0, 0, 0, .7); }
+.start-menu[hidden] { display: none; }
+.start-menu .testa { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 1px solid var(--filo); }
+.start-menu .testa img { width: 44px; height: 44px; border-radius: 11px; }
+.start-menu .testa b { display: block; font-weight: 500; }
+.start-menu .testa span { font-size: 13px; color: var(--dim); }
+.start-menu nav { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 14px 0; }
+.start-menu nav a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 9px; text-decoration: none; font-size: 14.5px; }
+.start-menu nav a:hover { background: rgba(255, 255, 255, .06); }
+.start-menu nav svg.i { color: var(--viola-luce); }
+.start-menu .piede { display: flex; flex-wrap: wrap; gap: 8px 18px; padding-top: 14px; border-top: 1px solid var(--filo); font-size: 13.5px; }
+.start-menu .piede a { color: var(--dim); text-decoration: none; }
+.start-menu .piede a:hover { color: var(--testo); }
+.start-menu .lingua-m { display: none; }
 
-/* ---------- numeri ---------- */
-.numeri { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 64px 0 0; }
-.num { background: var(--bg-2); padding: 24px 22px; }
-.num b { display: block; font-size: 28px; line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
-.num b em { font-style: normal; color: var(--violet-2); }
-.num span { color: var(--text-dim); font-size: 14px; }
+/* ---------- l'app sul pavimento ---------- */
+.palco { position: relative; padding: 10px 24px 30px; display: flex; flex-direction: column; align-items: center; isolation: isolate; }
+.palco::before { content: ""; position: absolute; z-index: -1; top: 6%; left: 50%; width: 1300px; height: 70%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(89, 0, 255, .3), transparent 72%); }
+.palco .fin { box-shadow: 0 40px 120px rgba(89, 0, 255, .22), 0 0 0 1px rgba(0, 0, 0, .6); }
+.palco .fin > img { width: 100%; height: auto; }
+.riflesso { width: min(1180px, 100%); height: 160px; overflow: hidden; opacity: .16; -webkit-mask-image: linear-gradient(to bottom, #000, transparent); mask-image: linear-gradient(to bottom, #000, transparent); pointer-events: none; }
+.riflesso img { width: 100%; transform: scaleY(-1); border-radius: 12px; }
 
-/* ---------- sezioni ---------- */
-section { padding: 96px 0 0; }
-.sez-testa { max-width: 720px; margin: 0 0 40px; }
-.sez-testa.c { margin: 0 auto 44px; text-align: center; }
-.eyebrow { font: 700 12.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--violet-2); }
-h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; letter-spacing: -.028em; margin: 14px 0 14px; font-weight: 800; }
-.sez-testa p { color: var(--text-dim); font-size: 17.5px; margin: 0; }
+/* ---------- le finestre ---------- */
+main { display: block; }
+.sez { padding: 34px 24px; }
+.fin { width: min(1180px, 100%); margin: 0 auto; border-radius: 12px; background: var(--finestra); border: 1px solid var(--bordo-viola); box-shadow: 0 30px 100px rgba(0, 0, 0, .75); overflow: hidden; }
+.tit { display: flex; align-items: center; gap: 10px; height: 40px; padding-left: 14px; font-size: 13px; color: var(--dim); background: var(--titolo); border-bottom: 1px solid var(--filo); }
+.tit img { width: 18px; height: 18px; border-radius: 5px; }
+.tit .sp { flex: 1; }
+.tit .k { width: 46px; height: 40px; display: grid; place-items: center; }
+.tit .k svg { width: 10px; height: 10px; stroke: #8f8aa6; stroke-width: 1.3; fill: none; }
+.corpo { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; }
+.lato { padding: 44px 40px; border-right: 1px solid var(--filo); }
+.lato h2 { margin: 0 0 16px; font-weight: 300; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.14; letter-spacing: -.015em; }
+.lato p { margin: 0 0 14px; color: var(--dim); }
+.lato .data { color: var(--viola-luce); font-size: 14px; }
+.dx { padding: 44px 44px 46px; min-width: 0; }
+.dx > p { margin: 0 0 14px; color: var(--dim); max-width: 64ch; }
+.foto { border-radius: 10px; overflow: hidden; border: 1px solid var(--filo); }
+.foto img { width: 100%; height: auto; }
 
-.duo { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
-.duo.inv { grid-template-columns: 1fr 1.05fr; }
-.duo.inv .duo-img { order: 2; }
-.duo-img { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-2); box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 0 1px rgba(var(--violet-rgb), .06); background: var(--panel); }
-.duo-img img { width: 100%; height: auto; aspect-ratio: 16 / 10; }
-.duo h2 { margin-top: 12px; }
-.duo > div > p { color: var(--text-dim); font-size: 17px; margin: 0 0 20px; }
-.lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.lista li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); font-size: 15.5px; }
-.lista li svg.i { color: var(--violet-2); margin-top: 3px; width: 18px; height: 18px; }
-.tag { display: inline-flex; align-items: center; gap: 7px; font: 700 12px/1 var(--mono); letter-spacing: .05em; color: var(--amber); border: 1px solid rgba(251, 191, 36, .35); background: rgba(251, 191, 36, .08); padding: 7px 11px; border-radius: 999px; }
+/* elenchi con il filo, come nello sfondo editoriale */
+.voci { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 44px; }
+.voci.una { grid-template-columns: 1fr; }
+.voci li { padding: 16px 0 17px; border-bottom: 1px solid var(--filo); }
+.voci li:nth-child(-n+2) { border-top: 1px solid var(--filo); }
+.voci.una li:nth-child(2) { border-top: 0; }
+.voci b { display: block; font-weight: 500; font-size: 16.5px; line-height: 1.45; }
+.voci span { display: block; color: var(--dim); font-size: 15px; line-height: 1.6; margin-top: 2px; }
 
-/* ---------- griglia funzioni ---------- */
-.griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.card {
-  position: relative; background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px; transition: border-color .2s, transform .2s;
-}
-.card:hover { border-color: rgba(var(--violet-rgb), .45); transform: translateY(-2px); }
-.card .ico { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-  background: rgba(var(--violet-rgb), .12); color: var(--violet-2); border: 1px solid rgba(var(--violet-rgb), .25); }
-.card h3 { font-size: 17px; margin: 0 0 6px; letter-spacing: -.01em; }
-.card p { margin: 0; color: var(--text-dim); font-size: 14.5px; line-height: 1.55; }
+.spunte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
+.spunte li { position: relative; padding-left: 28px; font-size: 15.5px; line-height: 1.6; }
+.spunte li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 13px; height: 7px; border-left: 2px solid var(--viola-luce); border-bottom: 2px solid var(--viola-luce); transform: rotate(-45deg); }
+.piccolo { margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--filo); font-size: 14px; color: var(--dim); max-width: 80ch; }
 
-/* ---------- novita' ---------- */
-.nov-data { display: inline-flex; align-items: center; gap: 8px; font: 600 12.5px/1 var(--mono); color: var(--green); margin-top: 14px; }
-.nov-data .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); }
-.nov { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
-.nov .card { padding: 22px 22px 20px; }
-.nov .card .nuovo { position: absolute; top: 18px; right: 18px; font: 700 10.5px/1 var(--mono); letter-spacing: .08em; color: var(--violet-2); border: 1px solid rgba(var(--violet-rgb), .4); background: rgba(var(--violet-rgb), .1); padding: 5px 8px; border-radius: 999px; }
-.nov-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--violet-2); font-weight: 700; font-size: 14.5px; text-decoration: none; }
-.nov-link:hover { color: #fff; }
+/* i passi: qui c'e' davvero un ordine */
+.passi { list-style: none; margin: 34px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--filo); counter-reset: p; }
+.passi li { padding: 22px 26px 0 0; counter-increment: p; }
+.passi li::before { content: counter(p); display: block; font-weight: 300; font-size: 42px; line-height: 1; color: var(--viola-luce); }
+.passi b { display: block; font-weight: 500; margin-top: 12px; }
+.passi span { display: block; font-size: 15px; color: var(--dim); line-height: 1.6; margin-top: 4px; }
+.passi kbd { font: 500 13px/1 'Poppins', sans-serif; padding: 3px 7px; border-radius: 6px; background: rgba(255, 255, 255, .08); color: var(--testo); }
 
-/* ---------- giochi ---------- */
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 22px; }
-.chip { font-size: 13.5px; font-weight: 600; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--border-2); background: rgba(255, 255, 255, .03); }
-.chip.off { color: var(--text-mute); border-style: dashed; }
+.giochi { list-style: none; margin: 30px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.giochi li { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--filo); font-size: 14px; }
+.giochi li.arriva { color: var(--dim); border-style: dashed; }
 
-/* ---------- galleria ---------- */
-.gal-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 22px; }
-.gal-tabs button {
-  font: 600 14px/1 var(--font); color: var(--text-dim); background: var(--panel); border: 1px solid var(--border-2);
-  padding: 11px 16px; border-radius: 999px; cursor: pointer; transition: all .15s;
-}
-.gal-tabs button:hover { color: var(--text); }
-.gal-tabs button[aria-selected="true"] { color: #fff; background: var(--violet); border-color: var(--violet); box-shadow: 0 8px 24px rgba(var(--violet-rgb), .35); }
-.gal-vista { max-width: 1040px; margin: 0 auto; }
-.gal-vista figure { margin: 0; }
-.gal-vista figcaption { text-align: center; color: var(--text-dim); font-size: 14.5px; margin-top: 16px; }
-
-/* ---------- passi ---------- */
-.passi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: p; }
-.passo { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 24px; position: relative; }
-.passo::before {
-  counter-increment: p; content: counter(p); display: flex; align-items: center; justify-content: center; width: 36px; height: 36px;
-  border-radius: 10px; font: 800 16px/1 var(--mono); color: #fff; background: linear-gradient(135deg, var(--violet), var(--violet-deep)); margin-bottom: 16px;
-}
-.passo h3 { margin: 0 0 8px; font-size: 18px; }
-.passo p { margin: 0; color: var(--text-dim); font-size: 14.5px; }
-.passo kbd { font: 600 12.5px var(--mono); background: var(--panel-2); border: 1px solid var(--border-2); border-radius: 6px; padding: 1px 6px; color: var(--text); }
-
-/* ---------- licenze ---------- */
-.licenze { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 900px; margin: 0 auto; }
-.lic { border: 1px solid var(--border); border-radius: 18px; padding: 28px; background: var(--panel); display: flex; flex-direction: column; gap: 14px; }
-.lic.top-lic { border-color: rgba(var(--violet-rgb), .55); background: radial-gradient(120% 100% at 100% 0%, rgba(var(--violet-rgb), .16), transparent 55%), var(--panel); }
-.lic h3 { margin: 0; font-size: 22px; letter-spacing: -.01em; }
-.lic .sotto { color: var(--text-dim); font-size: 14.5px; margin: -6px 0 0; }
-.lic .lista li { font-size: 14.5px; }
-.lic .btn { margin-top: auto; }
-.licenze.una { grid-template-columns: minmax(0, 1fr); max-width: 520px; }
-.lic-nota { text-align: center; color: var(--text-mute); font-size: 13.5px; margin: 18px 0 0; }
-
-/* ---------- faq ---------- */
-.faq { max-width: 820px; margin: 0 auto; display: grid; gap: 10px; }
-.faq details { border: 1px solid var(--border); border-radius: 14px; background: var(--panel); padding: 0 20px; }
-.faq summary { cursor: pointer; list-style: none; padding: 18px 0; font-weight: 700; font-size: 16px; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+/* domande */
+.faq { margin: 0; }
+.faq details { border-bottom: 1px solid var(--filo); }
+.faq details:first-child { border-top: 1px solid var(--filo); }
+.faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 0; font-weight: 500; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary svg.i { transition: transform .2s; color: var(--violet-2); }
-.faq details[open] summary svg.i { transform: rotate(45deg); }
-.faq details p { margin: 0 0 18px; color: var(--text-dim); font-size: 15px; }
+.faq summary::after { content: ""; flex: none; width: 9px; height: 9px; border-right: 1.7px solid var(--dim); border-bottom: 1.7px solid var(--dim); transform: rotate(45deg); margin-top: -4px; transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(225deg); margin-top: 4px; }
+.faq p { margin: 0 0 20px; color: var(--dim); max-width: 70ch; }
 
-/* ---------- community ---------- */
-.comm { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
-.comm-box { border: 1px solid var(--border); border-radius: 18px; padding: 30px; background: var(--panel); }
-.comm-box h3 { margin: 0 0 8px; font-size: 22px; }
-.comm-box p { color: var(--text-dim); margin: 0 0 20px; font-size: 15px; }
-.social { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.social a { display: flex; align-items: center; gap: 12px; text-decoration: none; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border-2); background: rgba(255, 255, 255, .02); transition: border-color .15s, background .15s; }
-.social a:hover { border-color: rgba(var(--violet-rgb), .55); background: rgba(var(--violet-rgb), .07); }
-.social b { display: block; font-size: 15px; line-height: 1.2; }
-.social small { color: var(--text-mute); font-size: 12.5px; }
-.social svg.i { color: var(--violet-2); }
-.dona { background: radial-gradient(120% 120% at 0% 0%, rgba(244, 114, 182, .12), transparent 55%), var(--panel); }
-.dona svg.cuore { width: 34px; height: 34px; color: #f472b6; margin-bottom: 10px; }
+/* community: due finestre affiancate */
+.due { width: min(1180px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+.due .fin { width: auto; margin: 0; }
+.blocco { padding: 36px 38px 38px; }
+.blocco h2 { margin: 0 0 10px; font-weight: 300; font-size: 30px; line-height: 1.2; }
+.blocco p { margin: 0 0 22px; color: var(--dim); }
+.social { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.social a { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--filo); text-decoration: none; }
+.social a:hover { border-color: var(--bordo-viola); }
+.social a small { color: var(--dim); font-size: 12.5px; }
 
-/* ---------- finale ---------- */
-.finale { margin: 110px 0 0; text-align: center; padding: 72px 24px; border-radius: 26px; position: relative; overflow: hidden;
-  background: radial-gradient(60% 90% at 50% 0%, rgba(var(--violet-rgb), .35), transparent 70%), linear-gradient(180deg, var(--panel-2), var(--bg-2)); border: 1px solid rgba(var(--violet-rgb), .3); }
-.finale h2 { margin-top: 0; }
-.finale p { color: var(--text-dim); margin: 0 auto; max-width: 560px; }
+/* chiusura e piede */
+/* la chiusura come lo sfondo editoriale: titolo grande a sinistra, luce in alto a destra */
+.fine { position: relative; padding: 150px 24px 110px; overflow-x: hidden; overflow-x: clip; isolation: isolate; }
+.fine .luce.ed { top: -10%; right: -14%; width: 1000px; height: 760px; }
+.fine .in { width: min(1180px, 100%); margin: 0 auto; }
+.fine h2 { margin: 0; font-weight: 300; font-size: clamp(44px, 7vw, 92px); line-height: 1.02; letter-spacing: -.02em; max-width: 12ch; }
+.fine p { margin: 22px 0 0; color: var(--dim); max-width: 46ch; }
+.fine .cta { justify-content: flex-start; margin-top: 34px; }
+footer { padding: 40px 24px 50px; border-top: 1px solid var(--filo); }
+footer .in { width: min(1180px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px 40px; align-items: start; }
+footer .firma img { width: 210px; height: auto; }
+footer .firma p { margin: 10px 0 0; font-size: 14px; color: var(--dim); }
+footer .link { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
+footer .link a { color: var(--dim); text-decoration: none; }
+footer .link a:hover { color: var(--testo); }
+footer .legale { grid-column: 1 / -1; margin: 0; font-size: 12.5px; line-height: 1.7; color: #6f6a86; max-width: 110ch; }
 
-footer { margin-top: 90px; border-top: 1px solid var(--border); padding: 36px 0 44px; color: var(--text-mute); font-size: 13.5px; }
-.foot { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
-.foot .brand { font-size: 16px; color: var(--text); }
-.foot-link { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-.foot-link a { text-decoration: none; color: var(--text-dim); }
-.foot-link a:hover { color: var(--text); }
-.legale { margin: 22px 0 0; max-width: 860px; line-height: 1.6; }
-
-/* ---------- comparsa ---------- */
-.rivela { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); }
-.rivela.vista { opacity: 1; transform: none; }
-.no-js .rivela { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .rivela { opacity: 1; transform: none; transition: none; }
-  .btn, .card { transition: none; }
+/* ---------- schermi piccoli ---------- */
+@media (max-width: 1100px) {
+  .barra .voce { padding: 0 10px; }
+  .ora { display: none; }
 }
-
-/* ---------- finestre strette ---------- */
-@media (max-width: 980px) {
-  .duo, .duo.inv { grid-template-columns: 1fr; gap: 32px; }
-  .duo.inv .duo-img { order: 0; }
-  .numeri { grid-template-columns: 1fr 1fr; }
-  .passi { grid-template-columns: 1fr; }
-  .comm { grid-template-columns: 1fr; }
-}
-@media (max-width: 860px) {
-  .nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(8, 7, 12, .97); border-bottom: 1px solid var(--border); padding: 10px 16px 16px; margin: 0; }
-  .nav.aperta { display: flex; }
-  .nav a { padding: 12px; font-size: 16px; }
-  .menu-btn { display: inline-flex; }
-  .top-dx .btn { display: none; }
+@media (max-width: 960px) {
+  .corpo { grid-template-columns: 1fr; }
+  .lato { border-right: 0; border-bottom: 1px solid var(--filo); padding: 32px 28px 24px; }
+  .dx { padding: 28px 28px 32px; }
+  .due { grid-template-columns: 1fr; }
+  .barra .mezzo .voce:not(.menu-m) { display: none; }
+  .barra .menu-m { display: flex; }
+  .barra .mezzo { position: absolute; left: 10px; }
+  .icone { display: none; }
 }
 @media (max-width: 640px) {
-  .wrap { padding: 0 16px; }
-  .hero { padding: 56px 0 24px; }
+  body { font-size: 16px; }
+  .voci, .spunte, .social { grid-template-columns: 1fr; }
+  .voci li:nth-child(2) { border-top: 0; }
+  .passi { grid-template-columns: 1fr; }
+  .passi li { padding-right: 0; }
+  .start-menu nav { grid-template-columns: 1fr; }
+  .barra .vassoio .lingua { display: none; }
+  .start-menu .lingua-m { display: flex; margin-left: auto; }
+  .tit .k { width: 34px; }
+  .sez { padding: 22px 14px; }
+  .palco { padding: 0 14px 10px; }
+  .riflesso { height: 70px; }
+  footer .in { grid-template-columns: 1fr; }
   .cta .btn { width: 100%; }
-  .licenze { grid-template-columns: 1fr; }
-  .social { grid-template-columns: 1fr; }
-  section { padding-top: 72px; }
-  .num b { font-size: 23px; }
-  .num { padding: 18px 16px; }
-  .shot { padding: 5px; margin-top: 40px; }
-  .finale { padding: 52px 18px; }
-  .firma { display: none; }
+  .cta { width: 100%; max-width: 360px; }
+  .fine { padding: 90px 20px 70px; }
 }
 </style>
 </head>
-<body class="no-js">
+<body>
+<a class="salta" href="#contenuto" data-t="salta">Vai al contenuto</a>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
-    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 9.2-9.2"/><path d="m17 6 3 3"/><path d="m14 9 2 2"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
-    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
-    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></symbol>
-    <symbol id="i-gpu" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="9" cy="12" r="2.5"/><circle cx="16" cy="12" r="2.5"/><path d="M5 17v3M19 17v3"/></symbol>
-    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></symbol>
-    <symbol id="i-head" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="7" rx="1.5"/><rect x="17" y="14" width="4" height="7" rx="1.5"/></symbol>
-    <symbol id="i-zap" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/><path d="m11 9-2 3h4l-2 3"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
-    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></symbol>
-    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
-    <symbol id="i-brush" viewBox="0 0 24 24"><path d="M9.5 14.5 19 5a2 2 0 0 0-3-3l-9.5 9.5"/><path d="M6.5 11.5c-2 0-3.5 1.5-3.5 3.5 0 1.5-.5 3-1.5 4 3.5.5 7-1 7.5-4 .3-1.8-.8-3.5-2.5-3.5z"/></symbol>
-    <symbol id="i-apps" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></symbol>
-    <symbol id="i-tools" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18M10 13v2h4v-2"/></symbol>
-    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 1.3-1.3a4 4 0 0 0-5-5L3 10l3-3 3 3 1.3-1.3a4 4 0 0 1 4.4-2.4z"/></symbol>
-    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
-    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/><path d="M9 7h6"/></symbol>
-    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></symbol>
-    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
-    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
-    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
-    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
-    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></symbol>
-    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
-    <symbol id="i-live" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/><path d="M10 8v5l4-2.5z"/></symbol>
-    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.3-9.2C1.4 7.5 3.6 4 7 4c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.5 4.3 6.8C19.5 15.4 12 20 12 20z"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
-    <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 8h12a4 4 0 0 1 4 4v2a3 3 0 0 1-5.4 1.8L15 14H9l-1.6 1.8A3 3 0 0 1 2 14v-2a4 4 0 0 1 4-4z"/><path d="M7 11v3M5.5 12.5h3"/><path d="M16 11.5h.01M18 13h.01"/></symbol>
-  </defs>
+  <symbol id="i-scarica" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v7a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4A2.5 2.5 0 0 1 4 13.5z"/><path d="M8.5 9.5h7M8.5 12.5h4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 15.5h5"/></symbol>
+  <symbol id="i-fulmine" viewBox="0 0 24 24"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></symbol>
+  <symbol id="i-gioco" viewBox="0 0 24 24"><path d="M7 8h10a4 4 0 0 1 4 4.5l-.6 3.4a2.4 2.4 0 0 1-4.1 1.2L14.5 15h-5l-1.8 2.1a2.4 2.4 0 0 1-4.1-1.2L3 12.5A4 4 0 0 1 7 8z"/><path d="M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 13.5h.01"/></symbol>
+  <symbol id="i-griglia" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-scudo" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.3-3 7.6-7 9.5-4-1.9-7-5.2-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-avvio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10.5 8.8 15 12l-4.5 3.2z"/></symbol>
+  <symbol id="i-domanda" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9.5a2.5 2.5 0 0 1 4.8.9c0 1.6-2.4 2.1-2.4 3.6M12 17h.01"/></symbol>
+  <symbol id="i-persone" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6M15.5 6a3 3 0 0 1 0 5.6M17.5 14.6c1.6.6 2.7 2.1 3 4.4"/></symbol>
+  <symbol id="i-min" viewBox="0 0 10 10"><path d="M1 5h8"/></symbol>
+  <symbol id="i-max" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8"/></symbol>
+  <symbol id="i-chiudi" viewBox="0 0 10 10"><path d="M1 1l8 8M9 1 1 9"/></symbol>
 </svg>
 
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#inizio" aria-label="LollozzOS">
-      <img src="assets/logo.png" alt="" width="34" height="34">
-      <span>Lollozz<span class="os">OS</span></span>
-    </a>
-    <nav class="nav" id="nav">
-      <a href="#novita" data-t="nav0">Novità</a>
-      <a href="#click" data-t="nav1">Un click</a>
-      <a href="#competitiva" data-t="nav6">Competitiva</a>
-      <a href="#funzioni" data-t="nav2">Funzioni</a>
-      <a href="#giochi" data-t="nav3">Giochi</a>
-      <a href="#inizia" data-t="nav5">Inizia</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="top-dx">
-      <div class="lang" role="group" aria-label="Lingua / Language">
-        <button type="button" data-lang="it" aria-pressed="true">IT</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <a class="btn btn-p btn-s" href="https://github.com/LollozzOS/LollozzOs/releases/latest" data-t="scarica-s">Scarica</a>
-      <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg class="i"><use href="#i-menu"/></svg></button>
-    </div>
+<!-- ===== il desktop ===== -->
+<header class="desk" id="top">
+  <div class="luce ed" aria-hidden="true"></div>
+  <div class="luce pu" aria-hidden="true"></div>
+  <div class="luce ri" aria-hidden="true"></div>
+
+  <ul class="icone">
+    <li><a href="https://github.com/LollozzOS/LollozzOs/releases/latest"><img src="assets/logo-os-192.png" alt="" width="52" height="52"><span data-t="ic1">Scarica LollozzOS</span></a></li>
+    <li><a href="https://discord.gg/gd5cT3Jw9M"><span class="q"><svg class="i"><use href="#i-chat"/></svg></span><span data-t="ic2">Licenza su Discord</span></a></li>
+    <li><a href="#novita"><span class="q"><svg class="i"><use href="#i-doc"/></svg></span><span data-t="ic3">Novità</span></a></li>
+  </ul>
+
+  <h1 class="marchio">
+    <img src="assets/lettering.png" alt="LollozzOS" width="1400" height="177">
+    <img class="rif" src="assets/lettering.png" alt="" width="1400" height="177" aria-hidden="true">
+  </h1>
+  <div class="by"><i></i><span>by <b>Lollozz</b></span><i></i></div>
+  <div class="pavimento" aria-hidden="true"></div>
+  <p class="slogan" data-t="slogan">Il tuo PC, pronto per giocare.</p>
+  <div class="cta">
+    <a class="btn p" href="https://github.com/LollozzOS/LollozzOs/releases/latest"><svg class="i"><use href="#i-scarica"/></svg><span data-t="scarica">Scarica LollozzOS</span></a>
+    <a class="btn s" href="https://discord.gg/gd5cT3Jw9M" data-t="licenza">Licenza su Discord</a>
   </div>
+  <p class="nota" data-t="nota">Windows 10 e 11, 64 bit. Prova gratuita di 24 ore.</p>
 </header>
 
-<main id="inizio">
-  <!-- HERO -->
-  <div class="hero">
-    <div class="wrap">
-      <div class="hero-in">
-        <span class="pill"><span class="dot"></span><span data-t="pill">Windows 10 e 11 · Creato da Lollozz</span></span>
-        <h1 data-t="h1">Il tuo PC, <span class="grad">pronto per giocare.</span></h1>
-        <p class="lead" data-t="lead">LollozzOS mette in un’app sola quello che di solito è sparso fra decine di script, guide e programmi: meno processi in background, rete e scheda video impostate per il gioco, configurazioni pronte per i tuoi giochi. E ogni modifica si annulla.</p>
-        <div class="cta">
-          <a class="btn btn-p" href="https://github.com/LollozzOS/LollozzOs/releases/latest"><svg class="i"><use href="#i-down"/></svg><span data-t="scarica">Scarica LollozzOS</span></a>
-          <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-key"/></svg><span data-t="licenza">Ottieni la licenza</span></a>
-        </div>
-        <div class="nota">
-          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n1">Prova gratuita di 24 ore</span></span>
-          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n2">Backup prima di ogni modifica</span></span>
-          <span><svg class="i"><use href="#i-check"/></svg><span data-t="n3">Ogni modifica si annulla</span></span>
-        </div>
-        <a class="nov-link" href="#novita"><span data-t="hero-nov">Novità: il Debloat in una schermata sola e riparazioni che funzionano</span> <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="shot rivela">
-        <img src="assets/home.jpg" width="1600" height="1000" alt="La schermata principale di LollozzOS: Windows, il Livello LollozzOS, Ottimizza con un click, processore, scheda video, memoria, disco e rete in tempo reale, la Gestione attività con i consigli e la Modalità competitiva intelligente" data-alt-en="The LollozzOS home screen: Windows, the LollozzOS Level, One-click optimize, live processor, graphics card, memory, disk and network, the Task manager with tips and Smart Competitive Mode">
-        <img class="firma" src="assets/lettering.png" alt="" aria-hidden="true">
-      </div>
+<!-- ===== la barra delle applicazioni ===== -->
+<nav class="barra" aria-label="Sezioni">
+  <div class="mezzo">
+    <button class="start" type="button" aria-expanded="false" aria-controls="start-menu" data-t-aria="start" aria-label="Menu Start"><img src="assets/logo-os-192.png" alt="" width="32" height="32"></button>
+    <a class="voce" href="#novita" data-t="n1">Novità</a>
+    <a class="voce" href="#installa" data-t="n2">Installa</a>
+    <a class="voce" href="#competitiva" data-t="n3">Competitiva</a>
+    <a class="voce" href="#funzioni" data-t="n4">Funzioni</a>
+    <a class="voce" href="#giochi" data-t="n5">Giochi</a>
+    <a class="voce" href="#domande" data-t="n6">Domande</a>
+    <button class="voce menu-m" type="button" aria-controls="start-menu" data-t="menu">Menu</button>
+  </div>
+  <div class="vassoio">
+    <div class="lingua" role="group" aria-label="Lingua / Language">
+      <button type="button" data-lingua="it" aria-pressed="true">IT</button>
+      <button type="button" data-lingua="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn p scarica" href="https://github.com/LollozzOS/LollozzOs/releases/latest" data-t="scarica-b">Scarica</a>
+    <div class="ora" aria-hidden="true"><span id="ora">--:--</span><br><span id="data"></span></div>
+  </div>
+</nav>
 
-      <div class="numeri rivela">
-        <div class="num"><b>~120 <em>→</em> ~50-70</b><span data-t="k1">processi in background, con un click (valori tipici)</span></div>
-        <div class="num"><b>9</b><span data-t="k2">giochi con la configurazione pronta, e il prossimo Call of Duty in arrivo</span></div>
-        <div class="num"><b>54</b><span data-t="k3">riparazioni divise per problema: rete, audio, Windows Update…</span></div>
-        <div class="num"><b data-t="k4b">Tutto</b><span data-t="k4">reversibile: prima di ogni modifica si salva com’era</span></div>
-      </div>
+<div class="start-menu" id="start-menu" hidden>
+  <div class="testa">
+    <img src="assets/logo-os-192.png" alt="" width="44" height="44">
+    <div><b>LollozzOS</b><span data-t="sm-sotto">Ottimizzazione di Windows per il gaming</span></div>
+    <div class="lingua lingua-m" role="group" aria-label="Lingua / Language">
+      <button type="button" data-lingua="it" aria-pressed="true">IT</button>
+      <button type="button" data-lingua="en" aria-pressed="false">EN</button>
     </div>
   </div>
+  <nav aria-label="Menu Start">
+    <a href="#novita"><svg class="i"><use href="#i-doc"/></svg><span data-t="n1">Novità</span></a>
+    <a href="#installa"><svg class="i"><use href="#i-fulmine"/></svg><span data-t="sm2">Installa LollozzOS</span></a>
+    <a href="#competitiva"><svg class="i"><use href="#i-avvio"/></svg><span data-t="sm3">Modalità competitiva</span></a>
+    <a href="#funzioni"><svg class="i"><use href="#i-griglia"/></svg><span data-t="sm4">Dentro l'app</span></a>
+    <a href="#giochi"><svg class="i"><use href="#i-gioco"/></svg><span data-t="n5">Giochi</span></a>
+    <a href="#sicuro"><svg class="i"><use href="#i-scudo"/></svg><span data-t="sm6">Tutto si annulla</span></a>
+    <a href="#inizia"><svg class="i"><use href="#i-scarica"/></svg><span data-t="sm7">Come si inizia</span></a>
+    <a href="#domande"><svg class="i"><use href="#i-domanda"/></svg><span data-t="sm8">Domande frequenti</span></a>
+  </nav>
+  <div class="piede">
+    <a href="https://github.com/LollozzOS/LollozzOs/releases/latest" data-t="sm-rel">Versioni</a>
+    <a href="https://discord.gg/gd5cT3Jw9M">Discord</a>
+    <a href="https://github.com/LollozzOS/LollozzOs">GitHub</a>
+    <a href="https://ko-fi.com/lollozzos">Ko-fi</a>
+  </div>
+</div>
 
-  <!-- NOVITA' -->
-  <section id="novita">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="nv-eye">Novità</span>
-        <h2 data-t="nv-h">Le ultime novità</h2>
-        <p data-t="nv-p">Quello che è arrivato nelle ultime versioni. L’app controlla da sola gli aggiornamenti: quando esce una versione nuova te lo dice, la scarica e apre l’installazione (licenza, impostazioni e backup restano).</p>
-        <span class="nov-data"><span class="dot"></span><span data-t="nv-data">Aggiornato al 7 ottobre 2026</span></span>
-      </div>
-      <div class="nov">
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo1">NUOVO</span><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3 data-t="nv1h">LollozzOS Debloat, una schermata sola</h3><p data-t="nv1">Privacy, pubblicità, funzioni IA, Start, barra e prestazioni: 119 voci in una schermata. Applica solo quello che spunti, quelle già fatte sono segnate “Già eseguito” e ognuna si annulla. È anche in Ottimizza con un click.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo2">NUOVO</span><div class="ico"><svg class="i"><use href="#i-shield"/></svg></div><h3 data-t="nv2h">Windows AI tolta davvero</h3><p data-t="nv2">Copilot, Recall e le altre funzioni IA tolte da Windows, non solo spente. Ognuna delle 12 voci dice se sul tuo PC c’è ancora o è già tolta. Il preset Sicuro lascia stare le 3 che possono far fallire Windows Update, e “Rimetti l’IA com’era” riporta tutto.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo3">NUOVO</span><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="nv3h">Riparazioni che funzionano</h3><p data-t="nv3">54 riparazioni divise in 11 gruppi, nella loro pagina e con la ricerca. Prima vedi i passi, poi l’esito di ognuno. Lo Store si reinstalla anche se era stato tolto, Edge si rimette, e DISM, SFC e il controllo del disco dicono il risultato vero.</p></div>
-        <div class="card rivela"><span class="nuovo" data-t="nv-nuovo4">NUOVO</span><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="nv4h">Gestione attività con i consigli</h3><p data-t="nv4">Accanto a ogni programma il consiglio: priorità alta ai giochi, bassa a chi lavora in background, chiudi a chi mangia processore o memoria. Lo scegli tu con un clic: LollozzOS non fa niente da solo.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="nv5h">Affinità della scheda video</h3><p data-t="nv5">Gli interrupt della scheda video vanno sull’ultimo core, di solito il meno occupato, invece che sul Core 0. Su alcuni PC i frametime diventano più regolari, con meno picchi; su altri non cambia niente, per questo l’app misura prima e dopo. È già in Ottimizza con un click.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3 data-t="nv6h">Otto ottimizzazioni in più</h3><p data-t="nv6">Niente manutenzione automatica che parte mentre giochi, meno telemetria, niente registro energetico in background, LLMNR spento e circa 7 GB di spazio riservato liberati. Ognuna ha il suo interruttore, con scritto cosa perdi.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-check"/></svg></div><h3 data-t="nv7h">Il Livello LollozzOS</h3><p data-t="nv7">Le ottimizzazioni accese e la salute del PC in un numero solo. Se un aggiornamento di Windows ne annulla qualcuna il numero scende, e Ottimizza con un click te lo propone di nuovo.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-bolt"/></svg></div><h3 data-t="nv8h">Ottimizza con un click, più sicuro</h3><p data-t="nv8">Lo puoi interrompere mentre lavora: le ottimizzazioni già fatte restano e il PC non si riavvia.</p></div>
-      </div>
+<main id="contenuto">
+
+  <!-- ===== l'app, appoggiata sul pavimento ===== -->
+  <section class="palco" aria-label="LollozzOS">
+    <div class="fin">
+      <div class="tit" aria-hidden="true"><img src="assets/logo-os-192.png" alt=""><span>LollozzOS</span><span class="sp"></span><span class="k"><svg><use href="#i-min"/></svg></span><span class="k"><svg><use href="#i-max"/></svg></span><span class="k"><svg><use href="#i-chiudi"/></svg></span></div>
+      <img data-foto="home" src="assets/home-it.jpg" alt="La Home di LollozzOS: il PC in tempo reale, il Livello LollozzOS, Installa LollozzOS e la Modalità competitiva" data-alt-en="The LollozzOS Home: your PC live, the LollozzOS Level, Install LollozzOS and Competitive mode" width="1600" height="900">
     </div>
+    <div class="riflesso" aria-hidden="true"><img data-foto="home" src="assets/home-it.jpg" alt="" width="1600" height="900"></div>
   </section>
 
-  <!-- UN CLICK -->
-  <section id="click">
-    <div class="wrap duo">
-      <div class="duo-img rivela"><img src="assets/oneclick.jpg" width="1600" height="1000" loading="lazy" alt="Verrà installato LollozzOS: i processi di adesso e quelli con LollozzOS, Vedi dettagli, Personalizza e Installa" data-alt-en="LollozzOS will be installed: the processes now and with LollozzOS, See details, Customize and Install"></div>
-      <div class="rivela">
-        <span class="eyebrow" data-t="c-eye">Il primo passo</span>
-        <h2 data-t="c-h">Ottimizza con un click</h2>
-        <p data-t="c-p">Punto di ripristino, servizi superflui, LollozzOS Debloat, ottimizzazioni per il gaming, energia, rete e l’aspetto LollozzOS, poi un riavvio. Prima di partire vedi i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.</p>
-        <ul class="lista">
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c1">“Vedi dettagli” mostra tutto quello che cambia, gruppo per gruppo. Qualche domanda (Wi-Fi, Bluetooth, stampa, Store, Xbox, colori…) decide cosa resta, con la risposta consigliata già segnata; con “Personalizza” accendi e spegni le voci una per una.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c2">La copia delle impostazioni attuali c’è sempre, ed è quella che permette di annullare tutto. Il punto di ripristino di Windows parte già segnato.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c3">L’avanzamento lo vedi nel riquadro della Home: la percentuale, il passo in corso e le fasi.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="c4">Alla fine il PC si riavvia da solo dopo 20 secondi. Dopo il riavvio LollozzOS si riapre e ti mostra processi, servizi e avvio di Windows prima e dopo.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMPETITIVA -->
-  <section id="competitiva">
-    <div class="wrap duo inv">
-      <div class="duo-img rivela"><img src="assets/competitiva.jpg" width="1600" height="1000" loading="lazy" alt="Il resoconto di una partita: FPS medi, 1% e 0,1% low, scatti, latenza, processore e consigli" data-alt-en="A match report: average FPS, 1% and 0.1% low, stutters, latency, processor and tips"></div>
-      <div class="rivela">
-        <span class="eyebrow" data-t="mc-eye">Ogni partita</span>
-        <h2 data-t="mc-h">Modalità competitiva intelligente</h2>
-        <p data-t="mc-p">La accendi una volta e non devi fare altro. Quando parte un gioco gli dà la precedenza, quando lo chiudi rimette tutto com’era. Funziona anche con LollozzOS chiusa, dopo il riavvio e con qualunque launcher.</p>
-        <ul class="lista">
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="mc1">Gioco a priorità alta su tutti i core, scheda video più potente, Modalità gioco e timer di Windows a 0,5 ms.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="mc2">Tutte le altre app in risparmio: Discord, OBS e i programmi delle periferiche restano aperti e funzionano, ma lasciano il processore al gioco (se registri o trasmetti in x264, OBS può perdere fluidità). I browser a priorità bassa.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="mc3">Game Bar spenta, servizi che non servono per giocare in pausa, accelerazione del mouse spenta, piano energetico Lollozz Gaming, notifiche spente.</span></li>
-          <li><svg class="i"><use href="#i-shield"/></svg><span data-t="mc4">Non mette mai in risparmio i processi di Windows, Microsoft Defender, gli anti-cheat, la catena audio, i driver video e i programmi che rimappano tastiera e controller; chi usa troppo processore viene solo rallentato, e a fine partita torna tutto com’era.</span></li>
-          <li><svg class="i"><use href="#i-pulse"/></svg><span data-t="mc5">A fine partita il resoconto: FPS medi, 1% e 0,1% low, scatti, latenza e consigli. Lo salvi sul desktop o lo mandi a Lollozz.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- FUNZIONI -->
-  <section id="funzioni">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="f-eye">Tutto in un’app</span>
-        <h2 data-t="f-h">Ogni parte di Windows che conta per giocare</h2>
-        <p data-t="f-p">Ogni interruttore legge lo stato vero dal sistema: vedi quello che Windows sta facendo davvero, non quello che speri.</p>
-      </div>
-      <div class="griglia">
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-monitor"/></svg></div><h3 data-t="g1h">Monitor di sistema</h3><p data-t="g1">CPU, GPU, RAM e dischi in tempo reale, il Livello LollozzOS, la Gestione attività con i consigli, Ottimizza con un click e la Modalità competitiva intelligente.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-trash"/></svg></div><h3>Debloat</h3><p data-t="g2">LollozzOS Debloat: privacy, pubblicità, funzioni IA, Start, barra, Esplora file e prestazioni in una schermata, 119 voci che si annullano una per una. Poi le app superflue, Rimuovi Windows AI (Copilot, Recall e le altre IA) e i servizi uno per uno.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-gpu"/></svg></div><h3 data-t="g3h">GPU e grafica</h3><p data-t="g3">Le ottimizzazioni della tua scheda (NVIDIA, AMD o Intel), il driver video con l’ultima versione da scaricare, le utility del produttore e l’Affinità: gli interrupt della scheda video sull’ultimo core, misurati prima e dopo.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wifi"/></svg></div><h3 data-t="g4h">Rete</h3><p data-t="g4">Rete impostata sulla latenza, test di 14 DNS, velocità, pacchetti persi, latenza sotto carico e priorità di rete per i giochi.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-head"/></svg></div><h3>Audio</h3><p data-t="g5">Equalizzazione sonorità per sentire meglio i passi, volume che non si abbassa nelle chiamate, Nahimic spento e ritardo audio minimo, anche tutto in un clic.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-zap"/></svg></div><h3 data-t="g6h">Energia e prestazioni</h3><p data-t="g6">Piani Quotidiano e Gaming fatti per il tuo PC, timer e reattività, risparmio di CPU, USB e PCI Express, interrupt MSI.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-wrench"/></svg></div><h3 data-t="g7h">Fix e riparazioni</h3><p data-t="g7">54 riparazioni divise in 11 gruppi (rete, audio, Update e Store, Esplora file…), con la ricerca. Prima vedi i passi, poi l’esito di ognuno.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-pulse"/></svg></div><h3 data-t="g8h">Diagnosi e manutenzione</h3><p data-t="g8">Salute dei dischi, spazio usato, Pulizia del disco e Prepara il PC, le misure del PC e il registro di tutto quello che è stato fatto.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-cpu"/></svg></div><h3>BIOS</h3><p data-t="g9">Secure Boot, TPM, virtualizzazione e profilo della RAM letti dal PC, il BIOS più recente dal sito del produttore, una guida BIOS per la tua scheda madre e “Riavvia nel BIOS”.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-brush"/></svg></div><h3 data-t="g10h">Personalizzazione</h3><p data-t="g10">Sfondi e schermata di blocco, Windows nel colore che vuoi con 17 cursori, i suoni LollozzOS, i monitor e le scorciatoie nel tasto destro del desktop.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-apps"/></svg></div><h3 data-t="g11h">Gestione app</h3><p data-t="g11">I programmi più usati installati dalla fonte ufficiale con winget, la disinstallazione e cosa parte con Windows.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-tools"/></svg></div><h3 data-t="g12h">Tools e utility</h3><p data-t="g12">HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl e altri, pronti da aprire.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-target"/></svg></div><h3 data-t="g13h">Modalità competitiva intelligente</h3><p data-t="g13">La accendi una volta: parte da sola con i giochi, mette le altre app in risparmio e a fine partita ti dà il resoconto.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-book"/></svg></div><h3 data-t="g14h">Una guida per il tuo PC</h3><p data-t="g14">Scritta sul tuo computer: i tuoi componenti, i giochi installati, cosa conviene attivare e in che ordine.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-chat"/></svg></div><h3 data-t="g16h">Assistenza in un clic</h3><p data-t="g16">Dal pulsante dell’assistenza mandi una segnalazione con tutto quello che serve per capire il problema, o apri la chat con i file già pronti.</p></div>
-        <div class="card rivela"><div class="ico"><svg class="i"><use href="#i-undo"/></svg></div><h3 data-t="g15h">Ripristino</h3><p data-t="g15">“Ripristina tutto” annulla tutte le modifiche di LollozzOS; dalla cronologia ne annulli una alla volta. E i punti di ripristino di Windows li crei e li usi dall’app.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GIOCHI -->
-  <section id="giochi">
-    <div class="wrap duo inv">
-      <div class="duo-img rivela"><img src="assets/giochi.jpg" width="1600" height="1000" loading="lazy" alt="La pagina Giochi di LollozzOS con i riquadri dei giochi" data-alt-en="The LollozzOS Games page with the game tiles"></div>
-      <div class="rivela">
-        <span class="eyebrow" data-t="gi-eye">Giochi</span>
-        <h2 data-t="gi-h">Configurazioni pronte, fatte per il tuo PC</h2>
-        <p data-t="gi-p">Il file tarato da Lollozz, importato con un clic. Dove serve, i valori che dipendono dal computer si ricalcolano sul tuo: processore, schermo e scheda video. Per Valorant, i programmi per la risoluzione allargata.</p>
-        <div class="chips">
-          <span class="chip">Call of Duty: Black Ops 7 <span data-t="e">e</span> Warzone</span>
-          <span class="chip">Apex Legends</span>
-          <span class="chip">Counter-Strike 2</span>
-          <span class="chip">Fortnite</span>
-          <span class="chip">Rainbow Six Siege</span>
-          <span class="chip">PUBG: Battlegrounds</span>
-          <span class="chip">ARC Raiders</span>
-          <span class="chip">Battlefield 6</span>
-          <span class="chip">Valorant</span>
-          <span class="chip off" data-t="cod-next">Call of Duty, prossimo capitolo (in arrivo)</span>
+  <!-- ===== novita' ===== -->
+  <section class="sez" id="novita">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="n1">Novità</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="nv-h">Novità</h2>
+          <p class="data" data-t="nv-data">Aggiornato al 14 ottobre 2026</p>
+          <p data-t="nv-p">L'app controlla da sola gli aggiornamenti: quando esce una versione nuova te lo dice, la scarica e apre l'installazione. Licenza, impostazioni e backup restano.</p>
         </div>
-        <ul class="lista">
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi1">Prima si salva il tuo file: “Rimetti com’erano” lo riporta indietro.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="gi2">In “Per tutti i giochi”: Modalità gioco, schermo intero, mouse e tastiera.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SICURO -->
-  <section id="sicuro">
-    <div class="wrap duo inv">
-      <div class="duo-img rivela"><img src="assets/bios.jpg" width="1600" height="1000" loading="lazy" alt="La pagina BIOS di LollozzOS: Secure Boot, TPM, virtualizzazione e profilo delle memorie" data-alt-en="The LollozzOS BIOS page: Secure Boot, TPM, virtualization and memory profile"></div>
-      <div class="rivela">
-        <span class="eyebrow" data-t="s-eye">Sicuro e reversibile</span>
-        <h2 data-t="s-h">La differenza fra uno strumento e un azzardo</h2>
-        <p data-t="s-p">Ogni ottimizzazione è scritta come dati: il valore quando è accesa e quello quando è spenta. Gli stessi dati servono ad applicarla, ad annullarla e a leggere com’è davvero.</p>
-        <ul class="lista">
-          <li><svg class="i"><use href="#i-undo"/></svg><span data-t="s1">Prima di ogni modifica si salvano i valori di prima. Un interruttore si rispegne e torna com’era.</span></li>
-          <li><svg class="i"><use href="#i-shield"/></svg><span data-t="s2">Un punto di ripristino di Windows, già segnato in Ottimizza con un click e prima delle modifiche estreme. I punti di ripristino li crei e li usi anche dall’app.</span></li>
-          <li><svg class="i"><use href="#i-shield"/></svg><span data-t="s5">Se Windows ha un aggiornamento da completare, LollozzOS aspetta prima di cambiare qualcosa.</span></li>
-          <li><svg class="i"><use href="#i-lock"/></svg><span data-t="s3">Le modifiche estreme (controllo account, firewall, Windows Update…) sono chiuse a chiave. VBS, SmartScreen e le mitigazioni Spectre li spegni solo se lo scegli nelle domande; di partenza restano accesi.</span></li>
-          <li><svg class="i"><use href="#i-check"/></svg><span data-t="s4">“Ripristina tutto” annulla ogni modifica dell’app, ma non riporta le app e i file eliminati, né tema, sfondo e colore. E disinstallare l’app non annulla da solo le ottimizzazioni: il programma di disinstallazione ti fa scegliere.</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERIA -->
-  <section id="app">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="v-eye">Dentro l’app</span>
-        <h2 data-t="v-h">Guarda com’è fatta</h2>
-      </div>
-      <div class="gal-tabs rivela" role="tablist" aria-label="Schermate">
-        <button type="button" role="tab" aria-selected="true" data-img="home" data-t="t1">Home</button>
-        <button type="button" role="tab" aria-selected="false" data-img="oneclick" data-t="t2">Un click</button>
-        <button type="button" role="tab" aria-selected="false" data-img="installa" data-t="t6">Avanzamento</button>
-        <button type="button" role="tab" aria-selected="false" data-img="competitiva" data-t="t7">Resoconto</button>
-        <button type="button" role="tab" aria-selected="false" data-img="giochi" data-t="t3">Giochi</button>
-        <button type="button" role="tab" aria-selected="false" data-img="aspetto" data-t="t5">Colori</button>
-        <button type="button" role="tab" aria-selected="false" data-img="bios">BIOS</button>
-      </div>
-      <div class="gal-vista rivela">
-        <figure>
-          <div class="duo-img"><img id="gal-img" src="assets/home.jpg" width="1600" height="1000" loading="lazy" alt=""></div>
-          <figcaption id="gal-cap"></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- INIZIA -->
-  <section id="inizia">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="i-eye">Come iniziare</span>
-        <h2 data-t="i-h">Tre passi, e sei pronto</h2>
-      </div>
-      <div class="passi">
-        <div class="passo rivela"><h3 data-t="p1h">Scarica e installa</h3><p data-t="p1">Scarica <kbd>LollozzOS_Setup</kbd> dalla pagina delle versioni e avvialo. Il programma d’installazione non è firmato: se Windows SmartScreen avvisa, “Ulteriori informazioni” e poi “Esegui comunque”.</p></div>
-        <div class="passo rivela"><h3 data-t="p2h">Provalo per 24 ore</h3><p data-t="p2">La prova gratuita dura 24 ore, una volta per computer: per attivarla ti chiede nome e cognome, email e telefono. Parti da “Ottimizza con un click” nella Home.</p></div>
-        <div class="passo rivela"><h3 data-t="p3h">Attiva la licenza</h3><p data-t="p3">Nell’app copia la richiesta di licenza: arriva anche a Lollozz. Scrivi sul Discord e incolla il codice di sblocco che ricevi. Vale per un computer.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LICENZE -->
-  <section id="licenze">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow" data-t="l-eye">Licenza</span>
-        <h2 data-t="l-h">Una licenza, tutta l’app</h2>
-      </div>
-      <div class="licenze una">
-        <div class="lic top-lic rivela">
-          <h3>LollozzOS</h3>
-          <p class="sotto" data-t="l1s">Tutta l’app, su un computer.</p>
-          <ul class="lista">
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1a">Ottimizza con un click e tutte le sezioni</span></li>
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1d">LollozzOS Debloat, Rimuovi Windows AI e le riparazioni</span></li>
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1b">Configurazioni dei giochi e guida per il tuo PC</span></li>
-            <li><svg class="i"><use href="#i-check"/></svg><span data-t="l1c">Aggiornamenti dall’app</span></li>
+        <div class="dx">
+          <ul class="voci">
+            <li><b data-t="nv1h">Installa LollozzOS, un percorso solo</b><span data-t="nv1">Rispondi a poche domande e le ottimizzazioni partono tutte insieme, con il punto di ripristino come primo passo.</span></li>
+            <li><b data-t="nv2h">Quello che usi resta acceso</b><span data-t="nv2">Wi-Fi collegato, Bluetooth con dispositivi associati e stampanti installate non si spengono. Se tieni Xbox, lo Store continua ad aggiornare i giochi di Game Pass.</span></li>
+            <li><b data-t="nv3h">Si spengono solo i driver inutili</b><span data-t="nv3">LollozzOS guarda i dispositivi del tuo PC e lascia attivo ogni driver che usano, compresi quelli dei dischi.</span></li>
+            <li><b data-t="nv4h">Windows Defender, scelto con i numeri</b><span data-t="nv4">Quanto pesa davvero, dai test indipendenti: nei giochi nessun calo di FPS misurabile. Il consiglio è lasciarlo attivo; se lo spegni, lo decidi tu.</span></li>
+            <li><b data-t="nv5h">Edge si toglie solo se hai un altro browser</b><span data-t="nv5">Se scegli di toglierlo, LollozzOS scarica prima Chrome, Firefox o Brave dal sito ufficiale.</span></li>
+            <li><b data-t="nv6h">Sui portatili la batteria conta</b><span data-t="nv6">Restano fuori le ottimizzazioni che la consumano.</span></li>
           </ul>
-          <a class="btn btn-p" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener" data-t="l-btn">Chiedila sul Discord</a>
         </div>
       </div>
-      <p class="lic-nota rivela" data-t="l-nota">La licenza è legata all’hardware del computer: non si rivende, non si condivide e non si trasferisce. Prezzi e dettagli sul Discord.</p>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="sez-testa c rivela">
-        <span class="eyebrow">FAQ</span>
-        <h2 data-t="q-h">Domande frequenti</h2>
-      </div>
-      <div class="faq">
-        <details class="rivela"><summary><span data-t="q1">È sicuro per il mio PC?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a1">Prima di ogni modifica LollozzOS salva i valori di prima, e in Ottimizza con un click e prima delle modifiche estreme ti propone anche un punto di ripristino di Windows. Ogni interruttore si rispegne, e “Ripristina tutto” annulla tutte le modifiche dell’app.</p></details>
-        <details class="rivela"><summary><span data-t="q2">Su quali Windows funziona?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a2">Windows 10 e Windows 11 a 64 bit. L’app parte come amministratore, perché cambia impostazioni di sistema.</p></details>
-        <details class="rivela"><summary><span data-t="q3">In che lingua è l’app?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a3">In italiano e in inglese: segue la lingua di Windows, e la cambi quando vuoi dal globo in basso a sinistra.</p></details>
-        <details class="rivela"><summary><span data-t="q6">La Modalità competitiva intelligente rallenta il PC quando non gioco?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a6">No. Aspetta un gioco senza fare niente; quando ne parte uno cambia le precedenze solo per quella partita, e quando lo chiudi rimette tutto com’era. Se passi a un’altra finestra (Alt+Tab) le app tornano normali finché non torni nel gioco.</p></details>
-        <details class="rivela"><summary><span data-t="q7">Dopo un aggiornamento di Windows devo rifare Ottimizza con un click?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a7">Solo se serve: il Livello LollozzOS nella Home controlla il PC, e se Windows ha annullato qualcosa e il Livello scende sotto l’80% il riquadro te lo propone di nuovo.</p></details>
-        <details class="rivela"><summary><span data-t="q5">Windows dice che il programma non è riconosciuto. Cosa faccio?</span><svg class="i"><use href="#i-plus"/></svg></summary><p data-t="a5">Il programma d’installazione non è firmato, quindi al primo avvio Windows SmartScreen può avvisare. Clicca “Ulteriori informazioni” e poi “Esegui comunque”. Scaricalo solo da questa pagina o dal GitHub di LollozzOS.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- COMMUNITY -->
-  <section id="community">
-    <div class="wrap comm">
-      <div class="comm-box rivela">
-        <h3 data-t="co-h">Entra nella community</h3>
-        <p data-t="co-p">Assistenza, licenze, novità e la comunità italiana del gaming competitivo che prova e migliora LollozzOS.</p>
-        <div class="social">
-          <a href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg><span><b>Discord</b><small data-t="so1">Assistenza e licenze</small></span></a>
-          <a href="https://www.tiktok.com/@_lollozz_" target="_blank" rel="noopener"><svg class="i"><use href="#i-video"/></svg><span><b>TikTok</b><small>@_lollozz_</small></span></a>
-          <a href="https://www.instagram.com/_lollozz__" target="_blank" rel="noopener"><svg class="i"><use href="#i-camera"/></svg><span><b>Instagram</b><small>@_lollozz__</small></span></a>
-          <a href="https://www.twitch.tv/lollozz__" target="_blank" rel="noopener"><svg class="i"><use href="#i-live"/></svg><span><b>Twitch</b><small>lollozz__</small></span></a>
+  <!-- ===== installa lollozzos ===== -->
+  <section class="sez" id="installa">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="sm2">Installa LollozzOS</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="in-h">Poche domande, poi fa tutto da solo.</h2>
+          <p data-t="in-p">Connessioni, Microsoft e Xbox, Windows Defender, app, barra di ricerca e colori: dalle tue risposte nasce il piano per il tuo PC. Servizi, debloat, rete, energia e aspetto partono insieme.</p>
+        </div>
+        <div class="dx">
+          <div class="foto"><img data-foto="installa" src="assets/installa-it.jpg" alt="Il riepilogo di Installa LollozzOS: le tue risposte e i controlli prima di partire" data-alt-en="The Install LollozzOS summary: your answers and the checks before starting" width="1600" height="900" loading="lazy"></div>
+          <ol class="passi">
+            <li><b data-t="in1h">Rispondi</b><span data-t="in1">Al massimo otto domande, con la risposta consigliata già segnata.</span></li>
+            <li><b data-t="in2h">Controlla il riepilogo</b><span data-t="in2">Tocchi una risposta, la cambi e torni al riepilogo.</span></li>
+            <li><b data-t="in3h">Riavvia</b><span data-t="in3">Il PC si riavvia da solo e LollozzOS ti mostra processi e servizi, prima e dopo.</span></li>
+          </ol>
         </div>
       </div>
-      <div class="comm-box dona rivela">
-        <svg class="i cuore"><use href="#i-heart"/></svg>
-        <h3 data-t="d-h">Sostieni LollozzOS</h3>
-        <p data-t="d-p">Se LollozzOS ti è utile, con una donazione libera sostieni i prossimi aggiornamenti. Non sblocca niente: la licenza resta la stessa.</p>
-        <a class="btn btn-g" href="https://ko-fi.com/lollozzos" target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg><span data-t="d-btn">Dona con Ko-fi</span></a>
+    </div>
+  </section>
+
+  <!-- ===== modalita' competitiva ===== -->
+  <section class="sez" id="competitiva">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="mc-t">Modalità competitiva intelligente</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="mc-h">Si accende con il gioco.</h2>
+          <p data-t="mc-p">La accendi una volta e non devi fare altro: parte quando avvii un gioco e si spegne quando lo chiudi, anche con LollozzOS chiusa e dopo il riavvio.</p>
+        </div>
+        <div class="dx">
+          <ul class="spunte">
+            <li data-t="mc1">Funziona con qualunque launcher: Steam, Battle.net, Epic, Riot, Ubisoft, EA, Xbox.</li>
+            <li data-t="mc2">Il gioco a priorità alta su tutti i core, sulla scheda video più potente.</li>
+            <li data-t="mc3">Le altre app in risparmio: Discord, OBS e i programmi di mouse e cuffie restano aperti e funzionano.</li>
+            <li data-t="mc4">Browser a priorità bassa, senza perdere le schede.</li>
+            <li data-t="mc5">Timer di Windows a 0,5 ms, mouse senza accelerazione, piano energetico Lollozz Gaming.</li>
+            <li data-t="mc6">Game Bar spenta, servizi che non servono in pausa, niente notifiche.</li>
+            <li data-t="mc7">Quando chiudi il gioco, tutto torna com'era.</li>
+            <li data-t="mc8">A fine partita il resoconto: FPS medi, 1% low e scatti.</li>
+          </ul>
+          <p class="piccolo" data-t="mc-nota">Non mette mai in risparmio i processi di Windows, Microsoft Defender, gli anti-cheat, l'audio, i driver video e i programmi che rimappano tastiera e controller. FPS e scatti li misura PresentMon di Intel, che non disegna niente sullo schermo.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="wrap">
-    <div class="finale rivela">
-      <h2 data-t="fi-h">Pronto a partire?</h2>
-      <p data-t="fi-p">Scaricalo, provalo 24 ore e guarda la differenza con i tuoi occhi.</p>
+  <!-- ===== funzioni ===== -->
+  <section class="sez" id="funzioni">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="sm4">Dentro l'app</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="f-h">Ogni parte di Windows che conta per giocare.</h2>
+          <p data-t="f-p">Ogni interruttore legge lo stato vero dal sistema: vedi quello che Windows sta facendo, non quello che speri.</p>
+        </div>
+        <div class="dx">
+          <ul class="voci">
+            <li><b>Debloat</b><span data-t="f1">Via la telemetria, l'IA e le funzioni di Windows che non usi.</span></li>
+            <li><b data-t="f2h">Servizi</b><span data-t="f2">I servizi che Windows tiene accesi in sottofondo: spegni solo quelli che non ti servono.</span></li>
+            <li><b data-t="f3h">Rete</b><span data-t="f3">Meno ritardo in gioco: DNS, scheda di rete e impostazioni di Windows.</span></li>
+            <li><b data-t="f4h">GPU e grafica</b><span data-t="f4">La scheda video al massimo: driver, preset e impostazioni grafiche di Windows.</span></li>
+            <li><b data-t="f5h">Energia e prestazioni</b><span data-t="f5">Tutta la potenza quando serve: piano energetico, processore, USB e PCIe.</span></li>
+            <li><b data-t="f6h">Memoria RAM</b><span data-t="f6">Come Windows usa la memoria: SuperFetch, Prefetch e gestione della RAM.</span></li>
+            <li><b data-t="f7h">Periferiche e USB</b><span data-t="f7">Tastiera, mouse e porte USB: reattività, interrupt e misure dei dispositivi.</span></li>
+            <li><b>Audio</b><span data-t="f8">Audio senza effetti che ritardano e senza il volume che si abbassa da solo.</span></li>
+            <li><b>BIOS</b><span data-t="f9">Il BIOS controllato da Windows: sicurezza, memoria, scheda video e firmware.</span></li>
+            <li><b data-t="f10h">Fix e riparazioni</b><span data-t="f10">Qualcosa non va? Scegli il problema e LollozzOS lo ripara: 54 riparazioni in 11 gruppi.</span></li>
+            <li><b data-t="f11h">Sicurezza</b><span data-t="f11">Le protezioni di Windows, con il costo in prestazioni e il rischio scritti su ogni voce.</span></li>
+            <li><b>LIA</b><span data-t="f12">L'assistente di LollozzOS: analizza il PC, ti guida nell'app e scrive la guida del tuo computer.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== giochi ===== -->
+  <section class="sez" id="giochi">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="n5">Giochi</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="gi-h">Configurazioni pronte, fatte sul tuo PC.</h2>
+          <p data-t="gi-p">Il file tarato da Lollozz, importato con un clic. Dove serve, i valori si ricalcolano sul tuo processore, schermo e scheda video. Prima si salva il tuo file, e «Rimetti com'erano» lo riporta indietro.</p>
+        </div>
+        <div class="dx">
+          <div class="foto"><img data-foto="giochi" src="assets/giochi-it.jpg" alt="La pagina Giochi di LollozzOS" data-alt-en="The LollozzOS Games page" width="1600" height="610" loading="lazy"></div>
+          <ul class="giochi">
+            <li>Call of Duty: Black Ops 7 <span data-t="e">e</span> Warzone</li>
+            <li>Apex Legends</li>
+            <li>Counter-Strike 2</li>
+            <li>Fortnite</li>
+            <li>Rainbow Six Siege</li>
+            <li>PUBG: Battlegrounds</li>
+            <li>ARC Raiders</li>
+            <li>Battlefield 6</li>
+            <li>Valorant</li>
+            <li class="arriva" data-t="cod-next">Call of Duty, prossimo capitolo (in arrivo)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== tutto si annulla ===== -->
+  <section class="sez" id="sicuro">
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="si-t">Ripristino</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="si-h">Tutto si annulla.</h2>
+          <p data-t="si-p">Ogni ottimizzazione è scritta come dati: il valore quando è accesa e quello quando è spenta. Gli stessi dati servono ad applicarla, ad annullarla e a leggere com'è davvero.</p>
+        </div>
+        <div class="dx">
+          <ul class="voci una">
+            <li><b data-t="si1h">Prima di ogni modifica, i valori di prima</b><span data-t="si1">Spegni l'interruttore e torna com'era.</span></li>
+            <li><b data-t="si2h">Il punto di ripristino viene prima di tutto</b><span data-t="si2">È il primo passo di Installa LollozzOS. I punti di ripristino di Windows li crei e li usi anche dall'app.</span></li>
+            <li><b data-t="si3h">Le protezioni di Windows non si toccano per sbaglio</b><span data-t="si3">Stanno nella sezione Sicurezza: ognuna dice quanto costa in prestazioni, chiede conferma e fa prima un punto di ripristino.</span></li>
+            <li><b data-t="si4h">«Ripristina tutto»</b><span data-t="si4">Annulla ogni modifica dell'app, o una alla volta dalla cronologia. Non riporta le app e i file eliminati, né tema, sfondo e colore.</span></li>
+            <li><b data-t="si5h">Windows Update prima di tutto</b><span data-t="si5">Se Windows ha un aggiornamento da completare, LollozzOS aspetta prima di cambiare qualcosa.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== come si inizia ===== -->
+  <section class="sez" id="inizia">
+    <span id="licenze" class="ancora"></span><!-- l'app apre il sito su #licenze -->
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="sm7">Come si inizia</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="ii-h">Pronto in tre passi.</h2>
+          <p data-t="ii-p">Una licenza, tutta l'app, su un computer. È legata al suo hardware: non si rivende, non si condivide e non si trasferisce. Prezzi e dettagli su Discord.</p>
+        </div>
+        <div class="dx">
+          <ol class="passi" style="margin-top:0;border-top:0">
+            <li><b data-t="ii1h">Scarica e installa</b><span data-t="ii1">Scarica <kbd>LollozzOS_Setup</kbd> e avvialo. Il programma d'installazione non è firmato: se Windows SmartScreen avvisa, scegli «Ulteriori informazioni» e poi «Esegui comunque».</span></li>
+            <li><b data-t="ii2h">Provalo per 24 ore</b><span data-t="ii2">La prova gratuita vale una volta per computer: chiede nome e cognome, email e telefono. Comincia da Installa LollozzOS nella Home.</span></li>
+            <li><b data-t="ii3h">Attiva la licenza</b><span data-t="ii3">Nell'app copia la richiesta di licenza, scrivi su Discord e incolla il codice di sblocco che ricevi.</span></li>
+          </ol>
+          <div class="cta" style="justify-content:flex-start;margin-top:34px">
+            <a class="btn p" href="https://github.com/LollozzOS/LollozzOs/releases/latest"><svg class="i"><use href="#i-scarica"/></svg><span data-t="scarica">Scarica LollozzOS</span></a>
+            <a class="btn s" href="https://discord.gg/gd5cT3Jw9M" data-t="licenza">Licenza su Discord</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== domande ===== -->
+  <section class="sez" id="domande">
+    <span id="faq" class="ancora"></span><!-- le versioni di prima dell'app aprono #faq -->
+    <div class="fin">
+      <div class="tit"><img src="assets/logo-os-192.png" alt=""><span data-t="sm8">Domande frequenti</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+      <div class="corpo">
+        <div class="lato">
+          <h2 data-t="q-h">Prima di scaricare.</h2>
+          <p data-t="q-p">Le risposte alle domande che arrivano più spesso su Discord.</p>
+        </div>
+        <div class="dx faq">
+          <details><summary data-t="q1">È sicuro per il mio PC?</summary><p data-t="a1">Prima di ogni modifica LollozzOS salva i valori di prima, e il punto di ripristino di Windows è il primo passo di Installa LollozzOS. Ogni interruttore si rispegne, e «Ripristina tutto» annulla ogni modifica fatta dall'app.</p></details>
+          <details><summary data-t="q2">Su quale Windows funziona?</summary><p data-t="a2">Windows 10 e Windows 11, 64 bit. L'app parte come amministratore, perché cambia impostazioni di sistema.</p></details>
+          <details><summary data-t="q3">In che lingua è l'app?</summary><p data-t="a3">Italiano e inglese: segue la lingua di Windows, e la cambi quando vuoi dal globo in basso a sinistra.</p></details>
+          <details><summary data-t="q4">La Modalità competitiva rallenta il PC quando non gioco?</summary><p data-t="a4">No. Aspetta un gioco senza fare niente; quando parte cambia le priorità solo per quella partita, e quando lo chiudi torna tutto com'era. Se passi a un'altra finestra (Alt+Tab) le app tornano normali finché non torni nel gioco.</p></details>
+          <details><summary data-t="q5">Dopo un aggiornamento di Windows devo rifare tutto?</summary><p data-t="a5">Solo se serve: il Livello LollozzOS nella Home controlla il PC, e se Windows ha rimesso qualcosa il Livello scende e l'app te lo propone di nuovo.</p></details>
+          <details><summary data-t="q6">Windows dice che il programma non è riconosciuto. Cosa faccio?</summary><p data-t="a6">Il programma d'installazione non è firmato, quindi Windows SmartScreen può avvisare la prima volta. Clicca «Ulteriori informazioni» e poi «Esegui comunque». Scaricalo solo da questa pagina o dal GitHub di LollozzOS.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== community ===== -->
+  <section class="sez" id="community">
+    <div class="due">
+      <div class="fin">
+        <div class="tit"><img src="assets/logo-os-192.png" alt=""><span>Community</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+        <div class="blocco">
+          <h2 data-t="co-h">Entra nella community.</h2>
+          <p data-t="co-p">Assistenza, licenze, novità e la community italiana del gaming competitivo che prova e migliora LollozzOS.</p>
+          <ul class="social">
+            <li><a href="https://discord.gg/gd5cT3Jw9M">Discord <small data-t="so1">assistenza e licenze</small></a></li>
+            <li><a href="https://www.tiktok.com/@_lollozz_">TikTok <small>@_lollozz_</small></a></li>
+            <li><a href="https://www.instagram.com/_lollozz__">Instagram <small>@_lollozz__</small></a></li>
+            <li><a href="https://www.twitch.tv/lollozz__">Twitch <small>lollozz__</small></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fin">
+        <div class="tit"><img src="assets/logo-os-192.png" alt=""><span>Ko-fi</span><span class="sp"></span><span class="k" aria-hidden="true"><svg><use href="#i-min"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-max"/></svg></span><span class="k" aria-hidden="true"><svg><use href="#i-chiudi"/></svg></span></div>
+        <div class="blocco">
+          <h2 data-t="d-h">Sostieni LollozzOS.</h2>
+          <p data-t="d-p">Se LollozzOS ti è utile, una donazione libera sostiene i prossimi aggiornamenti. Non sblocca niente: la licenza resta la stessa.</p>
+          <a class="btn s" href="https://ko-fi.com/lollozzos" data-t="d-btn">Dona con Ko-fi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fine">
+    <div class="luce ed" aria-hidden="true"></div>
+    <div class="in">
+      <h2 data-t="fi-h">Il tuo PC, pronto per giocare.</h2>
+      <p data-t="fi-p">Scaricalo, provalo per 24 ore e guarda la differenza sul tuo PC.</p>
       <div class="cta">
-        <a class="btn btn-p" href="https://github.com/LollozzOS/LollozzOs/releases/latest"><svg class="i"><use href="#i-down"/></svg><span data-t="scarica2">Scarica LollozzOS</span></a>
-        <a class="btn btn-g" href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener"><svg class="i"><use href="#i-key"/></svg><span data-t="licenza2">Ottieni la licenza</span></a>
+        <a class="btn p" href="https://github.com/LollozzOS/LollozzOs/releases/latest"><svg class="i"><use href="#i-scarica"/></svg><span data-t="scarica">Scarica LollozzOS</span></a>
+        <a class="btn s" href="https://discord.gg/gd5cT3Jw9M" data-t="licenza">Licenza su Discord</a>
       </div>
     </div>
-  </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <a class="brand" href="#inizio"><img src="assets/logo.png" alt="" width="30" height="30"><span>Lollozz<span class="os">OS</span></span></a>
-        <div style="margin-top:8px" data-t="firma">Creato da Lollozz · Lollozz Labs</div>
-      </div>
-      <div class="foot-link">
-        <a href="#novita" data-t="f-nov">Novità</a>
-        <a href="https://github.com/LollozzOS/LollozzOs">GitHub</a>
-        <a href="https://github.com/LollozzOS/LollozzOs/releases" data-t="versioni">Versioni</a>
-        <a href="https://discord.gg/gd5cT3Jw9M" target="_blank" rel="noopener">Discord</a>
-        <a href="https://www.tiktok.com/@_lollozz_" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.instagram.com/_lollozz__" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.twitch.tv/lollozz__" target="_blank" rel="noopener">Twitch</a>
-      </div>
+  <div class="in">
+    <div class="firma"><img src="assets/lettering.png" alt="LollozzOS" width="1400" height="177" loading="lazy"><p data-t="firma">Creato da Lollozz</p></div>
+    <div class="link">
+      <a href="https://github.com/LollozzOS/LollozzOs/releases" data-t="sm-rel">Versioni</a>
+      <a href="https://github.com/LollozzOS/LollozzOs">GitHub</a>
+      <a href="https://discord.gg/gd5cT3Jw9M">Discord</a>
+      <a href="https://ko-fi.com/lollozzos">Ko-fi</a>
     </div>
-    <p class="legale" data-t="legale">LollozzOS cambia valori del registro, servizi, impostazioni di rete, piani energetici e impostazioni dei driver. È fornito così com’è, senza garanzia: leggi cosa fa ogni interruttore prima di accenderlo e tieni il punto di ripristino che l’app ti propone. LollozzOS non è affiliato a Microsoft né agli editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi proprietari. Alcune funzioni aprono programmi di altri autori, che restano loro e con le loro licenze.</p>
-    <p style="margin:14px 0 0">© <span id="anno">2026</span> Lollozz</p>
+    <p class="legale" data-t="legale">LollozzOS cambia valori del registro, servizi, impostazioni di rete, piani energetici e impostazioni dei driver. È fornito così com'è, senza garanzia: leggi cosa fa ogni interruttore prima di accenderlo e tieni il punto di ripristino che l'app crea. LollozzOS non è affiliato a Microsoft né agli editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi proprietari. Alcune funzioni aprono programmi di altri autori, che restano loro e con le loro licenze. © 2026 Lollozz.</p>
   </div>
 </footer>
 
 <script>
 (function () {
-  document.body.classList.remove('no-js');
-
   // ---------- inglese ----------
-  // L'italiano sta nella pagina; qui c'e' solo l'inglese. Le chiavi sono i
-  // data-t degli elementi.
+  // L'italiano e' nella pagina; qui solo l'inglese, per chiave data-t.
   var EN = {
-    'nav0': 'What’s new',
-    'nav6': 'Competitive',
-    'f-nov': 'What’s new',
-    'hero-nov': 'New: Debloat on one screen and repairs that really work',
-    'nv-eye': 'What’s new',
-    'nv-h': 'The latest news',
-    'nv-p': 'What arrived in the latest versions. The app checks for updates by itself: when a new version is out it tells you, downloads it and opens the installer (license, settings and backups stay).',
-    'nv-data': 'Updated on 7 October 2026',
-    'nv-nuovo1': 'NEW',
-    'nv-nuovo2': 'NEW',
-    'nv-nuovo3': 'NEW',
-    'nv-nuovo4': 'NEW',
-    'nv1h': "LollozzOS Debloat on one screen",
-    'nv1': "Privacy, ads, AI features, Start, taskbar and performance: 119 items on one screen. It applies only what you tick, the ones already done are marked “Already done” and each one can be undone. It is in One-click optimize too.",
-    'nv2h': "Windows AI really removed",
-    'nv2': "Copilot, Recall and the other AI features removed from Windows, not just turned off. Each of the 12 items tells you whether it is still on your PC or already gone. The Safe preset leaves out the 3 that can make Windows Update fail, and “Bring the AI back” puts everything back.",
-    'nv3h': "Repairs that really work",
-    'nv3': "54 fixes in 11 groups, on their own page and with search. First you see the steps, then the result of each one. The Store reinstalls even if it had been removed, Edge comes back, and DISM, SFC and the disk check report the real result.",
-    'nv4h': "Task manager with tips",
-    'nv4': "Next to every program, a tip: high priority for games, low for whatever works in the background, close it if it eats processor or memory. You choose with one click: LollozzOS never does anything by itself.",
-    'nv5h': "Graphics card Affinity",
-    'nv5': "The graphics card interrupts go to the last core, usually the least busy, instead of Core 0. On some PCs frametimes get steadier, with fewer spikes; on others nothing changes, so the app measures before and after. It is already in One-click optimize.",
-    'nv6h': "Eight more optimizations",
-    'nv6': "No automatic maintenance starting while you play, less telemetry, no energy log in the background, LLMNR off and about 7 GB of reserved storage freed. Each one has its own switch, with what you give up written next to it.",
-    'nv7h': "The LollozzOS Level",
-    'nv7': "The optimizations that are on and the PC health in one number. If a Windows update undoes some of them the number drops, and One-click optimize is offered again.",
-    'nv8h': "One-click optimize, safer",
-    'nv8': "You can stop it while it works: the optimizations already done stay and the PC does not restart.",
-    'c3': 'You follow the progress in the Home panel: the percentage, the current step and the phases.',
-    'mc-eye': 'Every match',
-    'mc-h': 'Smart Competitive Mode',
-    'mc-p': 'Turn it on once and you have nothing else to do. When a game starts it gives it precedence, when you close it everything goes back as it was. It works with LollozzOS closed too, after a restart and with any launcher.',
-    'mc1': 'The game at high priority on all cores, the most powerful graphics card, Game Mode and the Windows timer at 0.5 ms.',
-    'mc2': 'Every other app in efficiency mode: Discord, OBS and peripheral software stay open and keep working, but leave the processor to the game (if you record or stream with x264, OBS may lose smoothness). Browsers at low priority.',
-    'mc3': 'Game Bar off, services not needed for gaming paused, mouse acceleration off, the Lollozz Gaming power plan, notifications off.',
-    'mc4': 'It never puts Windows processes, Microsoft Defender, anti-cheats, the audio chain, video drivers or programs that remap keyboard and controller in efficiency mode; anything using too much processor is only slowed down, and everything goes back as it was after the match.',
-    'mc5': 'At the end of the match, the report: average FPS, 1% and 0.1% low, stutters, latency and tips. Save it to the desktop or send it to Lollozz.',
-    's5': 'If Windows has an update to finish, LollozzOS waits before changing anything.',
-    't6': 'Progress',
-    't7': 'Report',
-    'q6': 'Does Smart Competitive Mode slow the PC down when I’m not playing?',
-    'a6': 'No. It waits for a game doing nothing; when one starts it changes priorities for that match only, and when you close it everything goes back as it was. If you switch to another window (Alt+Tab) the apps go back to normal until you return to the game.',
-    'q7': 'After a Windows update, do I need to run One-click optimize again?',
-    'a7': 'Only if needed: the LollozzOS Level on the Home screen checks the PC, and if Windows undid something and the Level drops below 80% the panel offers it again.',
-    'nav1': 'One click', 'nav2': 'Features', 'nav3': 'Games', 'nav5': 'Get started',
-    'scarica-s': 'Download',
-    'pill': 'Windows 10 and 11 · Made by Lollozz',
-    'h1': 'Your PC, <span class="grad">ready to play.</span>',
-    'lead': 'LollozzOS puts in one app what is usually scattered across dozens of scripts, guides and programs: fewer background processes, network and graphics card set up for gaming, ready-made configs for your games. And every change can be undone.',
-    'scarica': 'Download LollozzOS', 'licenza': 'Get a license', 'scarica2': 'Download LollozzOS', 'licenza2': 'Get a license',
-    'n1': 'Free 24-hour trial', 'n2': 'Backup before every change', 'n3': 'Every change can be undone',
-    'k1': 'background processes, with one click (typical values)',
-    'k2': 'games with a ready-made config, and the next Call of Duty on the way',
-    'k3': 'fixes grouped by problem: network, audio, Windows Update…',
-    'k4b': 'All', 'k4': 'reversible: the previous state is saved before each change',
-    'c-eye': 'The first step', 'c-h': 'One-click optimize',
-    'c-p': 'Restore point, unnecessary services, LollozzOS Debloat, gaming optimizations, power, network and the LollozzOS look, then a restart. Before it starts you see the processes now, counted on your PC, and the estimate with LollozzOS.',
-    'c1': '“See details” shows everything that changes, group by group. A few questions (Wi-Fi, Bluetooth, printing, Store, Xbox, colors…) decide what stays, with the recommended answer already selected; with “Customize” you turn items on and off one by one.',
-    'c2': 'A copy of the current settings is always included: it is what makes undoing everything possible. The Windows restore point starts already selected.',
-    'c4': 'At the end the PC restarts by itself after 20 seconds. After the restart LollozzOS opens again and shows you processes, services and Windows boot time before and after.',
-    'f-eye': 'All in one app', 'f-h': 'Every part of Windows that matters for gaming',
+    'salta': 'Skip to content',
+    'ic1': 'Download LollozzOS', 'ic2': 'License on Discord', 'ic3': 'What’s new',
+    'slogan': 'Your PC, ready to play.',
+    'scarica': 'Download LollozzOS', 'licenza': 'License on Discord', 'scarica-b': 'Download',
+    'nota': 'Windows 10 and 11, 64-bit. Free 24-hour trial.',
+    'n1': 'What’s new', 'n2': 'Install', 'n3': 'Competitive', 'n4': 'Features', 'n5': 'Games', 'n6': 'FAQ', 'menu': 'Menu',
+    'sm-sotto': 'Windows optimization for gaming', 'sm2': 'Install LollozzOS', 'sm3': 'Competitive mode', 'sm4': 'Inside the app',
+    'sm6': 'Everything can be undone', 'sm7': 'Get started', 'sm8': 'Frequently asked questions', 'sm-rel': 'Releases',
+    'nv-h': 'What’s new', 'nv-data': 'Updated on 14 October 2026',
+    'nv-p': 'The app checks for updates by itself: when a new version is out it tells you, downloads it and opens the installer. License, settings and backups stay.',
+    'nv1h': 'Install LollozzOS, one single path', 'nv1': 'Answer a few questions and all the optimizations start together, with the restore point as the first step.',
+    'nv2h': 'What you use stays on', 'nv2': 'A connected Wi-Fi, Bluetooth with paired devices and installed printers are never turned off. If you keep Xbox, the Store keeps updating your Game Pass games.',
+    'nv3h': 'Only useless drivers are turned off', 'nv3': 'LollozzOS looks at your PC’s devices and keeps every driver they use, disk drivers included.',
+    'nv4h': 'Windows Defender, chosen with the numbers', 'nv4': 'What it really costs, from independent tests: no measurable FPS drop in games. The advice is to keep it on; if you turn it off, it’s your choice.',
+    'nv5h': 'Edge goes only if you have another browser', 'nv5': 'If you choose to remove it, LollozzOS first downloads Chrome, Firefox or Brave from the official website.',
+    'nv6h': 'On laptops, the battery matters', 'nv6': 'The optimizations that drain it are left out.',
+    'in-h': 'A few questions, then it does everything by itself.',
+    'in-p': 'Connections, Microsoft and Xbox, Windows Defender, apps, search bar and colors: your answers become the plan for your PC. Services, debloat, network, power and appearance start together.',
+    'in1h': 'Answer', 'in1': 'Eight questions at most, with the recommended answer already selected.',
+    'in2h': 'Check the summary', 'in2': 'Tap an answer, change it and come back to the summary.',
+    'in3h': 'Restart', 'in3': 'The PC restarts by itself and LollozzOS shows you processes and services, before and after.',
+    'mc-t': 'Smart competitive mode', 'mc-h': 'It turns on with the game.',
+    'mc-p': 'Turn it on once and you have nothing else to do: it starts when you launch a game and stops when you close it, even with LollozzOS closed and after a restart.',
+    'mc1': 'Works with any launcher: Steam, Battle.net, Epic, Riot, Ubisoft, EA, Xbox.',
+    'mc2': 'The game at high priority on all cores, on the most powerful graphics card.',
+    'mc3': 'Every other app in efficiency mode: Discord, OBS and your mouse and headset software stay open and keep working.',
+    'mc4': 'Browsers at low priority, without losing your tabs.',
+    'mc5': 'Windows timer at 0.5 ms, no mouse acceleration, the Lollozz Gaming power plan.',
+    'mc6': 'Game Bar off, services you don’t need paused, no notifications.',
+    'mc7': 'When you close the game, everything goes back as it was.',
+    'mc8': 'At the end of the match, the report: average FPS, 1% low and stutters.',
+    'mc-nota': 'It never puts Windows processes, Microsoft Defender, anti-cheats, audio, video drivers or programs that remap keyboard and controller in efficiency mode. FPS and stutters are measured by Intel’s PresentMon, which draws nothing on screen.',
+    'f-h': 'Every part of Windows that matters for gaming.',
     'f-p': 'Every switch reads the real state from the system: you see what Windows is actually doing, not what you hope.',
-    'g1h': 'System monitor', 'g1': 'Live CPU, GPU, RAM and disks, the LollozzOS Level, the Task manager with tips, One-click optimize and Smart Competitive Mode.',
-    'g2': 'LollozzOS Debloat: privacy, ads, AI features, Start, taskbar, File Explorer and performance on one screen, 119 items that can be undone one by one. Then unneeded apps, Remove Windows AI (Copilot, Recall and the other AI) and services one by one.',
-    'g3h': 'GPU & graphics', 'g3': 'The optimizations for your card (NVIDIA, AMD or Intel), the video driver with the latest version to download, the manufacturer’s utilities and Affinity: the graphics card interrupts on the last core, measured before and after.',
-    'g4h': 'Network', 'g4': 'Latency-oriented network, a test of 14 DNS providers, speed, packet loss, latency under load and network priority for games.',
-    'g5': 'Loudness equalization to hear footsteps better, volume that doesn’t drop during calls, Nahimic off and minimum audio latency, all in one click too.',
-    'g6h': 'Power & performance', 'g6': 'Everyday and Gaming power plans built for your PC, timer and responsiveness, CPU, USB and PCI Express power saving, MSI interrupts.',
-    'g7h': 'Fixes & repairs', 'g7': '54 fixes in 11 groups (network, audio, Update and Store, File Explorer…), with search. First you see the steps, then the result of each one.',
-    'g8h': 'Diagnosis & maintenance', 'g8': 'Disk health, used space, Disk cleanup and Prepare the PC, PC measurements and a log of everything that was done.',
-    'g9': 'Secure Boot, TPM, virtualization and memory profile read from the PC, the latest BIOS from the manufacturer’s website, a BIOS guide for your motherboard and “Restart into BIOS”.',
-    'g10h': 'Appearance', 'g10': 'Wallpapers and lock screen, Windows in any color with 17 cursors, LollozzOS sounds, displays and the desktop right-click shortcuts.',
-    'g11h': 'Apps', 'g11': 'Popular programs installed from the official source with winget, uninstalling, and what starts with Windows.',
-    'g12h': 'Tools & utilities', 'g12': 'HWiNFO, CPU-Z, Autoruns, Intelligent Standby List Cleaner, Timer Resolution, FanControl and more, ready to open.',
-    'g13h': 'Smart Competitive Mode', 'g13': 'Turn it on once: it starts by itself with games, puts the other apps in efficiency mode and gives you the report at the end of the match.',
-    'g14h': 'A guide for your PC', 'g14': 'Written on your computer: your components, your installed games, what is worth turning on and in which order.',
-    'g16h': 'One-click support', 'g16': 'From the support button you send a report with everything needed to understand the problem, or open the chat with the files already prepared.',
-    'g15h': 'Restore', 'g15': '“Restore everything” undoes every LollozzOS change; from the history you undo one at a time. And you create and use Windows restore points from the app.',
-    'gi-eye': 'Games', 'gi-h': 'Ready-made configs, built for your PC',
-    'gi-p': 'The file tuned by Lollozz, imported in one click. Where needed, the values that depend on the computer are recalculated for yours: processor, display and graphics card. For Valorant, the stretched-resolution programs.',
+    'f1': 'Remove telemetry, AI and the Windows features you don’t use.',
+    'f2h': 'Services', 'f2': 'The services Windows keeps running in the background: turn off only the ones you don’t need.',
+    'f3h': 'Network', 'f3': 'Less lag in game: DNS, network adapter and Windows settings.',
+    'f4h': 'GPU & graphics', 'f4': 'Your graphics card at its best: drivers, presets and Windows graphics settings.',
+    'f5h': 'Power & performance', 'f5': 'Full power when you need it: power plan, processor, USB and PCIe.',
+    'f6h': 'Memory (RAM)', 'f6': 'How Windows uses memory: SuperFetch, Prefetch and RAM management.',
+    'f7h': 'Peripherals & USB', 'f7': 'Keyboard, mouse and USB ports: responsiveness, interrupts and device tests.',
+    'f8': 'Audio without delaying effects and without the volume dropping on its own.',
+    'f9': 'The BIOS checked from Windows: security, memory, graphics card and firmware.',
+    'f10h': 'Fixes & repairs', 'f10': 'Something wrong? Pick the problem and LollozzOS fixes it: 54 fixes in 11 groups.',
+    'f11h': 'Security', 'f11': 'Windows protections, with the performance cost and the risk spelled out on every item.',
+    'f12': 'The LollozzOS assistant: it analyzes your PC, guides you through the app and writes the guide for your computer.',
+    'gi-h': 'Ready-made configs, built on your PC.',
+    'gi-p': 'The file tuned by Lollozz, imported in one click. Where needed, the values are recalculated for your processor, display and graphics card. Your file is saved first, and “Put it back” restores it.',
     'e': 'and', 'cod-next': 'Call of Duty, next installment (coming soon)',
-    'gi1': 'Your file is backed up first: “Put it back” restores it.',
-    'gi2': 'In “For every game”: Game Mode, fullscreen, mouse and keyboard.',
-    's-eye': 'Safe and reversible', 's-h': 'The difference between a tool and a gamble',
-    's-p': 'Every optimization is written as data: its value when on and its value when off. The same data is used to apply it, undo it and read how it really is.',
-    's1': 'The previous values are saved before each change. Turn a switch off and it goes back to how it was.',
-    's2': 'A Windows restore point, already selected in One-click optimize and before extreme changes. You can also create and use restore points from the app.',
-    's3': 'Extreme changes (User Account Control, firewall, Windows Update…) are locked. VBS, SmartScreen and the Spectre mitigations are turned off only if you choose so in the questions; by default they stay on.',
-    's4': '“Restore everything” undoes every change the app made, but it doesn’t bring back deleted apps and files, or theme, wallpaper and color. And uninstalling the app doesn’t undo the optimizations by itself: the uninstaller lets you choose.',
-    'v-eye': 'Inside the app', 'v-h': 'See how it looks',
-    't1': 'Home', 't2': 'One click', 't3': 'Games', 't5': 'Colors',
-    'i-eye': 'Get started', 'i-h': 'Three steps and you’re ready',
-    'p1h': 'Download and install', 'p1': 'Download <kbd>LollozzOS_Setup</kbd> from the releases page and run it. The installer is not signed: if Windows SmartScreen warns you, choose “More info” and then “Run anyway”.',
-    'p2h': 'Try it for 24 hours', 'p2': 'The free trial lasts 24 hours, once per computer: to start it, it asks for your first and last name, email and phone. Start from “One-click optimize” on the Home screen.',
-    'p3h': 'Activate your license', 'p3': 'In the app copy the license request: Lollozz receives it too. Write on Discord and paste the unlock code you receive. It covers one computer.',
-    'l-eye': 'License', 'l-h': 'One license, the whole app',
-    'l1s': 'The whole app, on one computer.', 'l1a': 'One-click optimize and every section', 'l1b': 'Game configs and a guide for your PC', 'l1c': 'Updates from inside the app', 'l1d': 'LollozzOS Debloat, Remove Windows AI and the repairs',
-    'l-btn': 'Ask on Discord',
-    'l-nota': 'The license is tied to the computer’s hardware: it cannot be resold, shared or transferred. Prices and details on Discord.',
-    'q-h': 'Frequently asked questions',
-    'q1': 'Is it safe for my PC?', 'a1': 'Before each change LollozzOS saves the previous values, and in One-click optimize and before extreme changes it also offers a Windows restore point. Every switch can be turned off again, and “Restore everything” undoes every change the app made.',
+    'si-t': 'Restore', 'si-h': 'Everything can be undone.',
+    'si-p': 'Every optimization is written as data: its value when on and its value when off. The same data is used to apply it, undo it and read how it really is.',
+    'si1h': 'Before every change, the previous values', 'si1': 'Turn the switch off and it goes back to how it was.',
+    'si2h': 'The restore point comes first', 'si2': 'It is the first step of Install LollozzOS. You can also create and use Windows restore points from the app.',
+    'si3h': 'Windows protections can’t be touched by mistake', 'si3': 'They live in the Security section: each one tells you what it costs in performance, asks for confirmation and makes a restore point first.',
+    'si4h': '“Restore everything”', 'si4': 'Undoes every change the app made, or one at a time from the history. It doesn’t bring back deleted apps and files, or theme, wallpaper and color.',
+    'si5h': 'Windows Update comes first', 'si5': 'If Windows has an update to finish, LollozzOS waits before changing anything.',
+    'ii-h': 'Ready in three steps.',
+    'ii-p': 'One license, the whole app, on one computer. It is tied to its hardware: it can’t be resold, shared or transferred. Prices and details on Discord.',
+    'ii1h': 'Download and install', 'ii1': 'Download <kbd>LollozzOS_Setup</kbd> and run it. The installer is not signed: if Windows SmartScreen warns you, choose “More info” and then “Run anyway”.',
+    'ii2h': 'Try it for 24 hours', 'ii2': 'The free trial works once per computer: it asks for your first and last name, email and phone. Start from Install LollozzOS on the Home screen.',
+    'ii3h': 'Activate your license', 'ii3': 'In the app copy the license request, write on Discord and paste the unlock code you receive.',
+    'q-h': 'Before you download.', 'q-p': 'Answers to the questions we get most often on Discord.',
+    'q1': 'Is it safe for my PC?', 'a1': 'Before each change LollozzOS saves the previous values, and the Windows restore point is the first step of Install LollozzOS. Every switch can be turned off again, and “Restore everything” undoes every change the app made.',
     'q2': 'Which Windows does it run on?', 'a2': 'Windows 10 and Windows 11, 64-bit. The app runs as administrator, because it changes system settings.',
     'q3': 'What language is the app in?', 'a3': 'Italian and English: it follows the Windows language, and you can switch it any time from the globe at the bottom left.',
-    'q5': 'Windows says the program isn’t recognized. What do I do?', 'a5': 'The installer is not signed, so Windows SmartScreen may warn you the first time. Click “More info” and then “Run anyway”. Only download it from this page or from the LollozzOS GitHub.',
-    'co-h': 'Join the community', 'co-p': 'Support, licenses, news and the Italian competitive gaming community that tests and improves LollozzOS.',
-    'so1': 'Support and licenses',
-    'd-h': 'Support LollozzOS', 'd-p': 'If LollozzOS is useful to you, a free donation supports the next updates. It doesn’t unlock anything: your license stays the same.', 'd-btn': 'Donate with Ko-fi',
-    'fi-h': 'Ready to start?', 'fi-p': 'Download it, try it for 24 hours and see the difference for yourself.',
-    'firma': 'Made by Lollozz · Lollozz Labs', 'versioni': 'Releases',
-    'legale': 'LollozzOS changes registry values, services, network settings, power plans and driver settings. It is provided as is, without warranty: read what each switch does before turning it on, and keep the restore point the app offers to create. LollozzOS is not affiliated with Microsoft or with the publishers of the games mentioned; game names and images belong to their respective owners. Some features open programs by other authors, which remain theirs and keep their own licenses.'
+    'q4': 'Does competitive mode slow the PC down when I’m not playing?', 'a4': 'No. It waits for a game doing nothing; when one starts it changes priorities for that match only, and when you close it everything goes back as it was. If you switch to another window (Alt+Tab) the apps go back to normal until you return to the game.',
+    'q5': 'After a Windows update, do I have to redo everything?', 'a5': 'Only if needed: the LollozzOS Level on the Home screen checks the PC, and if Windows put something back the Level drops and the app offers it again.',
+    'q6': 'Windows says the program isn’t recognized. What do I do?', 'a6': 'The installer is not signed, so Windows SmartScreen may warn you the first time. Click “More info” and then “Run anyway”. Only download it from this page or from the LollozzOS GitHub.',
+    'co-h': 'Join the community.', 'co-p': 'Support, licenses, news and the Italian competitive gaming community that tests and improves LollozzOS.', 'so1': 'support and licenses',
+    'd-h': 'Support LollozzOS.', 'd-p': 'If LollozzOS is useful to you, a free donation supports the next updates. It doesn’t unlock anything: your license stays the same.', 'd-btn': 'Donate with Ko-fi',
+    'fi-h': 'Your PC, ready to play.', 'fi-p': 'Download it, try it for 24 hours and see the difference on your PC.',
+    'firma': 'Created by Lollozz',
+    'legale': 'LollozzOS changes registry values, services, network settings, power plans and driver settings. It is provided as is, without warranty: read what each switch does before turning it on, and keep the restore point the app creates. LollozzOS is not affiliated with Microsoft or with the publishers of the games mentioned; game names and images belong to their respective owners. Some features open programs by other authors, which remain theirs and keep their own licenses. © 2026 Lollozz.'
   };
-  var DIDASCALIE = {
-    it: { home: 'La Home: il tuo PC in tempo reale, il Livello LollozzOS, Ottimizza con un click, la Gestione attività con i consigli e la Modalità competitiva intelligente.', oneclick: 'Verrà installato LollozzOS: i processi di adesso, contati sul tuo PC, e la stima di quelli con LollozzOS.', installa: 'L’avanzamento nel riquadro della Home: la percentuale, il passo in corso e le fasi.', competitiva: 'Il resoconto di una partita: FPS, 1% e 0,1% low, scatti, processore e consigli.', giochi: 'Giochi: la configurazione pronta per ogni gioco, ricalcolata sul tuo PC.', aspetto: 'Colore e tema di Windows: accento, modalità, selezione e cursori in qualsiasi colore, con l’anteprima.', bios: 'BIOS: cosa c’è da sistemare, il BIOS più recente dal sito del produttore e una guida per la tua scheda madre.' },
-    en: { home: 'Home: your PC live, the LollozzOS Level, One-click optimize, the Task manager with tips and Smart Competitive Mode.', oneclick: 'LollozzOS will be installed: the processes now, counted on your PC, and the estimate with LollozzOS.', installa: 'The progress in the Home panel: the percentage, the current step and the phases.', competitiva: 'A match report: FPS, 1% and 0.1% low, stutters, processor and tips.', giochi: 'Games: the ready-made config for each game, recalculated for your PC.', aspetto: 'Windows color and theme: accent, mode, selection and cursors in any color, with a preview.', bios: 'BIOS: what needs fixing, the latest BIOS from the manufacturer’s website and a guide for your motherboard.' }
-  };
+  var ARIA_EN = { start: 'Start menu' };
   var TITOLI = {
-    it: ['LollozzOS — Il tuo PC, pronto per giocare', 'LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e GPU impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.'],
-    en: ['LollozzOS — Your PC, ready to play', 'LollozzOS optimizes Windows 10 and 11 for gaming: fewer background processes, network and GPU set up for games, ready-made configs for your games. Every change can be undone.']
+    it: ['LollozzOS: il tuo PC, pronto per giocare', 'LollozzOS ottimizza Windows 10 e 11 per il gaming: meno processi in background, rete e scheda video impostate per il gioco, configurazioni pronte per i tuoi giochi. Ogni modifica si annulla.'],
+    en: ['LollozzOS: your PC, ready to play', 'LollozzOS optimizes Windows 10 and 11 for gaming: fewer background processes, network and graphics card set up for games, ready-made configs for your games. Every change can be undone.']
   };
 
   var nodi = document.querySelectorAll('[data-t]');
   var IT = {};
-  nodi.forEach(function (n) { IT[n.getAttribute('data-t')] = n.innerHTML; });
+  nodi.forEach(function (n) { var k = n.getAttribute('data-t'); if (!(k in IT)) IT[k] = n.innerHTML; });
   var altIT = new Map();
   document.querySelectorAll('img[data-alt-en]').forEach(function (i) { altIT.set(i, i.getAttribute('alt')); });
+  var ariaIT = new Map();
+  document.querySelectorAll('[data-t-aria]').forEach(function (n) { ariaIT.set(n, n.getAttribute('aria-label')); });
   var lingua = 'it';
 
-  function galleria(chiave) {
-    var img = document.getElementById('gal-img');
-    var cap = document.getElementById('gal-cap');
-    img.src = 'assets/' + chiave + '.jpg';
-    img.alt = DIDASCALIE[lingua][chiave];
-    cap.textContent = DIDASCALIE[lingua][chiave];
-    document.querySelectorAll('.gal-tabs button').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-img') === chiave ? 'true' : 'false'); });
-  }
-  // (02/10) "OS" di LollozzOS nel colore solo accanto al logo, in alto e in fondo
-  // (Lollozz: nei testi confonde). Prima qui si colorava in tutti i testi.
   function scegliLingua(l, salva) {
     lingua = l === 'en' ? 'en' : 'it';
+    var en = lingua === 'en';
     document.documentElement.lang = lingua;
-    nodi.forEach(function (n) {
-      var k = n.getAttribute('data-t');
-      n.innerHTML = lingua === 'en' && EN[k] !== undefined ? EN[k] : IT[k];
-    });
-    altIT.forEach(function (alt, i) { i.setAttribute('alt', lingua === 'en' ? i.getAttribute('data-alt-en') : alt); });
+    nodi.forEach(function (n) { var k = n.getAttribute('data-t'); var t = en ? EN[k] : IT[k]; if (t !== undefined) n.innerHTML = t; });
+    altIT.forEach(function (it, img) { img.setAttribute('alt', en ? img.getAttribute('data-alt-en') : it); });
+    ariaIT.forEach(function (it, n) { n.setAttribute('aria-label', en ? (ARIA_EN[n.getAttribute('data-t-aria')] || it) : it); });
+    document.querySelectorAll('img[data-foto]').forEach(function (img) { img.src = 'assets/' + img.getAttribute('data-foto') + '-' + lingua + '.jpg'; });
+    document.querySelectorAll('[data-lingua]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lingua') === lingua ? 'true' : 'false'); });
     document.title = TITOLI[lingua][0];
     var d = document.querySelector('meta[name="description"]'); if (d) d.setAttribute('content', TITOLI[lingua][1]);
-    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lingua ? 'true' : 'false'); });
-    var sel = document.querySelector('.gal-tabs button[aria-selected="true"]');
-    galleria(sel ? sel.getAttribute('data-img') : 'home');
+    orologio();
     if (salva) { try { localStorage.setItem('lz-lingua', lingua); } catch (e) {} }
   }
-  document.querySelectorAll('.lang button').forEach(function (b) {
-    b.addEventListener('click', function () { scegliLingua(b.getAttribute('data-lang'), true); });
+  document.querySelectorAll('[data-lingua]').forEach(function (b) {
+    b.addEventListener('click', function () { scegliLingua(b.getAttribute('data-lingua'), true); });
   });
-  var iniziale = null;
-  try { iniziale = localStorage.getItem('lz-lingua'); } catch (e) {}
-  if (!iniziale) iniziale = /^it\b/i.test(navigator.language || 'it') ? 'it' : 'en';
-  scegliLingua(iniziale, false);
+  var scelta = null;
+  try { scelta = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (!scelta) { try { scelta = localStorage.getItem('lz-lingua'); } catch (e) {} }
+  if (!scelta) scelta = /^it\b/i.test(navigator.language || 'it') ? 'it' : 'en';
+  if (scelta === 'en') scegliLingua('en', false);
 
-  // ---------- galleria ----------
-  document.querySelectorAll('.gal-tabs button').forEach(function (b) {
-    b.addEventListener('click', function () { galleria(b.getAttribute('data-img')); });
-  });
-
-  // ---------- menu sul telefono ----------
-  var nav = document.getElementById('nav');
-  var mb = document.getElementById('menu-btn');
-  mb.addEventListener('click', function () {
-    var aperto = nav.classList.toggle('aperta');
-    mb.setAttribute('aria-expanded', aperto ? 'true' : 'false');
-  });
-  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('aperta'); mb.setAttribute('aria-expanded', 'false'); }); });
-
-  // ---------- comparsa allo scorrere ----------
-  var el = document.querySelectorAll('.rivela');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (voci) {
-      voci.forEach(function (v) { if (v.isIntersecting) { v.target.classList.add('vista'); io.unobserve(v.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    el.forEach(function (x) { io.observe(x); });
-  } else {
-    el.forEach(function (x) { x.classList.add('vista'); });
+  // ---------- orologio della barra ----------
+  function orologio() {
+    var o = new Date();
+    var loc = lingua === 'en' ? 'en-GB' : 'it-IT';
+    var h = document.getElementById('ora'), g = document.getElementById('data');
+    if (h) h.textContent = o.toLocaleTimeString(loc, { hour: '2-digit', minute: '2-digit' });
+    if (g) g.textContent = o.toLocaleDateString(loc, { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
+  orologio();
+  setInterval(orologio, 20000);
 
-  document.getElementById('anno').textContent = String(new Date().getFullYear());
+  // ---------- menu Start ----------
+  var menu = document.getElementById('start-menu');
+  var aprono = document.querySelectorAll('[aria-controls="start-menu"]');
+  function apri(si) {
+    menu.hidden = !si;
+    aprono.forEach(function (b) { b.setAttribute('aria-expanded', si ? 'true' : 'false'); });
+    if (si) { var p = menu.querySelector('nav a'); if (p) p.focus(); }
+  }
+  aprono.forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); apri(menu.hidden); }); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) apri(false); e.stopPropagation(); });
+  document.addEventListener('click', function () { if (!menu.hidden) apri(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { apri(false); aprono[0].focus(); } });
+
+  // ---------- la voce della barra si accende sulla sezione che stai leggendo ----------
+  var voci = {};
+  document.querySelectorAll('.barra .voce[href^="#"]').forEach(function (a) { voci[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var oss = new IntersectionObserver(function (righe) {
+      righe.forEach(function (r) {
+        if (!r.isIntersecting) return;
+        Object.keys(voci).forEach(function (k) { voci[k].classList.toggle('qui', k === r.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    // tutte le sezioni: su quelle che non sono nella barra (Ripristino, Come si inizia...) non si accende niente
+    document.querySelectorAll('#top, main section[id]').forEach(function (s) { oss.observe(s); });
+  }
 })();
 </script>
 </body>
