@@ -16,26 +16,30 @@
 </p>
 
 <h3 align="center">Il tuo PC, pronto per giocare.</h3>
-<p align="center">Un click. Windows più leggero, più reattivo, tutto per il gioco.<br><a href="#english">English below</a></p>
+<p align="center"><a href="#english">English below</a></p>
+
+LollozzOS è l'app che prende un Windows normale e lo trasforma in un sistema fatto per il gioco competitivo. Mette in un posto solo quello che di solito è sparso tra decine di guide, script e programmi diversi: lo guarda sul tuo PC, decide cosa serve al tuo hardware e lo applica. Ogni modifica salva com'era prima, quindi si torna sempre indietro.
 
 <p align="center"><img src="docs/assets/app-it.jpg" alt="LollozzOS" width="900"></p>
 
-<table>
-<tr>
-<td width="33%" valign="top"><b>Un click. Tutto il PC.</b><br>Poche domande, poi LollozzOS fa tutto da solo, su misura per il tuo hardware.</td>
-<td width="33%" valign="top"><b>Si accende con il gioco.</b><br>La Modalità competitiva parte con la partita e si spegne quando la chiudi.</td>
-<td width="33%" valign="top"><b>Tutto si annulla.</b><br>Ogni modifica salva il prima. Un interruttore, e torna com'era.</td>
-</tr>
-</table>
+## Di cosa si occupa
+
+| | |
+|---|---|
+| **Windows più leggero** | Toglie quello che gira in sottofondo senza servirti: app preinstallate, telemetria, l'intelligenza artificiale di Windows, servizi inutili. |
+| **Prestazioni** | Processore, scheda video, memoria, energia e timer di sistema regolati per dare tutto al gioco. |
+| **Latenza e rete** | Mouse, tastiera, USB e scheda di rete più reattivi, per un input immediato e un ping stabile. |
+| **Il gioco** | Una modalità che si accende da sola quando giochi e configurazioni pronte per i giochi competitivi più giocati. |
+| **Cura del PC** | Diagnosi, pulizia e riparazioni di Windows, anche dal tasto destro del desktop. |
+| **Il tuo stile** | Colori, sfondi e aspetto di Windows nel tono che scegli tu. |
+| **Sicurezza e ripristino** | Ogni modifica si annulla, voce per voce o tutta insieme. |
+| **LIA** | L'assistente che legge il tuo PC, risponde alle domande e ti guida nell'app. |
+
+Tutto parte da un click: poche domande, e LollozzOS prepara il piano su misura per il tuo computer.
 
 ## Novità della versione 5.0
 
-- **Timer su misura** · misura il tuo PC e sceglie il timer più preciso per lui.
-- **Processore libero** · mitigazioni complete: più FPS nei giochi che spingono la CPU.
-- **Prestazioni avanzate** · dispositivi in background spenti, solo se il tuo PC li ha.
-- **Driver vecchi, via da soli** · versioni superate eliminate in automatico, niente conflitti.
-- **Mouse e rete più reattivi** · mouse pieno anche in background, rete sul core giusto.
-- **Strumenti dal desktop** · libera la RAM, riavvia l'audio, ripara Windows e console da amministratore dal tasto destro.
+Timer su misura per il tuo PC · processore più libero nei giochi · dispositivi in background spenti solo se ci sono · driver vecchi eliminati da soli · mouse e rete più reattivi · nuovi strumenti dal desktop.
 
 ## Inizia
 
@@ -64,26 +68,29 @@ Alcune funzioni usano strumenti di altri autori, con il loro permesso e la loro 
 <a id="english"></a>
 
 <h3 align="center">Your PC, ready to play.</h3>
-<p align="center">One click. A lighter, more responsive Windows, all for gaming.</p>
+
+LollozzOS is the app that takes a regular Windows and turns it into a system built for competitive gaming. It puts in one place what is usually scattered across dozens of guides, scripts and programs: it looks at your PC, decides what your hardware needs and applies it. Every change saves how things were before, so you can always go back.
 
 <p align="center"><img src="docs/assets/app-en.jpg" alt="LollozzOS" width="900"></p>
 
-<table>
-<tr>
-<td width="33%" valign="top"><b>One click. The whole PC.</b><br>A few questions, then LollozzOS does it all by itself, tailored to your hardware.</td>
-<td width="33%" valign="top"><b>Turns on with the game.</b><br>Competitive mode starts with the match and stops when you close it.</td>
-<td width="33%" valign="top"><b>Everything undoes.</b><br>Every change saves the before. One toggle, and it's back as it was.</td>
-</tr>
-</table>
+### What it takes care of
+
+| | |
+|---|---|
+| **A lighter Windows** | Removes what runs in the background without serving you: preinstalled apps, telemetry, Windows' artificial intelligence, useless services. |
+| **Performance** | Processor, graphics card, memory, power and system timer tuned to give everything to the game. |
+| **Latency and network** | Mouse, keyboard, USB and network card more responsive, for instant input and a stable ping. |
+| **The game** | A mode that turns on by itself when you play, and ready-made configs for the most played competitive games. |
+| **PC care** | Diagnostics, cleanup and Windows repairs, right-click on the desktop included. |
+| **Your style** | Colors, wallpapers and the look of Windows in the tone you choose. |
+| **Safety and restore** | Every change can be undone, one item at a time or all together. |
+| **LIA** | The assistant that reads your PC, answers your questions and guides you through the app. |
+
+It all starts with one click: a few questions, and LollozzOS builds the plan tailored to your computer.
 
 ### What's new in version 5.0
 
-- **Custom timer** · measures your PC and picks the most precise timer for it.
-- **Free processor** · complete mitigations: more FPS in CPU-heavy games.
-- **Advanced performance** · background devices turned off, only if your PC has them.
-- **Old drivers, gone by themselves** · outdated versions removed automatically, no conflicts.
-- **More responsive mouse and network** · full mouse response in background, network on the right core.
-- **Tools from the desktop** · free up RAM, restart audio, repair Windows and admin consoles from right-click.
+Custom timer for your PC · a freer processor in games · background devices turned off only if present · old drivers removed by themselves · more responsive mouse and network · new tools from the desktop.
 
 ### Get started
 
