@@ -1,11 +1,18 @@
 <p align="center">
-  <img src="docs/assets/readme-banner.jpg" alt="LollozzOS · by Lollozz" width="100%">
+  <img src="docs/assets/readme-banner.jpg" alt="LollozzOS by Lollozz" width="100%">
 </p>
 
 <p align="center">
-  <a href="https://github.com/LollozzOS/LollozzOs/releases/latest"><img src="https://img.shields.io/badge/Scarica-LollozzOS-6A00FF?style=for-the-badge&labelColor=0b0718" alt="Scarica LollozzOS"></a>
-  <a href="https://lollozzos.github.io/LollozzOs/"><img src="https://img.shields.io/badge/Sito-lollozzos.github.io-a77bff?style=for-the-badge&labelColor=0b0718" alt="Sito"></a>
-  <a href="https://discord.gg/gd5cT3Jw9M"><img src="https://img.shields.io/badge/Licenza-Discord-5865F2?style=for-the-badge&labelColor=0b0718" alt="Licenza su Discord"></a>
+  <b>Il miglior sistema operativo competitivo e stabile.</b><br>
+  Windows 11 e 10 trasformati per il gaming, in un’app sola. Ogni modifica si annulla.
+</p>
+
+<p align="center">
+  <a href="https://github.com/LollozzOS/LollozzOs/releases/latest"><b>Scarica</b></a> ·
+  <a href="https://lollozzos.github.io/LollozzOs/"><b>Sito</b></a> ·
+  <a href="#novita"><b>Novità</b></a> ·
+  <a href="https://discord.gg/gd5cT3Jw9M"><b>Discord</b></a> ·
+  <a href="#english">English</a>
 </p>
 
 <p align="center">
@@ -15,91 +22,139 @@
   <img src="https://img.shields.io/badge/prova-24%20ore-a77bff?style=flat-square&labelColor=0b0718" alt="Prova 24 ore">
 </p>
 
-<h3 align="center">Il tuo PC, pronto per giocare.</h3>
-<p align="center"><a href="#english">English below</a></p>
+<a id="novita"></a>
 
-LollozzOS è l'app che prende un Windows normale e lo trasforma in un sistema fatto per il gioco competitivo. Mette in un posto solo quello che di solito è sparso tra decine di guide, script e programmi diversi: lo guarda sul tuo PC, decide cosa serve al tuo hardware e lo applica. Ogni modifica salva com'era prima, quindi si torna sempre indietro.
+## Novità
 
-<p align="center"><img src="docs/assets/app-it.jpg" alt="LollozzOS" width="900"></p>
+*Versione 5.0.* L’app si aggiorna da sola: licenza, impostazioni e backup restano.
 
-## Di cosa si occupa
+- **Timer su misura.** LollozzOS misura il tuo PC e sceglie il timer più preciso per lui.
+- **Processore libero.** Mitigazioni complete: più FPS nei giochi che spingono la CPU.
+- **Prestazioni avanzate.** I dispositivi che lavorano in background si spengono, solo se il tuo PC li ha.
+- **Driver vecchi, via da soli.** Le versioni superate si eliminano in automatico.
+- **Mouse e rete più reattivi.** Mouse pieno anche in background, rete sul core giusto.
+- **Strumenti dal desktop.** Libera la RAM, riavvia l’audio, ripara Windows e console da amministratore, dal tasto destro.
+
+## Installa LollozzOS
+
+Il primo passo. Poche domande, e dalle tue risposte nasce il piano per il tuo PC: servizi, debloat, rete, energia e aspetto partono insieme.
+
+1. **Rispondi.** Poche domande, con la risposta consigliata già segnata.
+2. **Controlla il riepilogo.** Cambi quello che vuoi e torni al riepilogo.
+3. **Riavvia.** LollozzOS ti mostra il tuo PC prima e dopo.
+
+Il risultato migliore è su un Windows appena installato: l’app prepara anche la chiavetta e al primo desktop si installa da sola. È pienamente compatibile anche con il sistema che usi già.
+
+## Modalità competitiva
+
+La accendi una volta e non pensi ad altro: parte quando avvii un gioco e si spegne quando lo chiudi.
+
+- Il gioco al centro: priorità, core e scheda video tutti per lui.
+- Le altre app in risparmio, senza chiuderle.
+- Quando chiudi il gioco, tutto torna com’era. A fine partita: FPS medi, 1% low e scatti.
+
+## Cosa c’è dentro
 
 | | |
 |---|---|
-| **Windows più leggero** | Toglie quello che gira in sottofondo senza servirti: app preinstallate, telemetria, l'intelligenza artificiale di Windows, servizi inutili. |
-| **Prestazioni** | Processore, scheda video, memoria, energia e timer di sistema regolati per dare tutto al gioco. |
-| **Latenza e rete** | Mouse, tastiera, USB e scheda di rete più reattivi, per un input immediato e un ping stabile. |
-| **Il gioco** | Una modalità che si accende da sola quando giochi e configurazioni pronte per i giochi competitivi più giocati. |
-| **Cura del PC** | Diagnosi, pulizia e riparazioni di Windows, anche dal tasto destro del desktop. |
-| **Il tuo stile** | Colori, sfondi e aspetto di Windows nel tono che scegli tu. |
-| **Sicurezza e ripristino** | Ogni modifica si annulla, voce per voce o tutta insieme. |
-| **LIA** | L'assistente che legge il tuo PC, risponde alle domande e ti guida nell'app. |
+| **Debloat** | Windows senza zavorra: app inutili, telemetria e intelligenza artificiale. |
+| **Servizi** | Solo quello che ti serve resta acceso. |
+| **Rete** | Ping stabile e meno ritardo in gioco. |
+| **GPU e grafica** | La scheda video al massimo. |
+| **Energia e prestazioni** | Processore, timer e piani energetici per il gioco. |
+| **Memoria RAM** | La memoria libera per quello che conta. |
+| **Periferiche e USB** | Mouse e tastiera senza ritardo. |
+| **Audio** | Suono pulito e senza ritardi. |
+| **Giochi** | Il tuo gioco configurato per questo PC, con un clic. |
+| **BIOS** | Il BIOS controllato da Windows. |
+| **Cura** | Diagnosi, pulizia e riparazioni. |
+| **Ripristino** | Ogni modifica si annulla. |
+| **LIA** | L’assistente che conosce il tuo PC. |
 
-Tutto parte da un click: poche domande, e LollozzOS prepara il piano su misura per il tuo computer.
+## Giochi
 
-## Novità della versione 5.0
+Configurazioni pronte, ricalcolate sul tuo PC: Call of Duty (Black Ops 7 e Warzone), Apex Legends, Counter-Strike 2, Fortnite, Rainbow Six Siege, PUBG: Battlegrounds, ARC Raiders, Battlefield 6, Valorant.
 
-Timer su misura per il tuo PC · processore più libero nei giochi · dispositivi in background spenti solo se ci sono · driver vecchi eliminati da soli · mouse e rete più reattivi · nuovi strumenti dal desktop.
+## Tutto si annulla
 
-## Inizia
+- Prima di ogni modifica si salvano i valori di prima: spegni l’interruttore e torna com’era.
+- «Ripristina tutto» annulla ogni modifica dell’app, o una alla volta dalla cronologia.
+- Se Windows ha un aggiornamento da completare, LollozzOS aspetta prima di cambiare qualcosa.
 
-1. Scarica `LollozzOS_Setup` da [Releases](https://github.com/LollozzOS/LollozzOs/releases/latest) e avvialo.
-2. Provalo gratis per 24 ore: parti da **Installa LollozzOS** nella Home.
-3. Per la licenza scrivi sul [Discord](https://discord.gg/gd5cT3Jw9M): una licenza, tutta l'app, su un computer.
+## Installazione
 
-**Testato e pienamente compatibile** con le versioni recenti di Windows 11 e con Windows 10, 64 bit. Il risultato migliore è su un Windows appena installato, ma è pienamente compatibile anche con il sistema che usi già.
+1. Scarica `LollozzOS_Setup_<versione>.exe` da [Releases](https://github.com/LollozzOS/LollozzOs/releases/latest).
+2. Avvialo e segui i passi.
 
-> L'installazione non è firmata: se Windows SmartScreen avvisa, scegli **Ulteriori informazioni** e poi **Esegui comunque**. Scaricalo solo da qui o dal sito.
+Il programma d’installazione non è firmato: se Windows SmartScreen avvisa, clicca **Ulteriori informazioni** e poi **Esegui comunque**. Scaricalo solo da qui o dal sito.
+
+- **Sistema:** testato e pienamente compatibile con le versioni recenti di Windows 11 e con Windows 10, 64 bit
+- **Lingua:** italiano e inglese
+
+## Licenza e prova
+
+- **Prova gratuita di 24 ore**, una volta per computer.
+- Una licenza, **tutta l’app**, su **un computer**. È legata al suo hardware.
+- Nell’app copia la richiesta di licenza, scrivi sul [Discord](https://discord.gg/gd5cT3Jw9M) e incolla il codice di sblocco. Prezzi e dettagli su Discord.
 
 ## Crediti
 
-Alcune funzioni usano strumenti di altri autori, con il loro permesso e la loro licenza MIT accanto: [WinUtil](https://github.com/ChrisTitusTech/winutil) di Chris Titus Tech, [Win11Debloat](https://github.com/Raphire/Win11Debloat) di Raphire, [RemoveWindowsAI](https://github.com/zoicware/RemoveWindowsAI) di zoicware, [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu), NVIDIA Profile Inspector di Orbmu2k, [PresentMon](https://github.com/GameTechDev/PresentMon) di Intel, TCP Optimizer di SpeedGuide.
+Alcune funzioni usano strumenti di altri autori, con il loro permesso e la loro licenza accanto.
 
-<p align="center">
-  <a href="https://discord.gg/gd5cT3Jw9M">Discord</a> ·
-  <a href="https://www.instagram.com/_lollozz__">Instagram</a> ·
-  <a href="https://www.tiktok.com/@_lollozz_">TikTok</a> ·
-  <a href="https://www.twitch.tv/lollozz__">Twitch</a> ·
-  <a href="https://ko-fi.com/lollozzos">Ko-fi</a>
-</p>
+- [WinUtil](https://github.com/ChrisTitusTech/winutil) di Chris Titus Tech, MIT
+- [Win11Debloat](https://github.com/Raphire/Win11Debloat) di Raphire, MIT
+- [RemoveWindowsAI](https://github.com/zoicware/RemoveWindowsAI) di zoicware, MIT
+- [Open-Shell](https://github.com/Open-Shell/Open-Shell-Menu), MIT
+- NVIDIA Profile Inspector di Orbmu2k, MIT
+- [PresentMon](https://github.com/GameTechDev/PresentMon) di Intel, MIT
+- TCP Optimizer di SpeedGuide
+
+## Avvertenze
+
+LollozzOS è fornito così com’è, senza garanzia. Non è affiliato a Microsoft né agli editori dei giochi citati; nomi e immagini dei giochi appartengono ai rispettivi proprietari.
+
+## Community
+
+[Discord](https://discord.gg/gd5cT3Jw9M) ·
+[TikTok](https://www.tiktok.com/@_lollozz_) ·
+[Instagram](https://www.instagram.com/_lollozz__) ·
+[Twitch](https://www.twitch.tv/lollozz__) ·
+[Ko-fi](https://ko-fi.com/lollozzos)
 
 ---
 
 <a id="english"></a>
 
-<h3 align="center">Your PC, ready to play.</h3>
+## English
 
-LollozzOS is the app that takes a regular Windows and turns it into a system built for competitive gaming. It puts in one place what is usually scattered across dozens of guides, scripts and programs: it looks at your PC, decides what your hardware needs and applies it. Every change saves how things were before, so you can always go back.
+**The best competitive and stable operating system.** Windows 11 and 10 turned into a gaming system, in one app. Every change can be undone.
 
-<p align="center"><img src="docs/assets/app-en.jpg" alt="LollozzOS" width="900"></p>
+### What’s new
 
-### What it takes care of
+*Version 5.0.* The app updates itself: license, settings and backups stay.
 
-| | |
-|---|---|
-| **A lighter Windows** | Removes what runs in the background without serving you: preinstalled apps, telemetry, Windows' artificial intelligence, useless services. |
-| **Performance** | Processor, graphics card, memory, power and system timer tuned to give everything to the game. |
-| **Latency and network** | Mouse, keyboard, USB and network card more responsive, for instant input and a stable ping. |
-| **The game** | A mode that turns on by itself when you play, and ready-made configs for the most played competitive games. |
-| **PC care** | Diagnostics, cleanup and Windows repairs, right-click on the desktop included. |
-| **Your style** | Colors, wallpapers and the look of Windows in the tone you choose. |
-| **Safety and restore** | Every change can be undone, one item at a time or all together. |
-| **LIA** | The assistant that reads your PC, answers your questions and guides you through the app. |
+- **Custom timer.** LollozzOS measures your PC and picks the most precise timer for it.
+- **Free processor.** Complete mitigations: more FPS in CPU-heavy games.
+- **Advanced performance.** Background devices are turned off, only if your PC has them.
+- **Old drivers, gone by themselves.** Outdated versions are removed automatically.
+- **More responsive mouse and network.** Full mouse response in background, network on the right core.
+- **Tools from the desktop.** Free up RAM, restart audio, repair Windows and admin consoles, from right-click.
 
-It all starts with one click: a few questions, and LollozzOS builds the plan tailored to your computer.
+### What’s inside
 
-### What's new in version 5.0
+- **Install LollozzOS:** a few questions, then everything starts together, tailored to your PC. Best on a freshly installed Windows, fully compatible with the system you already use too.
+- **Competitive mode:** starts with the game, stops when you close it. After the match: average FPS, 1% low and stutters.
+- **Debloat, services, network, GPU, power, memory, peripherals, audio, games, BIOS, care and restore**, each on its own page, plus LIA, the assistant that knows your PC.
+- **Everything can be undone:** previous values are saved before every change.
 
-Custom timer for your PC · a freer processor in games · background devices turned off only if present · old drivers removed by themselves · more responsive mouse and network · new tools from the desktop.
+### Install
 
-### Get started
+Download `LollozzOS_Setup_<version>.exe` from [Releases](https://github.com/LollozzOS/LollozzOs/releases/latest) and run it. Tested and fully compatible with recent Windows 11 and Windows 10, 64-bit. The installer is not signed: if SmartScreen warns you, choose **More info** and then **Run anyway**.
 
-Download `LollozzOS_Setup` from [Releases](https://github.com/LollozzOS/LollozzOs/releases/latest), try it free for 24 hours starting from **Install LollozzOS** on the Home, and get your license on [Discord](https://discord.gg/gd5cT3Jw9M): one license, the whole app, on one computer.
+### License
 
-**Tested and fully compatible** with recent versions of Windows 11 and with Windows 10, 64-bit. Best on a freshly installed Windows, fully compatible with the system you already use too. The installer is not signed: if SmartScreen warns you, choose **More info** and then **Run anyway**.
+Free 24-hour trial, once per computer. One license, **the whole app**, on **one computer**. Get it on [Discord](https://discord.gg/gd5cT3Jw9M).
 
 ---
-
-<sub>Software provided as is, without warranty. LollozzOS is not affiliated with Microsoft or with game publishers; trademarks belong to their owners. © 2026 Lollozz.</sub>
 
 <p align="center"><img src="docs/assets/logo-os-192.png" width="48" height="48" alt="LollozzOS"><br><b>LollozzOS</b> · creato da Lollozz</p>
